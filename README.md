@@ -1,4 +1,4 @@
-## SWorD ##
+## SWorD for Crowdfooding##
 SWorD (Social Web of real Domotics) is a prototype social network where users, homes, providers, devices and appliances can interact and act in a "smarter" way, by talking each other and thus lowering the technical knowledge to use home automation and domotics systems.
 
 ### LAB2 ###

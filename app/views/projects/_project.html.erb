@@ -1,0 +1,9 @@
+<li>
+  <span class="content"><%= project.content %></span>
+  <span class="timestamp">
+    Created <%= time_ago_in_words(project.created_at) %> ago
+  </span>
+  <% if current_user?(project.user) %>
+    | <%= link_to 'delete', project, method: :delete, data: { confirm: 'Are you sure?' }, title: project.content %>
+  <% end %>
+</li>

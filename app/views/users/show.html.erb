@@ -1,0 +1,28 @@
+<% #Provide the page title in a symbol to application.html.erb to avoid duplication %>
+<% provide :title, @user.name %>
+
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+    <section>
+      <%= render 'shared/stats' %>
+    </section>
+  </aside>
+
+  <div class="span8">
+    <%= render 'follow_form' if signed_in? %>
+    <% if @user.projects.any? %>
+      <h3>Project (<%= @user.projects.count %>)</h3>
+      <ol class="projects">
+        <%= render @projects %>
+      </ol>
+      <% # since we are in a Users view, we need to specify that the pagination is for the posts %>
+      <% will_paginate @projects %>
+    <% end %>
+  </div>
+</div>

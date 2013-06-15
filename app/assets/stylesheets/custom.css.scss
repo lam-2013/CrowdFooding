@@ -44,10 +44,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3em;
+  font-size:3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
+
 }
 
 h2 {
@@ -223,7 +224,7 @@ input {
   display: block;
 }
 .timestamp {
-  color: $grayLight;
+  color: darkgray;
 }
 .gravatar {
   float: left;

@@ -2,6 +2,8 @@
 <% provide :title, @user.name %>
 
 <div class="row">
+  <img src="http://www.lettera43.it/upload/images/12_2012/l43-piantagione-121227075428_big.jpg" class="img-rounded" id="copertina">
+
   <aside class="span4">
     <section>
       <h1>
@@ -15,14 +17,33 @@
   </aside>
 
   <div class="span8">
-    <%= render 'follow_form' if signed_in? %>
+    <p>Informazioni personali<p>
+    <p> nato il ....  </p>
+  </div>
+
+  <div class="span8">
+
+  <ul class="nav nav-tabs">
+     <li class="active">
+      <a href="#">Progetti in corso</a>
     <% if @user.projects.any? %>
       <h3>Project (<%= @user.projects.count %>)</h3>
       <ol class="projects">
         <%= render @projects %>
       </ol>
-      <% # since we are in a Users view, we need to specify that the pagination is for the projects %>
-      <% will_paginate @projects %>
-    <% end %>
+           <% # since we are in a Users view, we need to specify that the pagination is for the projects %>
+           <% will_paginate @projects %>
+       <% end %>
+
+           <li><a href="#"> Progetti finanziati </a>
+           </li>
+           <li><a href="#">Progetti seguiti</a>
+           </li>
+           <li><a href="#">Progetti completati</a>
+           </li>
+
+    </li>
+  </ul>
   </div>
 </div>
+

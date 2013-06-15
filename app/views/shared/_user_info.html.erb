@@ -5,5 +5,5 @@
 
 <% # current user name, link to her profile and her posts number %>
 <h1><%= current_user.name %></h1>
-<span><%= link_to 'View my profile', current_user %></span>
+<span><%= link_to 'il mio profilo', current_user %></span>
 <span><%= pluralize(current_user.projects.count, 'project') %></span>

@@ -1,3 +1,42 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#copertina{
+  height: 200px;
+  width: 900px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.row {
+  background-color: #ffffff;
+
+}
+
+.span4,.span8 {
+  margin-top: 20px;
+  vertical-position: left;
+}
+
+#tithelp{
+  text-align: left;
+  vertical-align: right;
+}
+
+p{
+  text-align: left;
+}
+
+.functionhelp{
+  height: 200px;
+  width: 900px;
+  margin-top: 20px;
+
+}
+
+#iconhelp{
+  width: 100px;
+  float: left;
+}
+

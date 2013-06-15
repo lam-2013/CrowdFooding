@@ -2,7 +2,7 @@
 <% provide :title, 'Home' %>
 
 <% if signed_in? %>
-  <div class="row">
+    <div class="row">
     <aside class="span3">
       <section>
         <%= render 'shared/user_info' %>
@@ -12,20 +12,20 @@
       </section>
     </aside>
     <div class="span9">
-      <%= link_to 'Scopri', scopri_path, class: 'btn btn-large btn-primary' %>
-      <%= link_to 'Crea', crea_path, class: 'btn btn-large btn-primary' %>
+      <%= link_to 'Scopri', scopri_path, class: 'btn btn-large btn-warning' %>
+      <%= link_to 'Crea', crea_path, class: 'btn btn-large btn-warning' %>
       <h3>Wall</h3>
       <%= render 'shared/feed' %>
     </div>
-  </div>
+
 <% else %>
   <div class="center hero-unit">
-    <h1>Benvenuti su CrowdFooding</h1>
+    <h1>CrowdFooding</h1>
 
     <h2>
       Registrati o fai il login per entrare in CrowdFooding.
     </h2>
-
-    <%= link_to 'Sign up now!', signup_path, class: 'btn btn-large btn-primary' %>
+    <%= link_to 'Sign up now!', signup_path, class: 'btn btn-large btn-warning' %>
 </div>
+
 <% end %>

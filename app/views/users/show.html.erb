@@ -21,29 +21,41 @@
     <p> nato il ....  </p>
   </div>
 
-  <div class="span8">
+  <div class="span9">
+    <div class="tabbable">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Progetti in corso</a></li>
+        <li><a href="#tab2" data-toggle="tab"> Progetti finanziati </a></li>
+        <li><a href="#tab3" data-toggle="tab">Progetti seguiti</a></li>
+        <li><a href="#tab4" data-toggle="tab">Progetti completati</a></li>
+      </ul>
 
-  <ul class="nav nav-tabs">
-     <li class="active">
-      <a href="#">Progetti in corso</a>
-    <% if @user.projects.any? %>
-      <h3>Project (<%= @user.projects.count %>)</h3>
-      <ol class="projects">
-        <%= render @projects %>
-      </ol>
-           <% # since we are in a Users view, we need to specify that the pagination is for the projects %>
-           <% will_paginate @projects %>
-       <% end %>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+          <% if @user.projects.any? %>
+              <h3>Project (<%= @user.projects.count %>)</h3>
+              <ol class="projects">
+                <%= render @projects %>
+              </ol>
+              <% # since we are in a Users view, we need to specify that the pagination is for the projects %>
+              <% will_paginate @projects %>
+          <% end %>
+        </div>
 
-           <li><a href="#"> Progetti finanziati </a>
-           </li>
-           <li><a href="#">Progetti seguiti</a>
-           </li>
-           <li><a href="#">Progetti completati</a>
-           </li>
+        <div class="tab-pane" id="tab2">
+          <p>Non ci sono ancora progetti finanziati.</p>
+        </div>
 
-    </li>
-  </ul>
+        <div class="tab-pane" id="tab3">
+          <p>Non ci sono ancora progetti seguiti.</p>
+        </div>
+
+        <div class="tab-pane" id="tab4">
+          <p>Non ci sono ancora progetti completati.</p>
+        </div>
+
+      </div>
+    </div>
   </div>
 </div>
 

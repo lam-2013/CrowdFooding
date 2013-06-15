@@ -4,6 +4,12 @@ class ProjectsController < ApplicationController
   # check if the user is allowed to delete a post
   before_filter :correct_user, only: :destroy
 
+  def new
+    @project = Project.new
+    render 'projects/new'
+  end
+
+
   def create
     # build a new post from the information contained in the "new post" form
     @project = current_user.projects.build(params[:project])

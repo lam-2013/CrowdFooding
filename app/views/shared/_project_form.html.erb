@@ -13,21 +13,21 @@
             <div class="row-fluid">
               <div class="span6">
                 <%= f.label :Categoria %>
-                <%= f.select(:categoria,
-                             '<option value="1">Prodotti</option>
-                             <option value="2">Idee</option>
-                             <option value="3">Luoghi</option>
-                             <option value="4">Educazione</option>
-                             <option value="5">Turismo</option>')%>
+                <%= select(@project, :categoria, options = { "Prodotti" => "1", "Idee" => "2", "Luoghi" => "3", "Educazione" => "4", "Turismo" => "5"})%>
               </div>
               <div class="span6">
                 <%= f.label :Tags %>
-                <%= f.select(:tags,
-                             '<option value="1">Prodotti</option>
-                             <option value="2">Idee</option>
-                             <option value="3">Luoghi</option>
-                             <option value="4">Educazione</option>
-                             <option value="5">Turismo</option>')%>
+                <%= check_box_tag(:tags) %>
+                <%= label_tag(:tags, "Prodotti") %>
+                <%= check_box_tag(:tags) %>
+                <%= label_tag(:tags, "Idee") %>
+                <%= check_box_tag(:tags) %>
+                <%= label_tag(:tags, "Luoghi") %>
+                <%= check_box_tag(:tags) %>
+                <%= label_tag(:tags, "Educazione") %>
+                <%= check_box_tag(:tags) %>
+                <%= label_tag(:tags, "Turismo") %>
+
               </div>
             </div>
           </div>

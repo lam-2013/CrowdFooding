@@ -1,11 +1,50 @@
 <%= form_for(@project) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <div class="row">
-    <div class="field span7">
-      <%= f.text_area :content, placeholder: 'What are you doing?' %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="row-fluid">
+          <div class="span6">
+            <%= f.label :titolo %>
+            <%= f.text_field :titolo %>
+            <%= f.label :descrizione %>
+            <%= f.text_field :descrizione %>
+            <%= f.label :Budget_da_raggiungere %>
+            <%= f.text_field :goal %>
+            <div class="row-fluid">
+              <div class="span6">
+                <%= f.label :Categoria %>
+                <%= f.select(:categoria,
+                             '<option value="1">Prodotti</option>
+                             <option value="2">Idee</option>
+                             <option value="3">Luoghi</option>
+                             <option value="4">Educazione</option>
+                             <option value="5">Turismo</option>')%>
+              </div>
+              <div class="span6">
+                <%= f.label :Tags %>
+                <%= f.select(:tags,
+                             '<option value="1">Prodotti</option>
+                             <option value="2">Idee</option>
+                             <option value="3">Luoghi</option>
+                             <option value="4">Educazione</option>
+                             <option value="5">Turismo</option>')%>
+              </div>
+            </div>
+          </div>
+          <div class="span6">
+            <h4>Media</h4>
+            <%= f.label :immagine_progetto %>
+            <%= f.text_field :img_copertina %>
+            <%= f.label :immagini %>
+            <%= f.text_field :images %>
+            <%= f.label :video %>
+            <%= f.text_field :videos %>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="span2">
-      <%= f.submit 'Project', class: 'btn btn-primary' %>
-    </div>
-  </div>
+<div class="span2">
+  <%= f.submit 'Project', class: 'btn btn-primary' %>
+</div>
+</div>
 <% end %>

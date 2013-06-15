@@ -9,6 +9,9 @@ class ProjectsController < ApplicationController
     render 'projects/new'
   end
 
+  def index
+    @projects = Project.paginate(page: params[:page])
+  end
 
   def create
     # build a new post from the information contained in the "new post" form

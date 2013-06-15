@@ -37,6 +37,11 @@ class Project < ActiveRecord::Base
   # content must be present and not longer than 400 chars
   validates :content, presence: true, length: {maximum: 400}
 
+  # titolo must be present and not longer than 60 chars
+  validates :titolo, presence: true, length: {maximum: 60}
+
+  validates :descrizione, :categoria, :data_creazione, :data_fine,:tags, :goal, presence: true
+
   # get user's projects plus all the projects written by her followed users
   def self.from_users_followed_by(user)
     followed_user_ids = 'SELECT followed_id FROM relationships WHERE follower_id = :user_id'

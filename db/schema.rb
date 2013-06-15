@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130615123116) do
+ActiveRecord::Schema.define(:version => 20130615144713) do
+
+  create_table "contributi_projects", :force => true do |t|
+    t.integer  "project_id"
+    t.float    "quota_finanziamento"
+    t.string   "servizio"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
 
   create_table "projects", :force => true do |t|
     t.string   "content"
@@ -31,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20130615123116) do
     t.string   "img_copertina"
     t.string   "risorse_umane"
     t.string   "gift"
+    t.string   "Luogo"
   end
 
   add_index "projects", ["user_id", "created_at"], :name => "index_projects_on_user_id_and_created_at"

@@ -5,7 +5,9 @@ class ProjectsController < ApplicationController
   before_filter :correct_user, only: :destroy
 
   def new
+
     @project = Project.new
+
     render 'projects/new'
   end
 

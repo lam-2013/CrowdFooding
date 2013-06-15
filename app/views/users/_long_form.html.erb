@@ -12,14 +12,8 @@
         <%= f.label :email %>
         <%= f.text_field :email, disabled: true %>
 
-        <%= f.label :password %>
-        <%= f.password_field :password %>
-
-        <%= f.label :password_confirmation, 'Conferma' %>
-        <%= f.password_field :password_confirmation %>
-
         <%= f.label :sesso %>
-
+        <%= select(@user, :sesso, options = { "M" => "1", "F" => "2"})%>
 
         <%= f.label :nascita %>
         <%= f.text_field :nascita %>
@@ -39,7 +33,11 @@
         <%= f.label :occupazione %>
         <%= f.text_field :occupazione %>
 
+        <%= f.label :password %>
+        <%= f.password_field :password %>
 
+        <%= f.label :password_confirmation, 'Conferma' %>
+        <%= f.password_field :password_confirmation %>
 
         <%= f.submit 'Aggiorna il mio profilo', class: 'btn btn-large btn-primary' %>
     <% end %>

@@ -5,7 +5,7 @@ SWorD::Application.routes.draw do
 
   # named routes for static pages, signup, login and logout
   match '/about', to: 'pages#about'
-  match '/contact', to: 'pages#contact'
+  match '/help', to: 'pages#help'
   match '/faq', to: 'pages#faq'
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'

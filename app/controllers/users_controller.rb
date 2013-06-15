@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       # handle a successful save
-      flash[:success] = 'Welcome to SWorD!'
+      flash[:success] = 'Benvenuto su CrowdFooding!'
       # automatically sign in
       sign_in @user
       redirect_to @user
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     # check if the update was successfully
     if @user.update_attributes(params[:user])
       # handle a successful update
-      flash[:success] = 'Profile updated'
+      flash[:success] = 'Profilo aggiornato'
       # re-login the user
       sign_in @user
       # go to the user profile
@@ -68,7 +68,7 @@ class UsersController < ApplicationController
   def destroy
     # delete the user starting from her id
     User.find(params[:id]).destroy
-    flash[:success] = 'User deleted!'
+    flash[:success] = 'Utente cancellato!'
     redirect_to users_url
   end
 

@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name, disabled:true %>
+
+        <%= f.label :cognome %>
+        <%= f.text_field :cognome %>
+
+        <%= f.label :email %>
+        <%= f.text_field :email, disabled: true %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+
+        <%= f.label :password_confirmation, 'Conferma' %>
+        <%= f.password_field :password_confirmation %>
+
+        <%= f.label :sesso %>
+
+
+        <%= f.label :nascita %>
+        <%= f.text_field :nascita %>
+
+        <%= f.label :luogo %>
+        <%= f.text_field :luogo %>
+
+        <%= f.label :img_copertina %>
+        <%= f.text_field :img_copertina %>
+
+        <%= f.label :descrizione %>
+        <%= f.text_area :descrizione %>
+
+        <%= f.label :sito_web %>
+        <%= f.text_field :sito_web %>
+
+        <%= f.label :occupazione %>
+        <%= f.text_field :occupazione %>
+
+
+
+        <%= f.submit 'Aggiorna il mio profilo', class: 'btn btn-large btn-primary' %>
+    <% end %>
+  </div>
+</div>

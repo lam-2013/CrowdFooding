@@ -2,18 +2,25 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  name            :string(255)
-#  email           :string(255)
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  password_digest :string(255)
-#  remember_token  :string(255)
-#  admin           :boolean          default(FALSE)
+#t.string   "name"
+#t.string   "email"
+#t.datetime "created_at",                         :null => false
+#t.datetime "updated_at",                         :null => false
+#t.string   "password_digest"
+#t.string   "remember_token"
+#t.boolean  "admin",           :default => false
+#t.string   "cognome"
+#t.string   "sesso"
+#t.date     "nascita"
+#t.string   "luogo"
+#t.string   "img_copertina"
+#t.string   "descrizione"
+#t.string   "sito_web"
+#t.string   "occupazione"
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessible :email, :name, :password, :password_confirmation, :cognome, :sesso, :nascita, :luogo, :img_copertina, :descrizione, :sito_web, :occupazione
 
   # basically, the method realizes the authentication system
   has_secure_password

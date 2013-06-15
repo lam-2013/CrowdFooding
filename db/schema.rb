@@ -11,13 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130606064234) do
+ActiveRecord::Schema.define(:version => 20130615123116) do
 
   create_table "projects", :force => true do |t|
     t.string   "content"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "titolo"
+    t.string   "descrizione"
+    t.string   "categoria"
+    t.datetime "data_creazione"
+    t.datetime "data_fine"
+    t.string   "tags"
+    t.string   "images"
+    t.string   "videos"
+    t.float    "budget_attuale"
+    t.float    "goal"
+    t.string   "img_copertina"
+    t.string   "risorse_umane"
+    t.string   "gift"
   end
 
   add_index "projects", ["user_id", "created_at"], :name => "index_projects_on_user_id_and_created_at"
@@ -41,6 +54,14 @@ ActiveRecord::Schema.define(:version => 20130606064234) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",           :default => false
+    t.string   "cognome"
+    t.string   "sesso"
+    t.date     "nascita"
+    t.string   "luogo"
+    t.string   "img_copertina"
+    t.string   "descrizione"
+    t.string   "sito_web"
+    t.string   "occupazione"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -1,31 +1,43 @@
 # == Schema Information
 #
-# Table name: posts
+# Table name: projects
 #
-#  id         :integer          not null, primary key
-#  content    :string(255)
-#  user_id    :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#t.string   "content"
+#t.integer  "user_id"
+#t.datetime "created_at",     :null => false
+#t.datetime "updated_at",     :null => false
+#t.string   "titolo"
+#t.string   "descrizione"
+#t.string   "categoria"
+#t.datetime "data_creazione"
+#t.datetime "data_fine"
+#t.string   "tags"
+#t.string   "images"
+#t.string   "videos"
+#t.float    "budget_attuale"
+#t.float    "goal"
+#t.string   "img_copertina"
+#t.string   "risorse_umane"
+#t.string   "gift"
 #
 
 class Project < ActiveRecord::Base
   # only content must be accessible, in order to avoid manual (and wrong) associations between posts and users
-  attr_accessible :content
+  attr_accessible :content, :titolo, :descrizione, :categoria, :data_creazione,:data_fine,:tags, :images, :videos, :budget_attuale, :goal, :img_copertina, :risorse_umane, :gift
 
-  # each post belong to a specific user
+  # each projects belong to a specific user
   belongs_to :user
 
-  # descending order for getting the posts
+  # descending order for getting the projects
   default_scope order: 'projects.created_at DESC'
 
-  # user_id must be present while creating a new post...
+  # user_id must be present while creating a new project...
   validates :user_id, presence: true
 
   # content must be present and not longer than 400 chars
   validates :content, presence: true, length: {maximum: 400}
 
-  # get user's projects plus all the posts written by her followed users
+  # get user's projects plus all the projects written by her followed users
   def self.from_users_followed_by(user)
     followed_user_ids = 'SELECT followed_id FROM relationships WHERE follower_id = :user_id'
     where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", user_id: user.id)

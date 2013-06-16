@@ -20,8 +20,12 @@
   </aside>
 
   <div class="span8">
-    <p>Informazioni personali<p>
-    <p> nato il ....  </p>
+
+        <p>Informazioni personali <p>
+    <%= if !@user.nascita.blank?
+        @user.nascita
+        end %>
+
   </div>
 
   <div class="span9">

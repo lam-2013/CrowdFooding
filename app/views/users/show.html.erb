@@ -9,6 +9,9 @@
       <h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
+        <%= if !@user.cognome.blank?
+                @user.cognome
+            end %>
       </h1>
     </section>
     <section>

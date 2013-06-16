@@ -3,29 +3,30 @@
 
 <% if signed_in? %>
     <div class="row">
-    <aside class="span3">
-      <section>
-        <%= render 'shared/user_info' %>
-      </section>
-      <section>
-        <%= render 'shared/stats' %>
-      </section>
-    </aside>
-    <div class="span9">
-      <%= link_to 'Scopri', scopri_path, class: 'btn btn-large btn-warning' %>
-      <%= link_to 'Crea', crea_path, class: 'btn btn-large btn-warning' %>
-      <h3>Wall</h3>
-      <%= render 'shared/feed' %>
-    </div>
+      <aside class="span3">
+        <section>
+          <%= render 'shared/user_info' %>
+        </section>
+        <section>
+          <%= render 'shared/stats' %>
+        </section>
+      </aside>
+      <div class="span9">
+        <%= link_to 'Scopri', scopri_path, class: 'btn btn-large btn-warning' %>
+        <%= link_to 'Crea', crea_path, class: 'btn btn-large btn-warning' %>
+        <h3>Wall</h3>
+        <%= render 'shared/feed' %>
+      </div>
 
 <% else %>
-  <div class="center hero-unit">
-    <h1>CrowdFooding</h1>
+    <div class="center hero-unit">
+      <h1>CrowdFooding</h1>
 
-    <h2>
-      Registrati o fai il login per entrare in CrowdFooding.
-    </h2>
-    <%= link_to 'Sign up now!', signup_path, class: 'btn btn-large btn-warning' %>
-</div>
+      <h2>
+        Registrati o fai il login per entrare in CrowdFooding.
+      </h2>
+      <%= link_to 'Sign up now!', signup_path, class: 'btn btn-large btn-warning' %>
+    </div>
 
 <% end %>
+</div>

@@ -1,6 +1,7 @@
 namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
+
     make_users
     make_projects
     make_relationships
@@ -29,8 +30,23 @@ def make_projects
   # generate 50 fake projects for the first 10 users
   users = User.all(limit: 10)
   50.times do
-    project_content = Faker::Lorem.sentence(8)
-    users.each { |user|  user.projects.create!(content: project_content )}
+    project_titolo = Faker::Lorem.words(2)
+    project_descrizione = Faker::Lorem.sentence(20)
+    project_categoria = 'luoghi'
+    project_data_creazione = Time.now
+    project_data_fine = project_data_creazione + 2.week
+    r = Random.new
+    project_goal = r.rand(100.00..5000.00)
+    project_budget_attuale = r.rand(50.00..8000.00)
+    project_tags = '1,2,3,4,5'
+    users.each { |user|  user.projects.create!(titolo: project_titolo,
+                                               descrizione: project_descrizione,
+                                               categoria: project_categoria,
+                                               tags: project_tags,
+                                               data_creazione: project_data_creazione,
+                                               data_fine: project_data_fine,
+                                               budget_attuale: project_budget_attuale,
+                                               goal: project_goal )}
   end
 end
 

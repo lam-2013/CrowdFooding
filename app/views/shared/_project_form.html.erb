@@ -16,7 +16,7 @@
                 <%= select(@project, :categoria, options = { "Prodotti" => "1", "Idee" => "2", "Luoghi" => "3", "Educazione" => "4", "Turismo" => "5"})%>
               </div>
               <div class="span6">
-                <%= f.label :Tags %>
+                <h4>Tags</h4>
                 <%= check_box_tag(:tags) %>
                 <%= label_tag(:tags, "Prodotti") %>
                 <%= check_box_tag(:tags) %>
@@ -40,11 +40,49 @@
             <%= f.label :video %>
             <%= f.text_field :videos %>
           </div>
+          <div class="span6">
+
+            <h4>Tipi di contributi</h4>
+            <!-- Button to trigger modal -->
+
+            <a href="#myModal" role="button" class="btn" data-toggle="modal">Inserisci un contributo</a>
+
+            <!-- Modal -->
+            <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Inserisci un contributo</h3>
+              </div>
+              <div class="modal-body">
+                <section>
+
+                </section>
+
+              </div>
+              <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
         </div>
+        <h4>Budget da raggiungere</h4>
+        <div class="input-prepend input-append">
+          <span class="add-on">€</span>
+          <input class="span2" id="appendedPrependedInput" type="text">
+          <span class="add-on">.00</span>
+        </div>
+
+        <%= f.label :Cerco_altri_collaboratori %>
+        <%= f.text_field :risorse_umane %>
+
+        <%= f.label :'Incentiva_l\'utente più attivo' %>
+        <%= f.text_field :gift %>
+
       </div>
     </div>
-<div class="span2">
-  <%= f.submit 'Project', class: 'btn btn-primary' %>
-</div>
-</div>
+    <div class="span5">
+      <%= f.submit 'Project', class: 'btn btn-primary' %>
+    </div>
+    </div>
 <% end %>

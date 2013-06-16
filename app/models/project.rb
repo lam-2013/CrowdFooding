@@ -23,9 +23,9 @@
 
 class Project < ActiveRecord::Base
   # only content must be accessible, in order to avoid manual (and wrong) associations between posts and users
-  attr_accessible :content, :titolo, :descrizione, :categoria, :data_creazione,:data_fine,:tags, :images, :videos, :budget_attuale, :goal, :img_copertina, :risorse_umane, :gift
+  attr_accessible :titolo, :descrizione, :categoria, :data_creazione,:data_fine,:tags, :images, :videos, :budget_attuale, :goal, :img_copertina, :risorse_umane, :gift
 
-  has_many :contributi_projects, dependent: :destroy
+  has_many :contributi, dependent: :destroy
 
   # each projects belong to a specific user
   belongs_to :user
@@ -36,8 +36,6 @@ class Project < ActiveRecord::Base
   # user_id must be present while creating a new project...
   validates :user_id, presence: true
 
-  # content must be present and not longer than 400 chars
-  validates :content, presence: true, length: {maximum: 400}
 
   # titolo must be present and not longer than 60 chars
   validates :titolo, presence: true, length: {maximum: 60}

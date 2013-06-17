@@ -47,6 +47,10 @@
         <p> Sito web : <a href="http://<%=@user.sito_web %>"> <%=@user.sito_web %>  </a> </p>
     <% end %>
 
+    <% unless @user.sesso.blank? %>
+        <p> Sesso : <%=@user.sesso %> </p>
+    <% end %>
+
   </div>
 
   <div class="span9">

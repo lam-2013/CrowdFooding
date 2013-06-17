@@ -13,7 +13,7 @@
         <%= f.text_field :email, disabled: true %>
 
         <%= f.label :sesso %>
-        <%= select(@user, :sesso, options = { "M" => "1", "F" => "2"})%>
+        <%= f.select(:sesso, options = { "M" => 'M', "F" => 'F'})%>
 
         <%= f.label :nascita %>
         <%= f.text_field :nascita %>

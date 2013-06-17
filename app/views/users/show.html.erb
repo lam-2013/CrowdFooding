@@ -2,7 +2,12 @@
 <% provide :title, @user.name %>
 
 <div class="row">
+
+  <% unless @user.img_copertina.blank? %>
+  <img src="<%=@user.img_copertina %>" class="img-rounded" id="copertina">
+  <%else%>
   <img src="http://www.lettera43.it/upload/images/12_2012/l43-piantagione-121227075428_big.jpg" class="img-rounded" id="copertina">
+  <% end %>
 
   <aside class="span4">
     <section>
@@ -47,6 +52,10 @@
         <p> Sito web : <a href="http://<%=@user.sito_web %>"> <%=@user.sito_web %>  </a> </p>
     <% end %>
 
+    <% unless @user.sesso.blank? %>
+        <p> Sesso : <%=@user.sesso %> </p>
+    <% end %>
+
   </div>
 
   <div class="span9">
@@ -86,4 +95,3 @@
     </div>
   </div>
 </div>
-

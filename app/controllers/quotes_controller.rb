@@ -1,6 +1,6 @@
 class QuotesController < ApplicationController
-  # GET /quotes
-  # GET /quotes.json
+
+
   def index
       @quotes = Quote.paginate(page: params[:page])
   end
@@ -17,8 +17,7 @@ class QuotesController < ApplicationController
   # GET /quotes/new
   # GET /quotes/new.json
   def new
-    @quote = Quote.new
-    render 'quotes/new'
+    @hashquote = Hash.new
   end
 
   # GET /quotes/1/edit

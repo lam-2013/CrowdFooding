@@ -1,6 +1,6 @@
 <%= form_for(@project) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
-    <div class="row-fluid">
+    <div class="row-fluid" xmlns="http://www.w3.org/1999/html">
       <div class="span12">
         <div class="row-fluid">
           <div class="span6">
@@ -13,20 +13,24 @@
             <div class="row-fluid">
               <div class="span6">
                 <%= f.label :Categoria %>
-                <%= select(@project, :categoria, options = { "Prodotti" => "1", "Idee" => "2", "Luoghi" => "3", "Educazione" => "4", "Turismo" => "5"})%>
+                <%= f.select(:categoria, options = { "Prodotti" => "Prodotti", "Idee" => "Idee", "Luoghi" => "Luoghi", "Educazione" => "Educazione", "Turismo" => "Turismo"})%>
               </div>
               <div class="span6">
                 <h4>Tags</h4>
-                <%= check_box_tag(:tags) %>
-                <%= label_tag(:tags, "Prodotti") %>
-                <%= check_box_tag(:tags) %>
-                <%= label_tag(:tags, "Idee") %>
-                <%= check_box_tag(:tags) %>
-                <%= label_tag(:tags, "Luoghi") %>
-                <%= check_box_tag(:tags) %>
-                <%= label_tag(:tags, "Educazione") %>
-                <%= check_box_tag(:tags) %>
-                <%= label_tag(:tags, "Turismo") %>
+
+                <p>
+                <%= label_tag :Prodotti %>
+                <%= check_box_tag 'tags[]', 'Prodotti'%>
+                </p>
+                <p>
+                <%= label_tag :Idee %>
+                <%= check_box_tag 'tags[]', 'Idee'%>
+                </p>
+                <p>
+                <%= label_tag :Educazione %>
+                <%= check_box_tag 'tags[]', 'Educazione'%>
+                </p>
+
 
               </div>
             </div>
@@ -55,7 +59,7 @@
               </div>
               <div class="modal-body">
                 <section>
-
+                  <%= render 'quotes/form' %>
                 </section>
 
               </div>

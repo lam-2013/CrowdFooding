@@ -1,6 +1,5 @@
 <% #Provide the page title in a symbol to application.html.erb to avoid duplication %>
 <% provide :title, 'Home' %>
-
 <% if signed_in? %>
     <div class="row-fluid">
       <aside class="span3">
@@ -11,13 +10,10 @@
           <%= render 'shared/stats' %>
         </section>
       </aside>
-      <h3>Wall</h3>
-      <%= render 'shared/feed' %>
     </div>
 
 <% else %>
-    <div class="center hero-unit" >
-      <%= image_tag ("loghi/apeFelice.jpg" ) %>
+    <div class="center hero-unit" style="height: 250px" id="title">
       <h1>CrowdFooding</h1>
         <%= link_to 'Sign up now!', signup_path, class: 'btn btn-large btn-warning' %>
         <%= link_to "Sign up with Twitter", signup_path(provider: 'twitter'), class: "btn btn-large btn-info" %>
@@ -67,5 +63,6 @@
     </div>
   </div>
 </div>
+
 
 

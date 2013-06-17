@@ -1,7 +1,7 @@
 class CreateQuotes < ActiveRecord::Migration
   def change
     create_table :quotes do |t|
-      t.float, :quota
+      t.float :quota
       t.string :servizio
       t.integer :numero
 

@@ -26,10 +26,10 @@
 
   <div class="span8">
 
-        <p>Informazioni personali <p>
-    <%= if !@user.nascita.blank?
-         @user.nascita
-        end %>
+    <p>Informazioni personali <p>
+    <% if !@user.nascita.blank? %>
+        <p> Età :  <%= (Time.now.year - @user.nascita.year) %>   </p>
+    <% end %>
 
   </div>
 

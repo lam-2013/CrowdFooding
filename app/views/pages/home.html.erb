@@ -20,6 +20,8 @@
       <%= image_tag ("loghi/apeFelice.jpg" ) %>
       <h1>CrowdFooding</h1>
         <%= link_to 'Sign up now!', signup_path, class: 'btn btn-large btn-warning' %>
+        <%= link_to "Sign up with Twitter", signup_path(provider: 'twitter'), class: "btn btn-large btn-info" %>
+        <%= link_to "Sign up with Facebook", signup_path(provider: 'facebook'), class: "btn btn-large btn-success" %>
     </div>
 <% end %>
 

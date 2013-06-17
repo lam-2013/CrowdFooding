@@ -15,8 +15,28 @@ class UsersController < ApplicationController
   end
 
   def new
-    # init the user variable to be used in the sign up form
-    @user = User.new
+    auth_hash = request.env['omniauth.auth']
+
+    if params[:provider].nil?
+      # init the user variable to be used in the sign up form
+      @user = User.new
+    else
+      # oauth
+      if auth_hash.nil? #redirect to the service provider auth page
+        redirect_to '/auth/'+params[:provider];
+        # twitter is the service provider
+      elsif params[:provider]=='twitter'
+        @user = User.new(
+            twitter_uid: auth_hash[:uid],
+            name: auth_hash[:info][:name])
+        # facebook is the service provider
+      elsif params[:provider]=='facebook'
+        @user = User.new(
+            facebook_uid: auth_hash[:credentials][:token],
+            name: auth_hash[:info][:name],
+            email: auth_hash[:info][:email])
+      end
+    end
   end
 
   def create

@@ -15,7 +15,8 @@ SWorD::Application.routes.draw do
   match '/crea' ,to: 'projects#new'
   match '/scopri' ,to: 'projects#index'
 
-  match '/new_quota', to: 'quotes#new'
+  match '/auth/:provider/callback', to: 'users#new'
+
 
   # signout should be performed by using the HTTP DELETE request
   match '/signout', to: 'sessions#destroy', via: :delete

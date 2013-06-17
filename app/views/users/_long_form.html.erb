@@ -16,7 +16,8 @@
         <%= f.select(:sesso, options = { "M" => 'M', "F" => 'F'})%>
 
         <%= f.label :nascita %>
-        <%= f.text_field :nascita %>
+        <%= f.date_select :nascita, use_month_names:['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'],
+                          order:[:day, :month, :year], start_year:Time.now.year - 90 , end_year: Time.now.year - 18 %>
 
         <%= f.label :luogo %>
         <%= f.text_field :luogo %>
@@ -36,7 +37,7 @@
         <%= f.label :password %>
         <%= f.password_field :password %>
 
-        <%= f.label :password_confirmation, 'Conferma' %>
+        <%= f.label :password_confirmation, 'Conferma password' %>
         <%= f.password_field :password_confirmation %>
 
         <%= f.submit 'Aggiorna il mio profilo', class: 'btn btn-large btn-primary' %>

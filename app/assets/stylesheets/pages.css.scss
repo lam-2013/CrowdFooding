@@ -9,34 +9,16 @@
   margin-left: 20px;
 }
 
-.row {
+.row-fluid{
   background-color: #ffffff;
-
-}
-
-.span4,.span8 {
   margin-top: 20px;
-  ;
 }
 
-#tithelp{
-  text-align: left;
-  vertical-align: right;
-}
 
-p{
-  text-align: left;
-}
-
-.functionhelp{
-  height: 200px;
-  width: 900px;
-  margin-top: 20px;
+#title{
+  background-image: url(loghi/apeFelice.jpg);
+  background-size: 300px;
+  background-repeat: no-repeat;
+  background-color: transparent;
 
 }
-
-#iconhelp{
-  width: 100px;
-  float: left;
-}
-

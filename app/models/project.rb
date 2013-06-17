@@ -22,9 +22,9 @@
 
 class Project < ActiveRecord::Base
   # only content must be accessible, in order to avoid manual (and wrong) associations between posts and users
-  attr_accessible :titolo, :descrizione, :categoria, :data_creazione,:data_fine,:tags, :images, :videos, :budget_attuale, :goal, :img_copertina, :risorse_umane, :gift
+  attr_accessible :titolo, :descrizione, :categoria, :data_creazione, :data_fine,:tags, :images, :videos, :budget_attuale, :goal, :img_copertina, :risorse_umane, :gift
 
-  has_many :contributi, dependent: :destroy
+  has_many :quotes, dependent: :destroy
 
   # each projects belong to a specific user
   belongs_to :user

@@ -26,9 +26,25 @@
 
   <div class="span8">
 
-    <p>Informazioni personali <p>
-    <% if !@user.nascita.blank? %>
+    <h4>Informazioni personali </h4>
+    <% unless @user.nascita.blank? %>
         <p> Età :  <%= (Time.now.year - @user.nascita.year) %>   </p>
+    <% end %>
+
+    <% unless @user.luogo.blank? %>
+        <p> Luogo :  <%= @user.luogo %>   </p>
+    <% end %>
+
+    <% unless @user.occupazione.blank? %>
+        <p> Occupazione :  <%= @user.occupazione %>   </p>
+    <% end %>
+
+    <% unless @user.email.blank? %>
+        <p> Email :  <%= @user.email %>   </p>
+    <% end %>
+
+    <% unless @user.sito_web.blank? %>
+        <p> Sito web : <a href="http://<%=@user.sito_web %>"> <%=@user.sito_web %>  </a> </p>
     <% end %>
 
   </div>

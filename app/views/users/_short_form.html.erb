@@ -36,18 +36,22 @@
         <%end%>
 
         <% unless @user.sesso.blank?%>
+            <%= f.label :sesso %>
             <%= f.hidden_field :sesso %>
         <%end%>
 
         <% unless @user.descrizione.blank?%>
+            <%= f.label :descrizione %>
             <%= f.hidden_field :descrizione %>
         <%end%>
 
         <% unless @user.nascita.blank?%>
+            <%= f.label :nascita %>
             <%= f.hidden_field :nascita %>
         <%end%>
 
         <% unless @user.sito_web.blank?%>
+            <%= f.label :sito_web %>
             <%= f.hidden_field :sito_web %>
         <%end%>
 

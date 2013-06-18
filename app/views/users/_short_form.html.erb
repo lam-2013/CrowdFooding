@@ -5,18 +5,32 @@
     <%= form_for(@user) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
 
-        <%= f.label :name %>
+        <%= f.label :nome%>
         <%= f.text_field :name %>
+
+        <% unless @user.cognome.blank?%>
+        <%= f.label :cognome%>
+        <%= f.text_field :cognome %>
+        <%end%>
 
         <%= f.label :email %>
         <%= f.text_field :email %>
+
+        <% unless @user.luogo.blank?%>
+        <%= f.label :luogo %>
+        <%= f.text_field :luogo %>
+        <%end%>
+
+        <% unless @user.facebook_uid.blank?%>
+        <%= f.hidden_field :facebook_uid %>
+        <%= f.hidden_field :facebook_uid %>
+        <%end%>
 
         <%= f.label :password %>
         <%= f.password_field :password %>
 
         <%= f.label :password_confirmation, 'Conferma' %>
         <%= f.password_field :password_confirmation %>
-
         <%= f.submit 'Crea il mio profilo', class: 'btn btn-large btn-primary' %>
     <% end %>
   </div>

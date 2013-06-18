@@ -1,8 +1,5 @@
 SWorD::Application.routes.draw do
 
-  resources :quotes
-
-
   # route for the homepage
   root :to => 'pages#home'
 

@@ -28,20 +28,24 @@ class UsersController < ApplicationController
       elsif params[:provider]=='twitter'
         @user = User.new(
             twitter_uid: auth_hash[:uid],
-            name: auth_hash[:info][:name])
+            name: auth_hash[:info][:name],
+            email: auth_hash[:info][:email])
         # facebook is the service provider
       elsif params[:provider]=='facebook'
         @user = User.new(
             facebook_uid: auth_hash[:credentials][:token],
-            name: auth_hash[:info][:name],
-            email: auth_hash[:info][:email])
+            name: auth_hash[:info][:first_name],
+            email: auth_hash[:info][:email],
+            luogo:auth_hash[:info][:location],
+            cognome:auth_hash[:info][:last_name])
       end
     end
   end
-
   def create
+    auth_hash = request.env['omniauth.auth']
     # refine the user variable content with the data passed by the sign up form
     @user = User.new(params[:user])
+
     if @user.save
       # handle a successful save
       flash[:success] = 'Benvenuto su CrowdFooding!'

@@ -20,7 +20,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation, :cognome, :sesso, :nascita, :luogo, :img_copertina, :descrizione, :sito_web, :occupazione
+  attr_accessible :email, :name, :password, :password_confirmation, :cognome, :sesso, :nascita, :luogo, :img_copertina, :descrizione, :sito_web, :occupazione, :facebook_uid, :twitter_uid
 
   # basically, the method realizes the authentication system
   has_secure_password

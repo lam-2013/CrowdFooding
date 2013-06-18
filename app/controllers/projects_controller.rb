@@ -8,7 +8,6 @@ class ProjectsController < ApplicationController
 
     @project = Project.new
 
-    render 'projects/new'
   end
 
   def index

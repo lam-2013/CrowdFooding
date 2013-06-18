@@ -47,6 +47,10 @@
             <%= f.hidden_field :nascita %>
         <%end%>
 
+        <% unless @user.sito_web.blank?%>
+            <%= f.hidden_field :sito_web %>
+        <%end%>
+
 
 
         <%= f.submit 'Crea il mio profilo', class: 'btn btn-large btn-primary' %>

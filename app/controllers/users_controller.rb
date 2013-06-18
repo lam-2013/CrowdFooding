@@ -39,8 +39,9 @@ class UsersController < ApplicationController
             luogo: auth_hash[:info][:location],
             cognome: auth_hash[:info][:last_name],
             sesso: auth_hash[:info][:gender],
-            nascita: auth_hash[:info][:user_birthday],
-            descrizione: auth_hash[:info][:user_about_me])
+            nascita: auth_hash[:info][:birthday],
+            descrizione: auth_hash[:info][:bio],
+            sito_web: auth_hash[:info][:website])
       end
     end
   end

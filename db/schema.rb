@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130617161226) do
+ActiveRecord::Schema.define(:version => 20130616234207) do
+
+  create_table "contributi_projects", :force => true do |t|
+    t.integer  "project_id"
+    t.float    "quota_finanziamento"
+    t.string   "servizio"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
 
   create_table "projects", :force => true do |t|
     t.integer  "user_id"
@@ -34,6 +42,14 @@ ActiveRecord::Schema.define(:version => 20130617161226) do
   end
 
   add_index "projects", ["user_id", "created_at"], :name => "index_projects_on_user_id_and_created_at"
+
+  create_table "quotes", :force => true do |t|
+    t.float    "quota"
+    t.string   "servizio"
+    t.integer  "numero"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"
@@ -62,8 +78,6 @@ ActiveRecord::Schema.define(:version => 20130617161226) do
     t.string   "descrizione"
     t.string   "sito_web"
     t.string   "occupazione"
-    t.string   "facebook_uid"
-    t.string   "twitter_uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

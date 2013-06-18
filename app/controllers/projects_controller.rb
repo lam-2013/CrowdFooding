@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    # build a new post from the information contained in the "new post" form
+    # build a new project from the information contained in the "new project" form
     @project = current_user.projects.build(params[:project])
     if @project.save
       flash[:success] = 'Project created!'
@@ -23,6 +23,19 @@ class ProjectsController < ApplicationController
     else
       @feed_items = []
       render 'pages/home'
+    end
+  end
+
+  def update
+    if @project.update_attributes(params[:project])
+      # handle a successful update
+      flash[:success] = 'Project aggiornato'
+
+      # go to the project
+      redirect_to @project
+    else
+      # handle a failed update
+      render 'edit'
     end
   end
 

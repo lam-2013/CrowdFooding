@@ -36,8 +36,11 @@ class UsersController < ApplicationController
             facebook_uid: auth_hash[:credentials][:token],
             name: auth_hash[:info][:first_name],
             email: auth_hash[:info][:email],
-            luogo:auth_hash[:info][:location],
-            cognome:auth_hash[:info][:last_name])
+            luogo: auth_hash[:info][:location],
+            cognome: auth_hash[:info][:last_name],
+            sesso: auth_hash[:info][:gender],
+            nascita: auth_hash[:info][:user_birthday],
+            descrizione: auth_hash[:info][:user_about_me])
       end
     end
   end

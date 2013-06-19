@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
 
   def new
 
-    @project = Project.new
+    @project = Project.new(params[:project])
 
   end
 
@@ -24,14 +24,16 @@ class ProjectsController < ApplicationController
   end
 
   def create
+
     # build a new project from the information contained in the "new project" form
+    @project = Project.new(params[:project])
     @project = current_user.projects.build(params[:project])
     if @project.save
       flash[:success] = 'Project created!'
-      redirect_to root_url
+      redirect_to project
     else
       @feed_items = []
-      render 'pages/home'
+      render 'new'
     end
   end
 

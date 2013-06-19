@@ -45,8 +45,8 @@ class UsersController < ApplicationController
       end
     end
   end
+
   def create
-    auth_hash = request.env['omniauth.auth']
     # refine the user variable content with the data passed by the sign up form
     @user = User.new(params[:user])
 

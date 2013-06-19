@@ -4,7 +4,9 @@ namespace :db do
 
     make_users
     make_projects
+    make_contributions
     make_relationships
+
   end
 end
 
@@ -52,7 +54,7 @@ def make_projects
     project_categoria = categoria[r.rand(categoria.size)]
     project_data_creazione = time_rand Time.local(2012, 1, 1), Time.local(2013, 8, 7)
     project_data_fine = project_data_creazione + 2.week
-
+    contributions_servizio = Faker::Lorem.sentence(2)
     project_goal = r.rand(100.00..5000.00)
     project_budget_attuale = r.rand(50.00..8000.00)
     project_tags = '1,2,3,4,5'
@@ -83,4 +85,15 @@ end
 
 def time_rand from = Time.now - 80.years, to = Time.now - 18.years
   Time.at(from + rand * (to.to_f - from.to_f))
+end
+
+
+def make_contributions
+  projects = Project.all(limit: 10)
+  10.times do
+  contributions_servizio = Faker::Lorem.sentence(5)
+  projects.each { |project| project.contributions.create!(numero: rand(100),
+                                                          quota: rand(10.00..500.00),
+                                                          servizio:contributions_servizio)}
+  end
 end

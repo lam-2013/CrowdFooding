@@ -11,6 +11,11 @@ class ProjectsController < ApplicationController
 
   end
 
+  def show
+      @project = Project.find(params[:id])
+      @contributions = @project.contributions.paginate(page: params[:page], per_page: 10)
+  end
+
   def index
     @projects = Project.paginate(page: params[:page], per_page: 10)
   end

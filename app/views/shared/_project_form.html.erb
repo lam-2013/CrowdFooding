@@ -11,28 +11,8 @@
             <h4>Budget da raggiungere</h4>
             <%= f.text_field :goal %>
             <div class="row-fluid">
-              <div class="span6">
-                <%= f.label :Categoria %>
-                <%= f.select(:categoria, options = { "Prodotti" => "Prodotti", "Idee" => "Idee", "Luoghi" => "Luoghi", "Educazione" => "Educazione", "Turismo" => "Turismo"})%>
-              </div>
-              <div class="span6">
-                <h4>Tags</h4>
-
-                <p>
-                <%= label_tag :Prodotti %>
-                <%= check_box_tag 'tags[]', 'Prodotti'%>
-                </p>
-                <p>
-                <%= label_tag :Idee %>
-                <%= check_box_tag 'tags[]', 'Idee'%>
-                </p>
-                <p>
-                <%= label_tag :Educazione %>
-                <%= check_box_tag 'tags[]', 'Educazione'%>
-                </p>
-
-
-              </div>
+              <%= f.label :Categoria %>
+              <%= f.select(:categoria, @cat)%>
             </div>
           </div>
           <div class="span6">
@@ -47,6 +27,9 @@
 
 
         </div>
+        <h4>Tags</h4>
+
+        <%= f.text_field :tags, placeholder: 'tag1,tag2,tag3,tag4' %>
 
 
         <%= f.label :Cerco_altri_collaboratori %>
@@ -57,6 +40,10 @@
 
       </div>
     </div>
+
+    <%= f.hidden_field :data_creazione %>
+    <%= f.hidden_field :data_fine %>
+
     <div class="span5">
       <%= f.submit 'Project', class: 'btn btn-primary' %>
     </div>

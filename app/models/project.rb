@@ -34,6 +34,7 @@ class Project < ActiveRecord::Base
   default_scope order: 'projects.created_at DESC'
 
   # user_id must be present while creating a new project...
+
   #validates :user_id, presence: true
 
 

@@ -5,12 +5,9 @@ class ContributionsController < ApplicationController
   end
 
   def show
-    @contribution = Contribution.find(params[:id])
+    @projects = Project.find(params[:id])
+    @contribution = @projects.contributions.paginate(page: params[:page], per_page: 10)
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @contribution }
-    end
   end
 
   def update

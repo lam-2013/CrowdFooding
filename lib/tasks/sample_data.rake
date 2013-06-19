@@ -19,13 +19,14 @@ def make_users
     user_descrizione = Faker::Lorem.sentence(20)
     # take users from the Rails Tutorial book since most of them have a "real" profile pic
     email = Faker::Internet.email(name)
-    sito_web= Faker::Internet.domain_name
+    sito_web= Faker::Internet.url
     password  = "password"
     user_luogo = city[r.rand(city.size)]
     User.create!(name: name,
                  cognome:cognome,
                  email: email,
                  luogo: user_luogo,
+                 sito_web: sito_web,
                  sesso: sesso[r.rand(sesso.size)],
                  descrizione:user_descrizione,
                  img_copertina: 'copertine_users'.concat('/copertina1.jpg'),
@@ -38,12 +39,12 @@ end
 def make_projects
 
 
-  # generate 50 fake projects for the first 10 users
+  # generate 20 fake projects for the first 10 users
   city=["Torino","Milano","Bologna","Palermo","Genova","Roma"]
   categoria=["ART & ENTERTAINMENT","LIFESTYLE & TECHNOLOGY","SOCIAL INNOVATION","EVENTI","FOOD"]
   r = Random.new
   users = User.all(limit: 10)
-  50.times do
+  20.times do
 
     project_titolo = Faker::Lorem.sentence(1)
     project_descrizione = Faker::Lorem.sentence(20)
@@ -80,6 +81,6 @@ def make_relationships
 end
 
 
-def time_rand from = Time.now - 100.years, to = Time.now - 18.years
+def time_rand from = Time.now - 80.years, to = Time.now - 18.years
   Time.at(from + rand * (to.to_f - from.to_f))
 end

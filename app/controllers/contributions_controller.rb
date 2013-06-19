@@ -47,22 +47,6 @@ class ContributionsController < ApplicationController
 
   end
 
-  # PUT /contributions/1
-  # PUT /contributions/1.json
-  def update
-    @contribution = Contribution.find(params[:id])
-
-    respond_to do |format|
-      if @contribution.update_attributes(params[:contribution])
-        format.html { redirect_to @contribution, notice: 'Contribution was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @contribution.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   def destroy
     @contribution.destroy
   end

@@ -15,17 +15,20 @@
       <h1>
         <%= @project.titolo %>
       </h1>
+
+      <h2>
+        Data di creazione:
+        <%= @project.data_fine.strftime("%d/%m/%Y %H:%M") %>
+      </h2>
+
       <h2>
         <%= @project.luogo %>
       </h2>
-      <h2>
-        <%= @project.data_fine %>
-      </h2>
+
     </section>
   </aside>
 
   <div class="span8">
-
     <p>
       <%= @project.descrizione %>
     </p>

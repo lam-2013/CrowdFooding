@@ -1,5 +1,5 @@
 <% #Provide the page title in a symbol to application.html.erb to avoid duplication %>
-<% provide :title, @project.name %>
+<% provide :title, @project.titolo %>
 
 <div class="row-fluid center">
   <% unless @project.img_copertina.blank? %>
@@ -19,7 +19,7 @@
         <%= @project.luogo %>
       </h2>
       <h2>
-        <%= @project.luogo %>
+        <%= @project.data_fine %>
       </h2>
     </section>
   </aside>

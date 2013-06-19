@@ -14,6 +14,15 @@ class ProjectsController < ApplicationController
     @projects = Project.paginate(page: params[:page], per_page: 10)
   end
 
+  def show
+    # get the project with id :id
+    @project = Project.find(params[:id])
+
+    # get and paginate the contributions associated to the specified projects
+    #@contributions = @project.contributions.paginate(page: params[:page], per_page: 10)
+
+  end
+
   def create
     # build a new project from the information contained in the "new project" form
     @project = current_user.projects.build(params[:project])

@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    @projects = Project.paginate(page: params[:page])
+    @projects = Project.paginate(page: params[:page], per_page: 10)
   end
 
   def create

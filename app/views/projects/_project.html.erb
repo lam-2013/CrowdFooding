@@ -1,10 +1,16 @@
 <li>
   <span class="content"><%= project.titolo %></span>
+  <span class="content"><%= project.luogo %></span>
+  <% unless project.img_copertina.blank? %>
+      <%= image_tag(project.img_copertina , :height => '100px', :width => '200px')%>
+  <%else%>
+      <img src="http://www.lettera43.it/upload/images/12_2012/l43-piantagione-121227075428_big.jpg" class="img-rounded" id="copertina">
+  <% end %>
   <span class="content"><%= project.descrizione %></span>
   <span class="timestamp">
     Created <%= time_ago_in_words(project.created_at) %> ago
   </span>
-  <% if current_user?(project.user) %>
-    | <%= link_to 'delete', project, method: :delete, data: { confirm: 'Are you sure?' }, title: project.content %>
-  <% end %>
+
+    | <%= link_to 'delete', project, method: :delete, data: { confirm: 'Are you sure?' }, title: project.titolo %>
+
 </li>

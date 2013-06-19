@@ -9,39 +9,57 @@ namespace :db do
 end
 
 def make_users
-  admin = User.create!(name: "Luigi De Russis",
-                       email: "luigi.derussis@polito.it",
-                       password: "sword2013",
-                       password_confirmation: "sword2013")
-  admin.toggle!(:admin)
-  99.times do |n|
-    name  = Faker::Name.name
+  city=["Torino","Milano","Bologna","Palermo","Genova","Roma"]
+  sesso=["M","F"]
+  r = Random.new
+
+  100.times do |n|
+    name  = Faker::Name.first_name
+    cognome = Faker::Name.last_name
+    user_descrizione = Faker::Lorem.sentence(20)
     # take users from the Rails Tutorial book since most of them have a "real" profile pic
-    email = "example-#{n+1}@railstutorial.org"
+    email = Faker::Internet.email(name)
+    sito_web= Faker::Internet.domain_name
     password  = "password"
+    user_luogo = city[r.rand(city.size)]
     User.create!(name: name,
+                 cognome:cognome,
                  email: email,
+                 luogo: user_luogo,
+                 sesso: sesso[r.rand(sesso.size)],
+                 descrizione:user_descrizione,
+                 img_copertina: 'copertine_users'.concat('/copertina1.jpg'),
+                 nascita: time_rand,
                  password: password,
                  password_confirmation: password)
   end
 end
 
 def make_projects
+
+
   # generate 50 fake projects for the first 10 users
+  city=["Torino","Milano","Bologna","Palermo","Genova","Roma"]
+  categoria=["ART & ENTERTAINMENT","LIFESTYLE & TECHNOLOGY","SOCIAL INNOVATION","EVENTI","FOOD"]
+  r = Random.new
   users = User.all(limit: 10)
   50.times do
-    project_titolo = Faker::Lorem.words(2)
+
+    project_titolo = Faker::Lorem.sentence(1)
     project_descrizione = Faker::Lorem.sentence(20)
-    project_categoria = 'luoghi'
-    project_data_creazione = Time.now
+    project_luogo = city[r.rand(city.size)]
+    project_categoria = categoria[r.rand(categoria.size)]
+    project_data_creazione = time_rand Time.local(2012, 1, 1), Time.local(2013, 8, 7)
     project_data_fine = project_data_creazione + 2.week
-    r = Random.new
+
     project_goal = r.rand(100.00..5000.00)
     project_budget_attuale = r.rand(50.00..8000.00)
     project_tags = '1,2,3,4,5'
     users.each { |user|  user.projects.create!(titolo: project_titolo,
+                                               luogo: project_luogo,
                                                descrizione: project_descrizione,
                                                categoria: project_categoria,
+                                               img_copertina: 'copertine_projects'.concat('/copertina1.jpg'),
                                                tags: project_tags,
                                                data_creazione: project_data_creazione,
                                                data_fine: project_data_fine,
@@ -59,4 +77,9 @@ def make_relationships
   followed_users.each { |followed| user.follow!(followed) }
   # users 4 up to 41 follow back the first user
   followers.each { |follower| follower.follow!(user) }
+end
+
+
+def time_rand from = Time.now - 100.years, to = Time.now - 18.years
+  Time.at(from + rand * (to.to_f - from.to_f))
 end

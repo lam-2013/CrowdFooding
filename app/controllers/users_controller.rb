@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     # get and paginate the posts associated to the specified user
-    @projects = @user.projects.paginate(page: params[:page])
+    @projects = @user.projects.paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -90,7 +90,7 @@ class UsersController < ApplicationController
     # @users = User.all
 
     # get all the users from the database - with pagination
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page], per_page: 10)
   end
 
   def destroy

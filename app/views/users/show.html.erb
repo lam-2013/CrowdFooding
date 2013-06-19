@@ -3,7 +3,7 @@
 
 <div class="row-fluid center">
   <% unless @user.img_copertina.blank? %>
-      <img src="<%=@user.img_copertina %>" class="img-rounded" id="copertina">
+      <%= image_tag(@user.img_copertina , :height => '100%', :width => '100%', :class => "img-rounded", :id => "copertina")%>
   <%else%>
       <img src="http://www.lettera43.it/upload/images/12_2012/l43-piantagione-121227075428_big.jpg" class="img-rounded" id="copertina">
   <% end %>
@@ -73,11 +73,12 @@
           <div class="tab-pane active" id="tab1">
             <% if @user.projects.any? %>
                 <h3>Project (<%= @user.projects.count %>)</h3>
+                <%= will_paginate @projects %>
                 <ol class="projects">
                   <%= render @projects %>
                 </ol>
                 <% # since we are in a Users view, we need to specify that the pagination is for the projects %>
-                <% will_paginate @projects %>
+                <%= will_paginate @projects %>
             <% end %>
           </div>
 

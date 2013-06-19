@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130618152625) do
+ActiveRecord::Schema.define(:version => 20130619135709) do
 
   create_table "contributions", :force => true do |t|
     t.float    "quota"
@@ -19,7 +19,10 @@ ActiveRecord::Schema.define(:version => 20130618152625) do
     t.integer  "numero"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "project_id"
   end
+
+  add_index "contributions", ["project_id", "created_at"], :name => "index_contributions_on_project_id_and_created_at"
 
   create_table "projects", :force => true do |t|
     t.integer  "user_id"

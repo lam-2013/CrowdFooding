@@ -7,7 +7,6 @@ class ContributionsController < ApplicationController
   def show
     @projects = Project.find(params[:id])
     @contribution = @projects.contributions.paginate(page: params[:page], per_page: 10)
-
   end
 
   def update
@@ -29,13 +28,12 @@ class ContributionsController < ApplicationController
 
   end
 
-  # GET /contributions/1/edit
   def edit
-    @contribution = Contribution.find(params[:id])
+    # intentionally left empty since the correct_user method (called by before_filter) initialize the @user object
+    # without the correct_user method, this action should contain:
+    # @user = User.find(params[:id])
   end
 
-  # POST /contributions
-  # POST /contributions.json
   def create
     # build a new contribution from the information contained in the "new contribution" form
 

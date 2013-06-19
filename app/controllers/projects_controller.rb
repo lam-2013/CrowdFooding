@@ -1,19 +1,21 @@
 class ProjectsController < ApplicationController
-  # check if the user is logged in
-  before_filter :signed_in_user
-  # check if the user is allowed to delete a post
-  before_filter :correct_user, only: :destroy
+
+  # check if the user is logged in (e.g., for editing only his information)
+  before_filter :signed_in_user, only: [:edit, :update, :index, :destroy]
+  # check if the current user is the correct user (e.g., for editing only his information)
+  before_filter :correct_user, only: [:edit, :update]
+  # check if the current user is also an admin
+  before_filter :admin_user, only: :destroy
 
   def new
-
     @project = Project.new(data_creazione: Time.now, data_fine: Time.now + 2.months)
     @cat=["ART & ENTERTAINMENT","LIFESTYLE & TECHNOLOGY","SOCIAL INNOVATION","EVENTI","FOOD"]
 
   end
 
   def show
-      @project = Project.find(params[:id])
-      @contributions = @project.contributions.paginate(page: params[:page], per_page: 10)
+    @project = Project.find(params[:id])
+    @contributions = @project.contributions.paginate(page: params[:page], per_page: 10)
   end
 
   def index
@@ -31,7 +33,17 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def edit
+    @cat=["ART & ENTERTAINMENT","LIFESTYLE & TECHNOLOGY","SOCIAL INNOVATION","EVENTI","FOOD"]
+    # intentionally left empty since the correct_user method (called by before_filter) initialize the @user object
+    # without the correct_user method, this action should contain:
+    # @user = User.find(params[:id])
+  end
+
   def update
+
+    @id_project= @project.id
+
     if @project.update_attributes(params[:project])
       # handle a successful update
       flash[:success] = 'Project aggiornato'

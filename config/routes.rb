@@ -1,6 +1,7 @@
 SWorD::Application.routes.draw do
 
   resources :contributions
+  resources :projects
 
 
   # route for the homepage
@@ -12,8 +13,10 @@ SWorD::Application.routes.draw do
   match '/faq', to: 'pages#faq'
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'
+  match '/editproject', to:'projects#edit'
   match '/crea' ,to: 'projects#new'
   match '/scopri' ,to: 'projects#index'
+
 
   match '/auth/:provider/callback', to: 'users#new'
 

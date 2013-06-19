@@ -14,7 +14,17 @@ def make_users
   city=["Torino","Milano","Bologna","Palermo","Genova","Roma"]
   sesso=["M","F"]
   r = Random.new
-
+  User.create!(name: 'Giovanni',
+               cognome:'Bonaventura',
+               email: 'gionnyb@hotmail.it',
+               luogo: 'Torino',
+               sito_web: 'http://www.overc.it',
+               sesso: 'M',
+               descrizione: 'Amo la natura il vivere sano in tutti i sensi',
+               img_copertina: 'copertine_users'.concat('/copertina1.jpg'),
+               nascita: Time.local(1986,4,4),
+               password: 'giogio',
+               password_confirmation: 'giogio')
   100.times do |n|
     name  = Faker::Name.first_name
     cognome = Faker::Name.last_name

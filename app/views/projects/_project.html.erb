@@ -11,7 +11,7 @@
     Created <%= time_ago_in_words(project.created_at) %> ago
   </span>
 
-    | <%= link_to 'show', project, method: :get, title: project.titolo %>
+    | <%= link_to 'show', project, method: :get %>
     | <%= link_to 'delete', project, method: :delete, data: { confirm: 'Are you sure?' }, title: project.titolo %>
 
 </li>

@@ -6,8 +6,14 @@ class ProjectsController < ApplicationController
 
   def new
 
-    @project = Project.new
+    @project = Project.new(data_creazione: Time.now, data_fine: Time.now + 2.months)
+    @cat=["ART & ENTERTAINMENT","LIFESTYLE & TECHNOLOGY","SOCIAL INNOVATION","EVENTI","FOOD"]
 
+  end
+
+  def show
+      @project = Project.find(params[:id])
+      #@contributions = @project.contributions.paginate(page: params[:page], per_page: 10)
   end
 
   def index
@@ -25,13 +31,12 @@ class ProjectsController < ApplicationController
 
   def create
     # build a new project from the information contained in the "new project" form
-    @project = current_user.projects.build(params[:project])
+    @project = Project.new(params[:project])
     if @project.save
       flash[:success] = 'Project created!'
-      redirect_to root_url
+      redirect_to @project
     else
-      @feed_items = []
-      render 'pages/home'
+      render 'new'
     end
   end
 

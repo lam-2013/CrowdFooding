@@ -31,7 +31,7 @@ class ProjectsController < ApplicationController
 
   def create
     # build a new project from the information contained in the "new project" form
-    @project = Project.new(params[:project])
+    @project = current_user.projects.new(params[:project])
     if @project.save
       flash[:success] = 'Project created!'
       redirect_to @project

@@ -36,7 +36,9 @@
     <p>
       <%= @project.descrizione %>
     </p>
+    <% if current_user?(@project.user) %>
     |<%= link_to "Edit Project", edit_project_path%>
-    |<%= link_to "Edit/Add Contributions", contributions_path%>
+    |<%= link_to "Edit/Add Contributions", contributions_path(project_id: @project.id)%>
+    <% end %>
   </div>
 </div>

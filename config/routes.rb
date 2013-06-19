@@ -2,6 +2,7 @@ SWorD::Application.routes.draw do
 
   resources :contributions
   resources :projects
+  resources :users
 
 
   # route for the homepage

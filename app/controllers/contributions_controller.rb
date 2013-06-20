@@ -16,6 +16,7 @@ class ContributionsController < ApplicationController
   def index
 
     @contributions = Contribution.find_all_by_project_id(params[:project_id])
+    @project = Project.find(params[:project_id])
 
   end
 

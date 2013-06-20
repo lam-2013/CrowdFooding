@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
     @project = current_user.projects.build if signed_in?
     @feed_items = current_user.feed.paginate(page: params[:page]) if signed_in?
+
   end
 
   def about

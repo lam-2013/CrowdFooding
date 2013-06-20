@@ -9,16 +9,16 @@
   <% end %>
 </div>
 
-<div class="row-fluid">
-  <aside class="span4">
+<div class="row-fluid ">
+  <div class="span4 offset2">
     <section>
-      <h1>
+      <h4>
         <%= gravatar_for @user %>
         <%= @user.name %>
         <%= if !@user.cognome.blank?
               @user.cognome
             end %>
-      </h1>
+      </h4>
     </section>
     <section>
       <%= render 'shared/stats' %>
@@ -28,9 +28,9 @@
       <%= render 'follow_form' if signed_in? %>
     </section>
 
-  </aside>
+  </div>
 
-  <div class="span8">
+  <div class="span4">
 
     <h4>Informazioni personali </h4>
     <% unless @user.nascita.blank? %>
@@ -59,9 +59,10 @@
 
   </div>
 
+
   <div class="row-fluid">
 
-    <div class="span12">
+    <div class="span10 offset1">
 
 
       <div class="tabbable">
@@ -73,28 +74,30 @@
         </ul>
 
         <div class="tab-content">
+          <div class="span8 offset2">
+            <div class="tab-pane active" id="tab1">
+              <% @projectcat = 1 %>
 
-          <div class="tab-pane active" id="tab1">
-            <% @projectcat = 1 %>
-            <%= render 'shared/project_slider' %>
+              <%= render 'shared/project_slider' %>
+
+            </div>
+
+            <div class="tab-pane" id="tab2">
+              <% @projectcat = 2 %>
+              <%= render 'shared/project_slider' %>
+            </div>
+
+            <div class="tab-pane" id="tab3">
+              <% @projectcat = 3 %>
+              <%= render 'shared/project_slider' %>
+            </div>
+
+
+            <div class="tab-pane" id="tab4">
+              <% @projectcat = 4 %>
+              <%= render 'shared/project_slider' %>
+            </div>
           </div>
-
-          <div class="tab-pane" id="tab2">
-            <% @projectcat = 2 %>
-            <%= render 'shared/project_slider' %>
-          </div>
-
-          <div class="tab-pane" id="tab3">
-            <% @projectcat = 3 %>
-            <%= render 'shared/project_slider' %>
-          </div>
-
-
-          <div class="tab-pane" id="tab4">
-            <% @projectcat = 4 %>
-            <%= render 'shared/project_slider' %>
-          </div>
-
         </div>
       </div>
     </div>

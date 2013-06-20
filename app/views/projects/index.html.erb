@@ -3,6 +3,76 @@
 
 <h1>Scopri nuovi Progetti</h1>
 
+<% if signed_in? %>
+    <div class="row-fluid">
+      <aside class="span3">
+        <section>
+          <%= render 'shared/user_info' %>
+        </section>
+        <section>
+          <%= render 'shared/stats' %>
+        </section>
+      </aside>
+    </div>
+<% else %>
+    <div class="center hero-unit" style="height: 250px" id="title">
+      <h1>CrowdFooding</h1>
+      <%= link_to 'Sign up now!', signup_path, class: 'btn btn-large btn-warning' %>
+      <%= link_to "Sign up with Twitter", signup_path(provider: 'twitter'), class: "btn btn-large btn-info" %>
+      <%= link_to "Sign up with Facebook", signup_path(provider: 'facebook'), class: "btn btn-large btn-success" %>
+    </div>
+<% end %>
+<% if signed_in? %>
+    <div class="row center">
+
+      <div class="row-fluid">
+        <div class="span12" >
+          <h2>Most Recently Successfully funded projects    </h2>
+          <% @projectcat = 1 %>
+          <%= render 'shared/project_slider' %>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="span12" >
+          <h2> Popular projects   </h2>
+          <% @projectcat = 2 %>
+          <%= render 'shared/project_slider' %>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="span12" >
+          <h2> Last started Projects     </h2>
+          <% @projectcat = 3 %>
+          <%= render 'shared/project_slider' %>
+        </div>
+      </div>
+<% end %>
+<% if signed_in? %>
+    <div class="row-fluid">
+      <div class="span12" >
+        <h2> Friends Projects </h2>
+        <% @projectcat = 4 %>
+        <%= render 'shared/project_slider' %>
+      </div>
+    </div>
+<% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <form class="form-search">
   <input type="text" class="input-medium search-query">
   <button type="submit" class="btn">Search</button>

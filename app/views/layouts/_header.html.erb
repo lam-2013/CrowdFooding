@@ -6,7 +6,9 @@
       <nav>
         <ul class="nav pull-center">
           <li><%= link_to "Scopri", scopri_path %></li>
+          <% if signed_in? %>
           <li><%= link_to "Crea", crea_path %></li>
+          <% end %>
         </ul>
         <ul class="nav pull-right">
           <% #link_to is the Rails helper to create links (it generates <a...> tags) %>

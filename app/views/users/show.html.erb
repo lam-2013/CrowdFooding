@@ -61,6 +61,8 @@
 
   <div class="row-fluid">
     <div class="span12">
+
+
       <div class="tabbable">
         <ul class="nav nav-tabs">
           <li class="active"><a href="#tab1" data-toggle="tab">Progetti in corso</a></li>
@@ -71,30 +73,215 @@
 
         <div class="tab-content">
           <div class="tab-pane active" id="tab1">
-            <% if @user.projects.any? %>
-                <h3>Project (<%= @user.projects.count %>)</h3>
-                <%= will_paginate @projects %>
-                <ol class="projects">
-                  <%= render @projects %>
-                </ol>
-                <% # since we are in a Users view, we need to specify that the pagination is for the projects %>
-                <%= will_paginate @projects %>
-            <% end %>
+            <h4>Project (<%= @user.projects.count %>)</h4>
+            <div id="myCarouseltab1" class="carousel slide">
+              <div class="carousel-inner">
+                <% if @user.projects.any? %>
+                    <%  @user.projects.each do |project|  %>
+
+                        <!-- Carousel items -->
+                        <% if @user.projects.first == project %>
+                            <div class="active item <%= project.id %>">
+                              <ol class="projects">
+                                <h3><%= project.titolo %></h3>
+                                <h4><%= project.luogo %></h4>
+                                <p><%= project.descrizione %></p>
+
+                                <%= image_tag(project.img_copertina, :size => '500x200')%>
+
+                                <% if current_user?(project.user) %>
+                                    | <%= link_to 'show', project%>
+                                    |<%= link_to "Edit Project", edit_project_path%>
+                                    |<%= link_to "Edit/Add Contributions", contributions_path(project_id: project.id)%>
+                                <% end %>
+
+                              </ol>
+                            </div>
+                        <% else %>
+                            <div class="item <%= project.id %>">
+                              <ol class="projects">
+                                <h3><%= project.titolo %></h3>
+                                <h4><%= project.luogo %></h4>
+                                <p><%= project.descrizione %></p>
+
+                                <%= image_tag(project.img_copertina, :size => '500x200')%>
+
+                                <% if current_user?(project.user) %>
+                                    | <%= link_to 'show', project%>
+                                    |<%= link_to "Edit Project", edit_project_path%>
+                                    |<%= link_to "Edit/Add Contributions", contributions_path(project_id: project.id)%>
+                                <% end %>
+
+                              </ol>
+                            </div>
+                        <% end %>
+                        <!-- Carousel nav -->
+                    <% end %>
+                <% end %>
+              </div>
+              <a class="carousel-control left" href="#myCarouseltab1" data-slide="prev">&lsaquo;</a>
+              <a class="carousel-control right" href="#myCarouseltab1" data-slide="next">&rsaquo;</a>
+            </div>
           </div>
+
 
           <div class="tab-pane" id="tab2">
-            <p>Non ci sono ancora progetti finanziati.</p>
+            <h4>Project (<%= @user.projects.count %>)</h4>
+            <div id="myCarouseltab2" class="carousel slide">
+              <div class="carousel-inner">
+                <% if @user.projects.any? %>
+                    <%  @user.projects.each do |project|  %>
+
+                        <!-- Carousel items -->
+                        <% if @user.projects.first == project %>
+                            <div class="active item <%= project.id %>">
+                              <ol class="projects">
+                                <h3><%= project.titolo %></h3>
+                                <h4><%= project.luogo %></h4>
+                                <p><%= project.descrizione %></p>
+
+                                <%= image_tag(project.img_copertina, :size => '500x200')%>
+
+                                <% if current_user?(project.user) %>
+                                    | <%= link_to 'show', project%>
+                                    |<%= link_to "Edit Project", edit_project_path%>
+                                    |<%= link_to "Edit/Add Contributions", contributions_path(project_id: project.id)%>
+                                <% end %>
+
+                              </ol>
+                            </div>
+                        <% else %>
+                            <div class="item <%= project.id %>">
+                              <ol class="projects">
+                                <h3><%= project.titolo %></h3>
+                                <h4><%= project.luogo %></h4>
+                                <p><%= project.descrizione %></p>
+
+                                <%= image_tag(project.img_copertina, :size => '500x200')%>
+
+                                <% if current_user?(project.user) %>
+                                    | <%= link_to 'show', project%>
+                                    |<%= link_to "Edit Project", edit_project_path%>
+                                    |<%= link_to "Edit/Add Contributions", contributions_path(project_id: project.id)%>
+                                <% end %>
+
+                              </ol>
+                            </div>
+                        <% end %>
+                        <!-- Carousel nav -->
+                    <% end %>
+                <% end %>
+              </div>
+              <a class="carousel-control left" href="#myCarouseltab2" data-slide="prev">&lsaquo;</a>
+              <a class="carousel-control right" href="#myCarouseltab2" data-slide="next">&rsaquo;</a>
+            </div>
           </div>
 
+
           <div class="tab-pane" id="tab3">
-            <p>Non ci sono ancora progetti seguiti.</p>
+            <h4>Project (<%= @user.projects.count %>)</h4>
+            <div id="myCarouseltab3" class="carousel slide">
+              <div class="carousel-inner">
+                <% if @user.projects.any? %>
+                    <%  @user.projects.each do |project|  %>
+
+                        <!-- Carousel items -->
+                        <% if @user.projects.first == project %>
+                            <div class="active item <%= project.id %>">
+                              <ol class="projects">
+                                <h3><%= project.titolo %></h3>
+                                <h4><%= project.luogo %></h4>
+                                <p><%= project.descrizione %></p>
+
+                                <%= image_tag(project.img_copertina, :size => '500x200')%>
+
+                                <% if current_user?(project.user) %>
+                                    | <%= link_to 'show', project%>
+                                    |<%= link_to "Edit Project", edit_project_path%>
+                                    |<%= link_to "Edit/Add Contributions", contributions_path(project_id: project.id)%>
+                                <% end %>
+
+                              </ol>
+                            </div>
+                        <% else %>
+                            <div class="item <%= project.id %>">
+                              <ol class="projects">
+                                <h3><%= project.titolo %></h3>
+                                <h4><%= project.luogo %></h4>
+                                <p><%= project.descrizione %></p>
+
+                                <%= image_tag(project.img_copertina, :size => '500x200')%>
+
+                                <% if current_user?(project.user) %>
+                                    | <%= link_to 'show', project%>
+                                    |<%= link_to "Edit Project", edit_project_path%>
+                                    |<%= link_to "Edit/Add Contributions", contributions_path(project_id: project.id)%>
+                                <% end %>
+
+                              </ol>
+                            </div>
+                        <% end %>
+                        <!-- Carousel nav -->
+                    <% end %>
+                <% end %>
+              </div>
+              <a class="carousel-control left" href="#myCarouseltab3" data-slide="prev">&lsaquo;</a>
+              <a class="carousel-control right" href="#myCarouseltab3" data-slide="next">&rsaquo;</a>
+            </div>
           </div>
 
 
           <div class="tab-pane" id="tab4">
-            <p>Non ci sono ancora progetti completati.</p>
-          </div>
+            <h4>Project (<%= @user.projects.count %>)</h4>
+            <div id="myCarouseltab4" class="carousel slide">
+              <div class="carousel-inner">
+                <% if @user.projects.any? %>
+                    <%  @user.projects.each do |project|  %>
 
+                        <!-- Carousel items -->
+                        <% if @user.projects.first == project %>
+                            <div class="active item <%= project.id %>">
+                              <ol class="projects">
+                                <h3><%= project.titolo %></h3>
+                                <h4><%= project.luogo %></h4>
+                                <p><%= project.descrizione %></p>
+
+                                <%= image_tag(project.img_copertina, :size => '500x200')%>
+
+                                <% if current_user?(project.user) %>
+                                    | <%= link_to 'show', project%>
+                                    |<%= link_to "Edit Project", edit_project_path%>
+                                    |<%= link_to "Edit/Add Contributions", contributions_path(project_id: project.id)%>
+                                <% end %>
+
+                              </ol>
+                            </div>
+                        <% else %>
+                            <div class="item <%= project.id %>">
+                              <ol class="projects">
+                                <h3><%= project.titolo %></h3>
+                                <h4><%= project.luogo %></h4>
+                                <p><%= project.descrizione %></p>
+
+                                <%= image_tag(project.img_copertina, :size => '500x200')%>
+
+                                <% if current_user?(project.user) %>
+                                    | <%= link_to 'show', project%>
+                                    |<%= link_to "Edit Project", edit_project_path%>
+                                    |<%= link_to "Edit/Add Contributions", contributions_path(project_id: project.id)%>
+                                <% end %>
+
+                              </ol>
+                            </div>
+                        <% end %>
+                        <!-- Carousel nav -->
+                    <% end %>
+                <% end %>
+              </div>
+              <a class="carousel-control left" href="#myCarouseltab4" data-slide="prev">&lsaquo;</a>
+              <a class="carousel-control right" href="#myCarouseltab4" data-slide="next">&rsaquo;</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -209,11 +209,14 @@ input {
   }
 }
 
+
+
 /* projects */
 
 .projects {
   list-style: none;
-  margin: 10px 0 0 0;
+  margin: auto auto 0 0;
+  padding: 10px 60px;
 
   li {
     padding: 10px 0;
@@ -254,4 +257,9 @@ select{
 
   height: 40px;
   font-size: 1.2em;
+}
+
+.copertina{
+  position: absolute;
+  text-align: center;
 }

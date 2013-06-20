@@ -25,7 +25,7 @@ def make_users
                nascita: Time.local(1986,4,4),
                password: 'giogio',
                password_confirmation: 'giogio')
-  100.times do |n|
+  49.times do |n|
     name  = Faker::Name.first_name
     cognome = Faker::Name.last_name
     user_descrizione = Faker::Lorem.sentence(20)
@@ -55,8 +55,8 @@ def make_projects
   city=["Torino","Milano","Bologna","Palermo","Genova","Roma"]
   categoria=["ART & ENTERTAINMENT","LIFESTYLE & TECHNOLOGY","SOCIAL INNOVATION","EVENTI","FOOD"]
   r = Random.new
-  users = User.all(limit: 10)
-  20.times do
+  users = User.all
+  5.times do
 
     project_titolo = Faker::Lorem.sentence(1)
     project_descrizione = Faker::Lorem.sentence(20)
@@ -99,8 +99,8 @@ end
 
 
 def make_contributions
-  projects = Project.all(limit: 10)
-  10.times do
+  projects = Project.all
+  5.times do
   contributions_servizio = Faker::Lorem.sentence(5)
   projects.each { |project| project.contributions.create!(numero: rand(100),
                                                           quota: rand(10.00..500.00),

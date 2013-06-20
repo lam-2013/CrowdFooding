@@ -14,4 +14,8 @@
     </strong>
      followers
   </a>
+  <strong id="user_projects" class="stat">
+    <%= pluralize(current_user.projects.count, 'project') %>
+  </strong>
+
 </div>

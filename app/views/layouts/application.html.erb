@@ -13,7 +13,7 @@
   <% # partial for the header %>
   <%= render 'layouts/header' %>
 
-  <div class="container">
+  <div class="container-fluid">
     <% # the flash message; it supports different type of communications %>
     <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>

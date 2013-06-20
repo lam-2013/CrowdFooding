@@ -11,7 +11,6 @@
         </section>
       </aside>
     </div>
-
 <% else %>
     <div class="center hero-unit" style="height: 250px" id="title">
       <h1>CrowdFooding</h1>
@@ -21,202 +20,46 @@
     </div>
 <% end %>
 
+<div class="row center">
+  <%= link_to 'Scopri', scopri_path, class: 'btn btn-large btn-warning' %>
+  <%= link_to 'Crea', crea_path, class: 'btn btn-large btn-warning' %>
+</div>
+
+<div class="span6 offset6 center">
+  <form class="form-search">
+    <input type="text" class="input-medium search-query">
+    <button type="submit" class="btn">Cerca</button>
+  </form>
+</div>
+
+<div class="row-fluid">
+  <div class="span12" >
+    <h2>Most Recently Successfully funded projects    </h2>
+    <% @projectcat = 1 %>
+    <%= render 'shared/project_slider' %>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span12" >
+    <h2> Popular projects   </h2>
+    <% @projectcat = 2 %>
+    <%= render 'shared/project_slider' %>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span12" >
+    <h2> Last started Projects     </h2>
+    <% @projectcat = 3 %>
+    <%= render 'shared/project_slider' %>
+  </div>
+</div>
 <% if signed_in? %>
-
-    <div class="row center">
-      <%= link_to 'Scopri', scopri_path, class: 'btn btn-large btn-warning' %>
-      <%= link_to 'Crea', crea_path, class: 'btn btn-large btn-warning' %>
-    </div>
-
-    <div class="span6 offset6 center">
-      <form class="form-search">
-        <input type="text" class="input-medium search-query">
-        <button type="submit" class="btn">Cerca</button>
-      </form>
-    </div>
-
-    <div class="row-fluid">
-      <div class="span12" >
-        <h2>Most Recently Successfully funded projects    </h2>
-        <div id="myCarouseltab1" class="carousel slide">
-          <div class="carousel-inner">
-            <% if @user.projects.any? %>
-                <%  @user.projects.each do |project|  %>
-
-                    <!-- Carousel items -->
-                    <% if @user.projects.first == project %>
-                        <div class="active item <%= project.id %>">
-                          <ol class="projects">
-                            <h3><%= project.titolo %></h3>
-                            <h4><%= project.luogo %></h4>
-                            <p><%= project.descrizione %></p>
-
-                            <%= image_tag(project.img_copertina, :size => '500x200')%>
-
-                            | <%= link_to 'show', project%>
-
-                          </ol>
-                        </div>
-                    <% else %>
-                        <div class="item <%= project.id %>">
-                          <ol class="projects">
-                            <h3><%= project.titolo %></h3>
-                            <h4><%= project.luogo %></h4>
-                            <p><%= project.descrizione %></p>
-
-                            <%= image_tag(project.img_copertina, :size => '500x200')%>
-
-                            | <%= link_to 'show', project%>
-
-                          </ol>
-                        </div>
-                    <% end %>
-                    <!-- Carousel nav -->
-                <% end %>
-            <% end %>
-          </div>
-          <a class="carousel-control left" href="#myCarouseltab1" data-slide="prev">&lsaquo;</a>
-          <a class="carousel-control right" href="#myCarouseltab1" data-slide="next">&rsaquo;</a>
-        </div>
-      </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span12" >
-        <h2> Popular projects   </h2>
-        <div id="myCarouseltab2" class="carousel slide">
-          <div class="carousel-inner">
-            <% if @user.projects.any? %>
-                <%  @user.projects.each do |project|  %>
-
-                    <!-- Carousel items -->
-                    <% if @user.projects.first == project %>
-                        <div class="active item <%= project.id %>">
-                          <ol class="projects">
-                            <h3><%= project.titolo %></h3>
-                            <h4><%= project.luogo %></h4>
-                            <p><%= project.descrizione %></p>
-
-                            <%= image_tag(project.img_copertina, :size => '500x200')%>
-
-                            | <%= link_to 'show', project%>
-
-                          </ol>
-                        </div>
-                    <% else %>
-                        <div class="item <%= project.id %>">
-                          <ol class="projects">
-                            <h3><%= project.titolo %></h3>
-                            <h4><%= project.luogo %></h4>
-                            <p><%= project.descrizione %></p>
-
-                            <%= image_tag(project.img_copertina, :size => '500x200')%>
-
-                            | <%= link_to 'show', project%>
-
-                          </ol>
-                        </div>
-                    <% end %>
-                    <!-- Carousel nav -->
-                <% end %>
-            <% end %>
-          </div>
-          <a class="carousel-control left" href="#myCarouseltab2" data-slide="prev">&lsaquo;</a>
-          <a class="carousel-control right" href="#myCarouseltab2" data-slide="next">&rsaquo;</a>
-        </div>
-      </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span12" >
-        <h2> Last started Projects     </h2>
-        <div id="myCarouseltab3" class="carousel slide">
-          <div class="carousel-inner">
-            <% if @user.projects.any? %>
-                <%  @user.projects.each do |project|  %>
-
-                    <!-- Carousel items -->
-                    <% if @user.projects.first == project %>
-                        <div class="active item <%= project.id %>">
-                          <ol class="projects">
-                            <h3><%= project.titolo %></h3>
-                            <h4><%= project.luogo %></h4>
-                            <p><%= project.descrizione %></p>
-
-                            <%= image_tag(project.img_copertina, :size => '500x200')%>
-
-                            | <%= link_to 'show', project%>
-
-                          </ol>
-                        </div>
-                    <% else %>
-                        <div class="item <%= project.id %>">
-                          <ol class="projects">
-                            <h3><%= project.titolo %></h3>
-                            <h4><%= project.luogo %></h4>
-                            <p><%= project.descrizione %></p>
-
-                            <%= image_tag(project.img_copertina, :size => '500x200')%>
-
-                            | <%= link_to 'show', project%>
-
-                          </ol>
-                        </div>
-                    <% end %>
-                    <!-- Carousel nav -->
-                <% end %>
-            <% end %>
-          </div>
-          <a class="carousel-control left" href="#myCarouseltab3" data-slide="prev">&lsaquo;</a>
-          <a class="carousel-control right" href="#myCarouseltab3" data-slide="next">&rsaquo;</a>
-        </div>
-      </div>
-    </div>
-
     <div class="row-fluid">
       <div class="span12" >
         <h2> Friends Projects </h2>
+        <% @projectcat = 3 %>
+        <%= render 'shared/project_slider' %>
 
-
-
-        <div id="myCarouseltab4" class="carousel slide">
-          <div class="carousel-inner">
-            <% if @user.projects.any? %>
-                <%  @user.projects.each do |project|  %>
-
-                    <!-- Carousel items -->
-                    <% if @user.projects.first == project %>
-                        <div class="active item <%= project.id %>">
-                          <ol class="projects">
-                            <h3><%= project.titolo %></h3>
-                            <h4><%= project.luogo %></h4>
-                            <p><%= project.descrizione %></p>
-
-                            <%= image_tag(project.img_copertina, :size => '500x200')%>
-
-                            | <%= link_to 'show', project%>
-
-                          </ol>
-                        </div>
-                    <% else %>
-                        <div class="item <%= project.id %>">
-                          <ol class="projects">
-                            <h3><%= project.titolo %></h3>
-                            <h4><%= project.luogo %></h4>
-                            <p><%= project.descrizione %></p>
-
-                            <%= image_tag(project.img_copertina, :size => '500x200')%>
-
-                            | <%= link_to 'show', project%>
-
-                          </ol>
-                        </div>
-                    <% end %>
-                    <!-- Carousel nav -->
-                <% end %>
-            <% end %>
-          </div>
-          <a class="carousel-control left" href="#myCarouseltab4" data-slide="prev">&lsaquo;</a>
-          <a class="carousel-control right" href="#myCarouseltab4" data-slide="next">&rsaquo;</a>
-        </div>
 <% end %>
 </div>
 </div>

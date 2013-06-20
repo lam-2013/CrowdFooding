@@ -9,6 +9,7 @@ class ContributionsController < ApplicationController
   def new
 
     @contribution = Contribution.new
+    @project = Project.find(params[:project_id])
 
   end
 
@@ -19,12 +20,12 @@ class ContributionsController < ApplicationController
   end
 
   def update
-    if @project.contribution.update_attributes(params[:contribution])
+    if @contribution.update_attributes(params[:contribution])
       # handle a successful update
       flash[:success] = 'contributon aggiornato'
 
       # go to the project
-      redirect_to
+      redirect_to contributions_path(project_id:@project.id)
     else
       # handle a failed update
       render 'edit'
@@ -34,25 +35,29 @@ class ContributionsController < ApplicationController
 
 
   def edit
-    @contribution = Contribution.find_by_project_id(params[:id])
+    @contribution = Contribution.find_by_id(params[:id])
   end
 
   def create
     # build a new contribution from the information contained in the "new contribution" form
-    @project = current_user.projects.new(params[:project])
-    @contribution =@project.contributions.build(params[:contribution])
+    @project = Project.find(params[:contribution][:project_id])
+    @contribution = @project.contributions.build(params[:contribution])
     if @contribution.save
       flash[:success] = 'Contribution created!'
-      redirect_to contributions_path(:project_id)
+      redirect_to contributions_path(project_id:@project.id)
+
+    else
+      render 'new'
     end
 
   end
 
   def destroy
+    contribution = Contribution.find(params[:id])
+    project = Project.find_by_id(contribution.project_id)
+    contribution.destroy
 
-    Contribution.find(params[:id]).destroy
-
-    redirect_to contributions_path(params[:project_id])
+    redirect_to contributions_path(project_id:project.id)
 
   end
 
@@ -60,7 +65,8 @@ class ContributionsController < ApplicationController
 
   def correct_user
     # does the user have a post with the given id?
-    @project = current_user.projects.find_by_id(params[:id])
+    @contribution = Contribution.find(params[:id])
+    @project = current_user.projects.find_by_id(@contribution.project_id)
     # if not, redirect to the home page
     redirect_to root_url if @project.nil?
   end

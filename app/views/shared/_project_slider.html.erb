@@ -1,0 +1,31 @@
+<div id="myCarouseltab<%= @projectcat%>" class="carousel slide">
+  <div class="carousel-inner">
+    <% if @user.projects.any? %>
+        <%  @user.projects.each do |project|  %>
+
+            <!-- Carousel items -->
+
+            <% if @user.projects.first == project %>
+                <div class="active item <%= project.id %>">
+            <% else %>
+                <div class="item <%= project.id %>">
+            <% end %>
+
+            <ol class="projects">
+              <h3><%= project.titolo %></h3>
+              <h4><%= project.luogo %></h4>
+              <p><%= project.descrizione %></p>
+
+              <%= image_tag(project.img_copertina, :size => '500x200')%>
+
+              | <%= link_to 'show', project%>
+
+            </ol>
+            </div>
+            <!-- Carousel nav -->
+        <% end %>
+    <% end %>
+    </div>
+    <a class="carousel-control left" href="#myCarouseltab<%=@projectcat%>" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarouseltab<%=@projectcat%>" data-slide="next">&rsaquo;</a>
+  </div>

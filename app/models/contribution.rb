@@ -1,5 +1,5 @@
 class Contribution < ActiveRecord::Base
-  attr_accessible :numero, :quota, :servizio
+  attr_accessible :numero, :quota, :servizio, :project_id
 
   belongs_to :projects
 

@@ -16,12 +16,12 @@
     <td><%= contribution.servizio %></td>
     <td><%= contribution.numero %></td>
 
-    <td><%= link_to 'Edit', edit_contribution_path(contribution.project_id) %></td>
-    <td><%= link_to 'Destroy', contribution, method: :delete, project_id:contribution.project_id, id:contribution.id, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Edit', edit_contribution_path(contribution.id) %></td>
+    <td><%= link_to 'Destroy', contribution, method: :delete, id:contribution.id, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Contribution', new_contribution_path %>
+<%= link_to 'New Contribution', new_contribution_path(project_id:@contributions.first.project_id) %>

@@ -1,8 +1,7 @@
 SWorD::Application.routes.draw do
 
-  resources :contributions
-  resources :projects
-  resources :users
+
+
 
 
   # route for the homepage
@@ -41,10 +40,12 @@ SWorD::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   # default routes for the Projects controller (only create and destroy - other operations will be done via the Users controlelr)
-  resources :projects, only: [:create, :destroy, :show]
+  resources :projects
 
   # default routes for the Relationship controller (only create and destroy) - needed to build follow/unfollow relations
   resources :relationships, only: [:create, :destroy]
+
+  resources :contributions
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

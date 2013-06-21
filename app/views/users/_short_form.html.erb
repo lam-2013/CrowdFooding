@@ -1,63 +1,66 @@
-<h1>Registrati</h1>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
+<div class="container-fluid">
+  <h1>Registrati</h1>
+  <div class="row-fluid">
+    <div class="span6 offset3 center">
+      <%= form_for(@user) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
 
-        <%= f.label :nome%>
-        <%= f.text_field :name %>
+          <%= f.label :nome%>
+          <%= f.text_field :name %>
 
-        <%= f.label :email %>
-        <%= f.text_field :email %>
+          <%= f.label :email %>
+          <%= f.text_field :email %>
 
-        <%= f.label :password %>
-        <%= f.password_field :password %>
+          <%= f.label :password %>
+          <%= f.password_field :password %>
 
-        <%= f.label :password_confirmation, 'Conferma' %>
-        <%= f.password_field :password_confirmation %>
-
-
-
-        <% unless @user.luogo.blank?%>
-            <%= f.hidden_field :luogo %>
-        <%end%>
-
-        <% unless @user.cognome.blank?%>
-            <%= f.hidden_field :cognome %>
-        <%end%>
-
-        <% unless @user.facebook_uid.blank?%>
-            <%= f.hidden_field :facebook_uid %>
-        <%end%>
-
-        <% unless @user.twitter_uid.blank?%>
-            <%= f.hidden_field :twitter_uid %>
-        <%end%>
-
-        <% unless @user.sesso.blank?%>
-            <%= f.label :sesso %>
-            <%= f.hidden_field :sesso %>
-        <%end%>
-
-        <% unless @user.descrizione.blank?%>
-            <%= f.label :descrizione %>
-            <%= f.hidden_field :descrizione %>
-        <%end%>
-
-        <% unless @user.nascita.blank?%>
-            <%= f.label :nascita %>
-            <%= f.hidden_field :nascita %>
-        <%end%>
-
-        <% unless @user.sito_web.blank?%>
-            <%= f.label :sito_web %>
-            <%= f.hidden_field :sito_web %>
-        <%end%>
+          <%= f.label :password_confirmation, 'Conferma' %>
+          <%= f.password_field :password_confirmation %>
 
 
+          <% unless @user.luogo.blank?%>
+              <%= f.hidden_field :luogo %>
+          <%end%>
 
-        <%= f.submit 'Crea il mio profilo', class: 'btn btn-large btn-primary' %>
+          <% unless @user.cognome.blank?%>
+              <%= f.hidden_field :cognome %>
+          <%end%>
+
+          <% unless @user.facebook_uid.blank?%>
+              <%= f.hidden_field :facebook_uid %>
+          <%end%>
+
+          <% unless @user.twitter_uid.blank?%>
+              <%= f.hidden_field :twitter_uid %>
+          <%end%>
+
+          <% unless @user.sesso.blank?%>
+              <%= f.label :sesso %>
+              <%= f.hidden_field :sesso %>
+          <%end%>
+
+          <% unless @user.descrizione.blank?%>
+              <%= f.label :descrizione %>
+              <%= f.hidden_field :descrizione %>
+          <%end%>
+
+          <% unless @user.nascita.blank?%>
+              <%= f.label :nascita %>
+              <%= f.hidden_field :nascita %>
+          <%end%>
+
+          <% unless @user.sito_web.blank?%>
+              <%= f.label :sito_web %>
+              <%= f.hidden_field :sito_web %>
+          <%end%>
+
+          <%= f.submit 'Crea il mio profilo', class: 'btn btn-large btn-primary' %>
+
     <% end %>
+    </div>
   </div>
+
+
+
 </div>

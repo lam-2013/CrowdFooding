@@ -1,12 +1,15 @@
 <% #Provide the page title in a symbol to application.html.erb to avoid duplication %>
 <% provide :title, @project.titolo %>
 
+<div class="container-fluid">
 <div class="row-fluid center">
+  <div class="span12">
   <% unless @project.img_copertina.blank? %>
       <%= image_tag(@project.img_copertina , :height => '100%', :width => '100%', :class => "img-rounded", :id => "copertina")%>
   <%else%>
       <img src="http://www.lettera43.it/upload/images/12_2012/l43-piantagione-121227075428_big.jpg" class="img-rounded" id="copertina">
   <% end %>
+    </div>
 </div>
 
 <div class="row-fluid">
@@ -42,4 +45,6 @@
     |<%= link_to "Edit/Add Contributions", contributions_path(project_id: @project.id)%>
     <% end %>
   </div>
+</div>
+
 </div>

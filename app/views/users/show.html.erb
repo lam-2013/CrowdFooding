@@ -1,16 +1,18 @@
 <% #Provide the page title in a symbol to application.html.erb to avoid duplication %>
 <% provide :title, @user.name %>
-
-<div class="row-fluid center">
+<div class="container-fluid">
+<div class="row-fluid">
+  <div class="span12 center">
   <% unless @user.img_copertina.blank? %>
       <%= image_tag(@user.img_copertina , :height => '100%', :width => '100%', :class => "img-rounded", :id => "copertina")%>
   <%else%>
       <img src="http://www.lettera43.it/upload/images/12_2012/l43-piantagione-121227075428_big.jpg" class="img-rounded" id="copertina">
   <% end %>
+  </div>
 </div>
 
 <div class="row-fluid ">
-  <div class="span4 offset2">
+  <div class="span4 offset1">
     <section>
       <h4>
         <%= gravatar_for @user %>
@@ -20,15 +22,22 @@
             end %>
       </h4>
     </section>
-    <section>
-      <%= render 'shared/stats' %>
-    </section>
+    </div>
 
+  <div class="span3">
     <section>
-      <%= render 'follow_form' if signed_in? %>
+         <%= render 'shared/stats' %>
     </section>
-
   </div>
+  <div class="span3 offset1">
+        <section>
+           <%= render 'follow_form' if signed_in? %>
+         </section>
+  </div>
+
+</div>
+
+  <div class="row-fluid">
 
   <div class="span4">
 
@@ -59,6 +68,7 @@
 
   </div>
 </div>
+  </div>
 
 
 
@@ -111,5 +121,7 @@
     </div>
 
   </div>
+
+</div>
 
 </div>

@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def home
 
-    @projects_friends = findProjects_Friends
+    @projects_friends = findProjects_Friends if signed_in?
     @projects_recently = findProjects_recently
     @projects_complete = findProjects_complete
     @projects_in_corso = findProjects_in_corso

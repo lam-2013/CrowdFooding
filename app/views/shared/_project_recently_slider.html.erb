@@ -1,10 +1,10 @@
 <div id="myCarouseltab<%= @projectcat%>" class="carousel slide" data-interval="4000" data-pause="hover">
   <div class="carousel-inner" >
-    <% if @projects_in_corso.any? %>
-        <%  @projects_in_corso.each do |project|  %>
+    <% if @projects_recently.any? %>
+        <%  @projects_recently.each do |project|  %>
 
 
-            <% if @projects_in_corso.first == project %>
+            <% if @projects_recently.first == project %>
                 <div class="active item <%= project.id %>">
             <% else %>
                 <div class="item <%= project.id %>">
@@ -13,8 +13,6 @@
             <div class="carousel-cation">
               <ol class="projects">
                 <div class="progress progress-striped active">
-
-
                   <%if (project.budget_attuale * 100 / project.goal > 100) %>
 
                       <div class="bar" style="width: 100%;"></div>
@@ -24,14 +22,14 @@
                       <div class="bar" style="width: <%= project.budget_attuale * 100 / project.goal %>%;"></div>
 
                   <% end %>
-
                 </div>
 
                 <h4>budget attuale <%= project.budget_attuale %></h4>
                 <h4>goal <%= project.goal %></h4>
 
+
                 <h3><%=link_to project.titolo ,project%></h3>
-                <h4><%= project.data_creazione %></h4>
+                <h4>Data creazione<%= project.data_creazione %></h4>
                 <h4><%= project.luogo %></h4>
                 <p><%= project.descrizione %></p>
                 <%=link_to image_tag(project.img_copertina, :size => '500x200'), project%>

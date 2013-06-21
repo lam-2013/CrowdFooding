@@ -54,21 +54,26 @@ def make_projects
   # generate 20 fake projects for the first 10 users
   city=["Torino","Milano","Bologna","Palermo","Genova","Roma"]
   categoria=["ART & ENTERTAINMENT","LIFESTYLE & TECHNOLOGY","SOCIAL INNOVATION","EVENTI","FOOD"]
+  budget=[10,20,30,40,50,60,70,80,90,100,200,300,400,500,600,700,1000,1500,2000,2500,3000,3500,4000]
+  goal=[100,200,300,400,500,600,700,1000,1500,2000]
   r = Random.new
   users = User.all
   5.times do
 
-    project_titolo = Faker::Lorem.sentence(1)
-    project_descrizione = Faker::Lorem.sentence(20)
-    project_luogo = city[r.rand(city.size)]
-    project_categoria = categoria[r.rand(categoria.size)]
-    project_data_creazione = time_rand Time.local(2012, 1, 1), Time.local(2013, 8, 7)
-    project_data_fine = project_data_creazione + 2.week
-    contributions_servizio = Faker::Lorem.sentence(2)
-    project_goal = r.rand(100.00..5000.00)
-    project_budget_attuale = r.rand(50.00..8000.00)
-    project_tags = '1,2,3,4,5'
-    users.each { |user|  user.projects.create!(titolo: project_titolo,
+    users.each { |user|
+
+      project_titolo = Faker::Lorem.sentence(1)
+      project_descrizione = Faker::Lorem.sentence(20)
+      project_luogo = city[r.rand(city.size)]
+      project_categoria = categoria[r.rand(categoria.size)]
+      contributions_servizio = Faker::Lorem.sentence(2)
+      project_goal = goal[r.rand(goal.size)]
+      project_budget_attuale = budget[r.rand(budget.size)]
+      project_tags = '1,2,3,4,5'
+      project_data_creazione = time_rand Time.local(2012, 1, 1), Time.now
+      project_data_fine = project_data_creazione + 4.week
+
+      user.projects.create!(titolo: project_titolo,
                                                luogo: project_luogo,
                                                descrizione: project_descrizione,
                                                categoria: project_categoria,

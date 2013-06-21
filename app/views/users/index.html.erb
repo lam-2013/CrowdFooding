@@ -2,7 +2,10 @@
 <% provide :title, 'All Users' %>
 
 <h1>All users</h1>
-
+<section>
+  <h3>Cerca gli utenti</h3>
+<%= render 'users/search_form' %>
+</section>
 <%= will_paginate %>
 
 <ul class="users">

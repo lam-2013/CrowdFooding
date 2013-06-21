@@ -9,8 +9,6 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new(data_creazione: Time.now, data_fine: Time.now + 2.months)
-    @cat=["ART & ENTERTAINMENT","LIFESTYLE & TECHNOLOGY","SOCIAL INNOVATION","EVENTI","FOOD"]
-
   end
 
   def show
@@ -34,7 +32,6 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @cat=["ART & ENTERTAINMENT","LIFESTYLE & TECHNOLOGY","SOCIAL INNOVATION","EVENTI","FOOD"]
     # intentionally left empty since the correct_user method (called by before_filter) initialize the @user object
     # without the correct_user method, this action should contain:
     # @user = User.find(params[:id])

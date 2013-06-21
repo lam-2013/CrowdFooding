@@ -1,124 +1,115 @@
 <% #Provide the page title in a symbol to application.html.erb to avoid duplication %>
 <% provide :title, @user.name %>
-<div class="container-fluid">
 
-  <div class="row-fluid center">
-    <div class="span12">
-      <% unless @user.img_copertina.blank? %>
-          <%= image_tag(@user.img_copertina , :height => '100%', :width => '100%', :class => "img-rounded", :id => "copertina")%>
-      <%else%>
-          <img src="http://www.lettera43.it/upload/images/12_2012/l43-piantagione-121227075428_big.jpg" class="img-rounded" id="copertina">
-      <% end %>
-    </div>
-  </div>
+<div class="row-fluid center">
+  <% unless @user.img_copertina.blank? %>
+      <%= image_tag(@user.img_copertina , :height => '100%', :width => '100%', :class => "img-rounded", :id => "copertina")%>
+  <%else%>
+      <img src="http://www.lettera43.it/upload/images/12_2012/l43-piantagione-121227075428_big.jpg" class="img-rounded" id="copertina">
+  <% end %>
+</div>
 
-  <div class="row-fluid ">
-    <div class="span4 offset2">
-      <section>
-        <h4>
-          <%= gravatar_for @user %>
-          <%= @user.name %>
-          <%= if !@user.cognome.blank?
-                @user.cognome
-              end %>
-        </h4>
-      </section>
-      <div class="accordion" id="accordion2">
-        <div class="accordion-group">
-          <div class="accordion-heading">
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">    Informazioni personali
-            </a>
-          </div>
-          <div id="collapseOne" class="accordion-body collapse in">
-            <div class="accordion-inner">
-              <h4>Informazioni personali </h4>
-              <% unless @user.nascita.blank? %>
-                  <p> Età :  <%= (Time.now.year - @user.nascita.year) %>   </p>
-              <% end %>
-
-              <% unless @user.luogo.blank? %>
-                  <p> Luogo :  <%= @user.luogo %>   </p>
-              <% end %>
-
-              <% unless @user.occupazione.blank? %>
-                  <p> Occupazione :  <%= @user.occupazione %>   </p>
-              <% end %>
-
-              <% unless @user.email.blank? %>
-                  <p> Email :  <%= @user.email %>   </p>
-              <% end %>
-
-              <% unless @user.sito_web.blank? %>
-                  <p> Sito web : <a href="http://<%=@user.sito_web %>"> <%=@user.sito_web %>  </a> </p>
-              <% end %>
-
-              <% unless @user.sesso.blank? %>
-                  <p> Sesso : <%=@user.sesso %> </p>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
+<div class="row-fluid ">
+  <div class="span4 offset2">
     <section>
-      <div class="span4" >
-        <%= render 'shared/stats' %>
-
-      </div>
+      <h4>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+        <%= if !@user.cognome.blank?
+              @user.cognome
+            end %>
+      </h4>
+    </section>
+    <section>
+      <%= render 'shared/stats' %>
     </section>
 
     <section>
-      <div class="span2">
-        <%= render 'follow_form' if signed_in? %>
-      </div>
+      <%= render 'follow_form' if signed_in? %>
     </section>
-  </div>
 
   </div>
 
+  <div class="span4">
 
-  <div class="row-fluid">
+    <h4>Informazioni personali </h4>
+    <% unless @user.nascita.blank? %>
+        <p> Età :  <%= (Time.now.year - @user.nascita.year) %>   </p>
+    <% end %>
 
-    <div class="span12">
-      <div class="tabbable">
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#tab1" data-toggle="tab">Progetti in corso</a></li>
-          <li><a href="#tab2" data-toggle="tab"> Progetti finanziati </a></li>
-          <li><a href="#tab3" data-toggle="tab">Progetti seguiti</a></li>
-          <li><a href="#tab4" data-toggle="tab">Progetti completati</a></li>
-        </ul>
+    <% unless @user.luogo.blank? %>
+        <p> Luogo :  <%= @user.luogo %>   </p>
+    <% end %>
 
-        <div class="tab-content">
-          <div class="span8 offset2">
-            <div class="tab-pane active" id="tab1">
-              <% @projectcat = 1 %>
+    <% unless @user.occupazione.blank? %>
+        <p> Occupazione :  <%= @user.occupazione %>   </p>
+    <% end %>
 
-              <%= render 'shared/project_slider' %>
+    <% unless @user.email.blank? %>
+        <p> Email :  <%= @user.email %>   </p>
+    <% end %>
 
-            </div>
+    <% unless @user.sito_web.blank? %>
+        <p> Sito web : <a href="http://<%=@user.sito_web %>"> <%=@user.sito_web %>  </a> </p>
+    <% end %>
 
-            <div class="tab-pane" id="tab2">
-              <% @projectcat = 2 %>
-              <%= render 'shared/project_slider' %>
-            </div>
+    <% unless @user.sesso.blank? %>
+        <p> Sesso : <%=@user.sesso %> </p>
+    <% end %>
 
-            <div class="tab-pane" id="tab3">
-              <% @projectcat = 3 %>
-              <%= render 'shared/project_slider' %>
-            </div>
-
-
-            <div class="tab-pane" id="tab4">
-              <% @projectcat = 4 %>
-              <%= render 'shared/project_slider' %>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
+
+
+
+<div class="row-fluid">
+
+
+  <div class="tabbable">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#tab1" data-toggle="tab">Progetti in corso</a></li>
+      <li><a href="#tab2" data-toggle="tab"> Progetti finanziati </a></li>
+      <li><a href="#tab3" data-toggle="tab">Progetti seguiti</a></li>
+      <li><a href="#tab4" data-toggle="tab">Progetti completati</a></li>
+    </ul>
+
+    <div class="tab-content">
+
+      <div class="tab-pane active" id="tab1">
+
+        <% @projectcat = 1 %>
+
+        <%= render 'shared/project_slider' %>
+
+      </div>
+
+      <div class="tab-pane" id="tab2">
+
+        <% @projectcat = 2 %>
+
+        <%= render 'shared/project_slider' %>
+
+      </div>
+
+      <div class="tab-pane" id="tab3">
+
+        <% @projectcat = 3 %>
+
+        <%= render 'shared/project_slider' %>
+
+      </div>
+
+
+      <div class="tab-pane" id="tab4">
+
+        <% @projectcat = 4 %>
+
+        <%= render 'shared/project_slider' %>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </div>

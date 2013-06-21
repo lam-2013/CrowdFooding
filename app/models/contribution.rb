@@ -2,6 +2,7 @@ class Contribution < ActiveRecord::Base
   attr_accessible :numero, :quota, :servizio, :project_id
 
   belongs_to :projects
+  has_one :project
 
   default_scope order: 'contributions.created_at DESC'
 

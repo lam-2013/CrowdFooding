@@ -1,0 +1,26 @@
+<table border="1">
+  <tr>
+    <th> Quota </th>
+    <th> Servizio </th>
+    <th> Numero </th>
+  </tr>
+
+
+
+  <% @contributions.each do |contribution| %>
+      <tr>
+        <%= form_for(@backer, method: 'create')  do |b| %>
+            <% @project = Project.find(contribution.project_id) %>
+            <%= b.hidden_field :user_id, value: current_user.id %>
+            <%= b.hidden_field :contribution_id, value: contribution.id %>
+
+            <td><%= contribution.quota %></td>
+            <td><%= contribution.servizio %></td>
+            <td><%= contribution.numero %></td>
+
+            <td><%= b.submit 'Finanzia', class: 'btn btn-primary' %></td>
+
+        <% end %>
+      </tr>
+  <% end %>
+</table>

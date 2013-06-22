@@ -24,6 +24,7 @@ SWorD::Application.routes.draw do
   # signout should be performed by using the HTTP DELETE request
   match '/signout', to: 'sessions#destroy', via: :delete
 
+
   # routes for the Users controller (default plus following, followers and search)
   resources :users do
     # member: apply the reported actions to each single member (to /users/{:id}, in this case)
@@ -46,6 +47,8 @@ SWorD::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
 
   resources :contributions
+
+  resource :backers
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

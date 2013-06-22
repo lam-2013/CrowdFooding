@@ -104,11 +104,14 @@ end
 
 
 def make_contributions
+  r = Random.new
+  numero=[10,20,50,100]
+  quota=[10,20,30,50,100,200,300,400,500]
   projects = Project.all
   5.times do
   contributions_servizio = Faker::Lorem.sentence(5)
-  projects.each { |project| project.contributions.create!(numero: rand(100),
-                                                          quota: rand(10.00..500.00),
+  projects.each { |project| project.contributions.create!(numero: numero[r.rand(numero.size)],
+                                                          quota: quota[r.rand(quota.size)],
                                                           servizio:contributions_servizio)}
   end
 end

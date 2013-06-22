@@ -7,13 +7,15 @@ class ProjectsController < ApplicationController
   # check if the current user is also an admin
   before_filter :admin_user, only: :destroy
 
+
   def new
     @project = Project.new(data_creazione: Time.now, data_fine: Time.now + 2.months)
   end
 
   def show
     @project = Project.find(params[:id])
-    @contributions = @project.contributions.paginate(page: params[:page], per_page: 10)
+    @contributions = @project.contributions
+    @backer = Backer.new
   end
 
   def index

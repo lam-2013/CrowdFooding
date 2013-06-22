@@ -15,6 +15,9 @@
   <div class="row-fluid">
     <div class="span12 center">
       <section>
+        <% p_url = "http://www.facebook.com/sharer.php?u=".concat request.url %>
+        <%=link_to image_tag('loghi/FB_icon_share.png', :height => '50px', :width => '50px'),p_url %>
+
         <h1>
           <%= @project.titolo %>
         </h1>

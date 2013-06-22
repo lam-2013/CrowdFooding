@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def home
 
+    @user =current_user
     @projects_friends = findProjects_Friends if signed_in?
     @projects_recently = findProjects_recently
     @projects_complete = findProjects_complete
@@ -36,7 +37,6 @@ class PagesController < ApplicationController
 
   def findProjects_Friends
 
-    puts current_user.id
     Project.find_by_sql(["SELECT * FROM projects WHERE data_fine > current_timestamp AND user_id IN(SELECT followed_id FROM relationships WHERE follower_id = ?) ORDER BY data_fine",current_user.id])
 
   end

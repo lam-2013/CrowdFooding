@@ -9,17 +9,20 @@
 
   <% @contributions.each do |contribution| %>
       <tr>
-        <%= form_for(@backer, method: 'create')  do |b| %>
-            <% @project = Project.find(contribution.project_id) %>
-            <%= b.hidden_field :user_id, value: current_user.id %>
-            <%= b.hidden_field :contribution_id, value: contribution.id %>
+        <% if contribution.numero >=1 %>
+            <%= form_for(@backer, method: 'create')  do |b| %>
 
-            <td><%= contribution.quota %></td>
-            <td><%= contribution.servizio %></td>
-            <td><%= contribution.numero %></td>
+                <%= b.hidden_field :user_id, value: current_user.id %>
+                <%= b.hidden_field :contribution_id, value: contribution.id %>
+                <%= b.hidden_field :quota, value: contribution.quota %>
+                <%= b.hidden_field :project_id, value: contribution.project_id %>
 
-            <td><%= b.submit 'Finanzia', class: 'btn btn-primary' %></td>
+                <td><%= contribution.quota %></td>
+                <td><%= contribution.servizio %></td>
+                <td><%= contribution.numero %></td>
 
+                <td><%= b.submit 'Finanzia', class: 'btn btn-primary' %></td>
+            <% end %>
         <% end %>
       </tr>
   <% end %>

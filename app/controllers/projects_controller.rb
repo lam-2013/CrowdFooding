@@ -13,12 +13,15 @@ class ProjectsController < ApplicationController
   end
 
   def show
+
+    @user = current_user
     @project = Project.find(params[:id])
     @contributions = @project.contributions
     @backer = Backer.new
   end
 
   def index
+    @user = current_user
     @projects = Project.paginate(page: params[:page], per_page: 10)
   end
 

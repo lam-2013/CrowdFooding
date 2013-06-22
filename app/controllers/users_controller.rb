@@ -89,7 +89,7 @@ class UsersController < ApplicationController
   def index
     # get all the users from the database - without pagination
     # @users = User.all
-
+    @user =current_user
     # get all the users from the database - with pagination
     @users = User.paginate(page: params[:page], per_page: 10)
   end

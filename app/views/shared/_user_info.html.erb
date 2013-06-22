@@ -10,5 +10,4 @@
       end
   %>
 </h1>
-<span><%= link_to 'View my profile', current_user %></span>
-<span><%= pluralize(current_user.projects.count, 'project') %></span>
+<h4><%= pluralize(current_user.projects.count, 'project') %></h4>

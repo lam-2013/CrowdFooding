@@ -6,7 +6,7 @@
     <strong id="following" class="stat">
       <%= @user.followed_users.count %>
     </strong>
-     following
+    following
   </a>
   <a href="<%= followers_user_path(@user) %>">
     <strong id="followers" class="stat">
@@ -14,8 +14,4 @@
     </strong>
      followers
   </a>
-  <strong id="user_projects" class="stat">
-    <%= pluralize(current_user.projects.count, 'project') %>
-  </strong>
-
 </div>

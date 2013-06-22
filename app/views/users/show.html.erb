@@ -14,13 +14,7 @@
 <div class="row-fluid ">
   <div class="span4 offset1">
     <section>
-      <h4>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-        <%= if !@user.cognome.blank?
-              @user.cognome
-            end %>
-      </h4>
+      <%= render 'shared/user_info' %>
     </section>
     </div>
 
@@ -47,7 +41,7 @@
           <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">    INFORMAZIONI PERSONALI
           </a>
         </div>
-        <div id="collapseOne" class="accordion-body collapse in">
+        <div id="collapseOne" class="accordion-body collapse">
           <div class="accordion-inner">
             <h4>Informazioni personali </h4>
             <% unless @user.nascita.blank? %>
@@ -87,7 +81,7 @@
           SPECIALITA'
         </a>
       </div>
-      <div id="collapseTwo" class="accordion-body collapse">
+      <div id="collapseTwo" class="accordion-body collapse in">
         <div class="accordion-inner">
           <h2> BADGE RAGGIUNTI</h2>
         </div>
@@ -140,8 +134,8 @@
       <div class="tab-pane" id="tab4">
 
         <% @projectcat = 4 %>
-
-        <%= render 'shared/project_slider' %>
+        <% @projects_friends  %>
+        <%= render 'shared/project_friends_slider' %>
 
       </div>
 

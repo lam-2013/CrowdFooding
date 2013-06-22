@@ -41,6 +41,7 @@ textarea {
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
+  color: darkgreen;
 }
 
 h1 {
@@ -48,6 +49,7 @@ h1 {
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
+
 
 }
 
@@ -57,7 +59,6 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #999;
 }
 
 p {
@@ -156,6 +157,7 @@ aside {
   }
   strong {
     display: block;
+    color: limegreen;
   }
 }
 
@@ -263,3 +265,21 @@ select{
   position: absolute;
   text-align: center;
 }
+
+#info{
+  position: absolute;
+  padding: 1% 1% 1% 1%;
+  background-color: rgba(255,255,255,0.5) ;
+
+}
+#barre{
+  position: absolute;
+  background-color: rgba(255,255,255,0.5) ;
+
+}
+
+#imgprog{
+  position: relative;
+
+}
+

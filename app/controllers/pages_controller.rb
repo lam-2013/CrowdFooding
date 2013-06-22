@@ -37,7 +37,7 @@ class PagesController < ApplicationController
   def findProjects_Friends
 
     puts current_user.id
-    Project.find_by_sql(["SELECT * FROM projects WHERE user_id IN(SELECT followed_id FROM relationships WHERE follower_id = ?)",current_user.id])
+    Project.find_by_sql(["SELECT * FROM projects WHERE data_fine > current_timestamp AND user_id IN(SELECT followed_id FROM relationships WHERE follower_id = ?) ORDER BY data_fine",current_user.id])
 
   end
 end

@@ -6,6 +6,7 @@
         <aside class="span3">
           <section>
             <%= render 'shared/user_info' %>
+            <%= link_to 'View my profile', current_user %>
           </section>
           <section>
             <%= render 'shared/stats' %>
@@ -21,7 +22,7 @@
       </div>
   <% end %>
 
-  <div class="row center">
+  <div class="row-fluid center">
 
     <div class="row-fluid">
       <div class="span8 offset2">
@@ -31,6 +32,8 @@
         <%= render 'shared/project_complete_slider' %>
       </div>
     </div>
+
+
     <div class="row-fluid">
       <div class="span8 offset2">
         <h2> Popular projects   </h2>

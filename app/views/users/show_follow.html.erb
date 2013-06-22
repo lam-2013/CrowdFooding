@@ -1,12 +1,10 @@
 <% provide(:title, @title) %>
-<div class="contaienr-fluid" >
+<div class="container-fluid" >
 <div class="row-fluid">
   <aside class="span4">
     <section>
-      <%= gravatar_for @user %>
-      <h1><%= @user.name %></h1>
+      <%= render 'shared/user_info'%>
       <span><%= link_to 'View my profile', @user %></span>
-      <span><b>Projects:</b> <%= @user.projects.count %></span>
     </section>
     <section>
       <%= render 'shared/stats' %>

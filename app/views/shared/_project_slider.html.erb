@@ -14,14 +14,37 @@
             <div class="carousel-cation">
               <ol class="projects">
 
-                <h4>budget attuale <%= project.budget_attuale %></h4>
-                <h4>goal <%= project.goal %></h4>
+
+                <div class="row-fluid">
+                  <div class="span12" id="imgprog" >
+                    <%=link_to image_tag(project.img_copertina), project%>
+                  </div>
+                  <div class="span4 offset3 center" id="info">
+                    <h1><%=link_to project.titolo ,project%></h1>
+                    <h4>Città:<%= project.luogo %></h4>
+                    <h4>Di cosa si tratta? </h4>
+                    <p> <%= project.descrizione %></p>
+                  </div>
+                  <div class="span10" id="barre">
+                    <p style="text-align: left">budget attuale: <%= project.budget_attuale %><p>
+                    <div class="progress progress-success progress-striped active">
+                      <%if (project.budget_attuale * 100 / project.goal > 100) %>
+                          <div class="bar" style="width: 100%;"></div>
+                      <% else %>
+                          <div class="bar" style="width: <%= project.budget_attuale * 100 / project.goal %>%;"></div>
+                      <% end %>
+                    </div>
+
+                    <p style="text-align: right">goal <%= project.goal %><p>
+
+                    hai ancora <%=  ((project.data_fine- Time.zone.now)/1.day).to_i %> giorni
+                    <div class="progress progress-warning progress-striped active">
+                      <div class="bar" style="width: <%= 100-((project.data_fine- Time.zone.now)/1.day).to_i * 100 / 28 %>%;"></div>
+                    </div>
+                  </div>
+                </div>
 
 
-                <h3><%=link_to project.titolo ,project%></h3>
-                <h4><%= project.luogo %></h4>
-                <p><%= project.descrizione %></p>
-                <%=link_to image_tag(project.img_copertina, :size => '500x200'), project%>
               </ol>
             </div>
             </div>

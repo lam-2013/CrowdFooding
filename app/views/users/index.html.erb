@@ -1,15 +1,42 @@
 <% #Provide the page title in a symbol to application.html.erb to avoid duplication %>
 <% provide :title, 'All Users' %>
+<div class="container-fluid">
 
-<h1>All users</h1>
+  <div class="row-fluid">
+  <aside class="span3">
+    <section>
+      <%= render 'shared/user_info'%>
+      <%= link_to 'View my profile', @user %>
+    </section>
+    <section>
+      <%= render 'shared/stats' %>
+    </section>
+  </aside>
+
 <section>
-  <h3>Cerca gli utenti</h3>
-<%= render 'users/search_form' %>
+  <div class="span8 center">
+    <h1>All users</h1>
+    <h3>Cerca gli utenti</h3>
+    <p style="text-align: center"> <%= render 'users/search_form' %>    </p>
+
+  </div>
 </section>
-<%= will_paginate %>
+</div>
+  <div class="row-fluid center">
+     <%= will_paginate %>
+  </div>
 
-<ul class="users">
-  <%= render @users %>
-</ul>
+<div class="row-fluid">
+  <div class="span8 offset2">
+    <ul class="users">
+     <%= render @users %>
+    </ul>
+  </div>
+</div>
 
-<%= will_paginate %>
+
+  <div class="row-fluid center">
+    <%= will_paginate %>
+  </div>
+
+</div>

@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
     # get and paginate the posts associated to the specified user
     @projects = @user.projects.paginate(page: params[:page], per_page: 10)
+    @projects_friends = findProjects_Friends if signed_in?
   end
 
   def new
@@ -133,5 +134,12 @@ class UsersController < ApplicationController
     def admin_user
       redirect_to root_path unless current_user.admin?
     end
+
+  def findProjects_Friends
+
+    puts current_user.id
+    Project.find_by_sql(["SELECT * FROM projects WHERE data_fine > current_timestamp AND user_id IN(SELECT followed_id FROM relationships WHERE follower_id = ?) ORDER BY data_fine",current_user.id])
+
+  end
 
 end

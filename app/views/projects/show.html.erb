@@ -61,11 +61,13 @@
               <p>
                 <%= @project.descrizione %>
               </p>
-
-              <% if current_user.id == @project.user.id %>
-                  |<%= link_to "Edit Project", edit_project_path%>
-                  |<%= link_to "Edit/Add Contributions", contributions_path(project_id: @project.id)%>
+              <% if !current_user.nil? %>
+                  <% if current_user.id == @project.user.id %>
+                      |<%= link_to "Edit Project", edit_project_path%>
+                      |<%= link_to "Edit/Add Contributions", contributions_path(project_id: @project.id)%>
+                  <% end %>
               <% end %>
+
             </div>
 
           </div>

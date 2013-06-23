@@ -267,19 +267,22 @@ select{
 }
 
 #info{
-  position: absolute;
-  padding: 1% 1% 1% 1%;
+  background-color: rgba(255,255,255,0.5) ;
+}
+
+#desc{
   background-color: rgba(255,255,255,0.5) ;
 
 }
+
 #barre{
-  position: absolute;
   background-color: rgba(255,255,255,0.5) ;
 
 }
 
-#imgprog{
-  position: relative;
-
+#padre{
+  border: solid;
+  border-color: green;
 }
+
 

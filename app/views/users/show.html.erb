@@ -100,8 +100,8 @@
     <ul class="nav nav-tabs">
       <li class="active"><a href="#tab1" data-toggle="tab">Progetti in corso</a></li>
       <li><a href="#tab2" data-toggle="tab"> Progetti finanziati </a></li>
-      <li><a href="#tab3" data-toggle="tab">Progetti seguiti</a></li>
-      <li><a href="#tab4" data-toggle="tab">Progetti completati</a></li>
+      <li><a href="#tab3" data-toggle="tab">Progetti completati</a></li>
+
     </ul>
 
     <div class="tab-content">
@@ -109,35 +109,29 @@
       <div class="tab-pane active" id="tab1">
 
         <% @projectcat = 1 %>
-
-        <%= render 'shared/project_slider' %>
+        <% @projects_progress %>
+        <%= render 'shared/user_projectprogress_slider' %>
 
       </div>
 
       <div class="tab-pane" id="tab2">
 
         <% @projectcat = 2 %>
-
-        <%= render 'shared/project_slider' %>
+         <%  @projects_personalFinanced %>
+        <%= render 'shared/user_projectfinanced_slider' %>
 
       </div>
 
       <div class="tab-pane" id="tab3">
 
         <% @projectcat = 3 %>
-
-        <%= render 'shared/project_slider' %>
-
-      </div>
-
-
-      <div class="tab-pane" id="tab4">
-
-        <% @projectcat = 4 %>
-        <% @projects_friends  %>
-        <%= render 'shared/project_friends_slider' %>
+        <% @projects_personalComplete %>
+        <%= render 'shared/user_projectcomplete_slider' %>
 
       </div>
+
+
+
 
     </div>
 

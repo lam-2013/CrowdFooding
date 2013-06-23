@@ -12,7 +12,10 @@ class UsersController < ApplicationController
 
     # get and paginate the posts associated to the specified user
     @projects = @user.projects.paginate(page: params[:page], per_page: 10)
-    @projects_friends = findProjects_Friends if signed_in?
+    @projects_progress = findProjects_progress if signed_in?
+    @projects_personalComplete = findPersonalProjects_complete
+    @projects_personalFinanced = findPersonalProjects_financed
+
   end
 
   def new
@@ -135,11 +138,19 @@ class UsersController < ApplicationController
       redirect_to root_path unless current_user.admin?
     end
 
-  def findProjects_Friends
+  def findProjects_progress
 
-    puts current_user.id
-    Project.find_by_sql(["SELECT * FROM projects WHERE data_fine > current_timestamp AND user_id IN(SELECT followed_id FROM relationships WHERE follower_id = ?) ORDER BY data_fine",current_user.id])
+    Project.find_by_sql(["SELECT * FROM projects WHERE data_fine > current_timestamp AND user_id = ? ORDER BY data_fine",current_user.id])
 
   end
 
+  def findPersonalProjects_complete
+
+    Project.find_by_sql(["SELECT * FROM projects WHERE data_fine < current_timestamp AND user_id = ? AND budget_attuale > goal ORDER BY budget_attuale DESC",current_user.id])
+  end
+
+  def findPersonalProjects_financed
+
+    Project.find_by_sql(["SELECT * FROM projects WHERE id IN(SELECT project_id FROM backers b, contributions c WHERE b.user_id = ? AND b.contribution_id = c.id) ORDER BY data_fine",current_user.id])
+    end
 end

@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   # check if the user is logged in (e.g., for editing only his information)
-  before_filter :signed_in_user, only: [:edit, :update, :index, :destroy]
+  before_filter :signed_in_user, only: [:edit, :update, :index, :destroy, :show]
   # check if the current user is the correct user (e.g., for editing only his information)
   before_filter :correct_user, only: [:edit, :update]
   # check if the current user is also an admin
@@ -14,10 +14,17 @@ class ProjectsController < ApplicationController
 
   def show
 
-    @user = current_user
+
     @project = Project.find(params[:id])
+
     @contributions = @project.contributions
     @backer = Backer.new
+    @username = @project.user.name
+
+        #User.find_by_sql(["SELECT name FROM users WHERE id = ?",@project.user.id])
+    @user = @project.user
+        #User.find_by_sql(["SELECT * FROM users WHERE id = ?",@project.user.id])
+    @u
   end
 
   def index

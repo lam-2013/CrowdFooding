@@ -17,6 +17,7 @@
                   <div class="row-fluid" id="info" >
                     <div class="span6">
                     <h1><%=link_to project.titolo ,project%> </h1>
+                    <h3><%= link_to project.user.name, project.user %></h3>
                     </div>
                     <div class="span6">
                     <p> Città:<%= project.luogo %>       </p>

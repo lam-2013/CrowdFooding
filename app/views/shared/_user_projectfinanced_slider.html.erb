@@ -1,0 +1,70 @@
+
+<div id="myCarouseltab<%= @projectcat%>" class="carousel slide" data-interval="4000" data-pause="hover">
+  <div class="carousel-inner" >
+    <% if @projects_personalFinanced.any? %>
+        <%  @projects_personalFinanced.each do |project|  %>
+            <% if  @projects_personalFinanced.first == project %>
+                <div class="active item <%= project.id %>">
+            <% else %>
+                <div class="item <%= project.id %>">
+            <% end %>
+
+            <div class="carousel-cation">
+              <ol class="projects">
+
+                <div class="row-fluid" id="padre" >
+
+                  <div class="row-fluid" id="info" >
+                    <div class="span6">
+                      <h2><%=link_to project.titolo ,project%> </h2>
+                    </div>
+                    <div class="span6">
+                      <p> Città:<%= project.luogo %>       </p>
+                    </div>
+                  </div>
+
+                  <div class="row-fluid" id="desc">
+                    <div class="span6 offset1">
+                      <%=link_to image_tag(project.img_copertina), project%>
+                    </div>
+                    <div class="span4">
+                      <p>Di cosa si tratta?  </p>
+                      <p><%= project.descrizione %>   </p>
+                    </div>
+                  </div>
+
+                  <div class="row-fluid" id="barre" >
+                    <div class="span8 offset2">
+                      <p style="text-align: left">budget attuale: <%= project.budget_attuale %><p>
+                      <div class="progress progress-success progress-striped active">
+                        <%if (project.budget_attuale * 100 / project.goal > 100) %>
+                            <div class="bar" style="width: 100%;"></div>
+                        <% else %>
+                            <div class="bar" style="width: <%= project.budget_attuale * 100 / project.goal %>%;"></div>
+                        <% end %>
+                      </div>
+                      <p style="text-align: right">goal <%= project.goal %><p>
+                      <div class="progress progress-info progress">
+
+                        <%if (project.data_fine > Time.zone.now) %>
+                            <div class="bar" style="width: 100%;"></div>
+                        <% else %>
+                            <div class="bar" style="width: <%= 100-((project.data_fine- Time.zone.now)/1.day).to_i * 100 / 28 %>%;"></div>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ol>
+            </div>
+            </div>
+
+        <% end %>
+    <% end %>
+
+    </div>
+    <a class="carousel-control left" href="#myCarouseltab<%=@projectcat%>" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarouseltab<%=@projectcat%>" data-slide="next">&rsaquo;</a>
+  </div>
+
+</div>

@@ -13,8 +13,8 @@ class UsersController < ApplicationController
     # get and paginate the posts associated to the specified user
     @projects = @user.projects.paginate(page: params[:page], per_page: 10)
     @projects_progress = findProjects_progress if signed_in?
-    @projects_personalComplete = findPersonalProjects_complete
-    @projects_personalFinanced = findPersonalProjects_financed
+    @projects_personalComplete = findPersonalProjects_complete    if signed_in?
+    @projects_personalFinanced = findPersonalProjects_financed    if signed_in?
 
   end
 

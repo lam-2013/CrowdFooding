@@ -48,7 +48,9 @@ SWorD::Application.routes.draw do
 
   resources :contributions
 
-  resource :backers
+  resources :backers
+
+  resources :search
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

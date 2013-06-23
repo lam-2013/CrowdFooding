@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+#gemma per creare form semantici
+gem "formtastic", :git => "git://github.com/justinfrench/formtastic.git", :branch => "2-0-stable"
+
+
 gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:

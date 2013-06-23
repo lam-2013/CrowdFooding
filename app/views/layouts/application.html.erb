@@ -8,25 +8,29 @@
   <%= csrf_meta_tags %>
   <% # partial for the HTML shim %>
   <%= render 'layouts/shim'%>
+
+  <%= stylesheet_link_tag 'formtastic', 'my_formtastic_changes' %>
+  <!--[if IE 6]><%= stylesheet_link_tag 'formtastic_ie6' %><![endif]-->
+  <!--[if IE 7]><%= stylesheet_link_tag 'formtastic_ie7' %><![endif]-->
 </head>
 <body>
-  <% # partial for the header %>
-  <%= render 'layouts/header' %>
+<% # partial for the header %>
+<%= render 'layouts/header' %>
 
-  <div class="container-fluid">
-    <% # the flash message; it supports different type of communications %>
-    <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-    <% end %>
+<div class="container-fluid">
+  <% # the flash message; it supports different type of communications %>
+  <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
 
-    <%= yield %>
+  <%= yield %>
 
-    <% # partial for the footer %>
-    <%= render 'layouts/footer' %>
+  <% # partial for the footer %>
+  <%= render 'layouts/footer' %>
 
-    <% # show debug info if development is the actve Rails env %>
-    <%= debug(params) if Rails.env.development? %>
-  </div>
+  <% # show debug info if development is the actve Rails env %>
+  <%= debug(params) if Rails.env.development? %>
+</div>
 
 </body>
 </html>

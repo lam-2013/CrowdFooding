@@ -4,7 +4,7 @@ class Contribution < ActiveRecord::Base
   belongs_to :projects
   has_one :project
 
-  default_scope order: 'contributions.created_at DESC'
+  default_scope order: 'contributions.quota, contributions.project_id  DESC'
 
   validates :project_id, presence: true
 

@@ -24,7 +24,6 @@ class Project < ActiveRecord::Base
   # only content must be accessible, in order to avoid manual (and wrong) associations between posts and users
   attr_accessible :titolo, :descrizione, :categoria, :data_creazione, :data_fine,:tags, :images, :videos, :budget_attuale, :goal, :img_copertina, :risorse_umane, :gift ,:luogo
 
-
   has_many :contributions, dependent: :destroy
 
   # each projects belong to a specific user
@@ -47,6 +46,19 @@ class Project < ActiveRecord::Base
   def self.from_users_followed_by(user)
     followed_user_ids = 'SELECT followed_id FROM relationships WHERE follower_id = :user_id'
     where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", user_id: user.id)
+  end
+
+  def self.search(search, args = {})
+    self.build_search_hash search, args
+    self.paginate(:all, @search_hash)
+  end
+
+  private
+  def self.build_search_hash(search, args = {})
+    @search_hash = {:conditions => search.conditions,
+                    :page => args[:page],
+                    :per_page => args[:per_page],
+                    :order => 'projects.created_at'}
   end
 
 end

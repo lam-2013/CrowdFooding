@@ -5,7 +5,7 @@ class BackersController < ApplicationController
 
 
   def create
-    session[:return_to] ||= request.referer
+
     @backer = Backer.new(contribution_id:params[:backer][:contribution_id],
                          user_id:params[:backer][:user_id])
 
@@ -17,12 +17,12 @@ class BackersController < ApplicationController
 
       flash[:success] = 'Finanziato!'
 
-      redirect_to session[:return_to]
+      redirect_to project_path(params[:backer][:project_id])
 
     else
       flash[:error] = 'Non finanziato!'
 
-      redirect_to session[:return_to]
+      redirect_to project_path(params[:backer][:project_id])
     end
   end
 

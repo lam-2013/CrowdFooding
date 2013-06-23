@@ -21,8 +21,11 @@
                 <td><%= contribution.quota %></td>
                 <td><%= contribution.servizio %></td>
                 <td><%= contribution.numero %></td>
+
                 <% if !current_user.nil? %>
-                    <td><%= b.submit 'Finanzia', class: 'btn btn-primary' %></td>
+                    <%  if @project.data_fine > Time.now %>
+                        <td><%= b.submit 'Finanzia', class: 'btn btn-primary' %></td>
+                    <% end %>
                 <% end %>
             <% end %>
         <% end %>

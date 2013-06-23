@@ -51,16 +51,26 @@
       </div>
     </div>
 
-    <% if signed_in? %>
-        <div class="row-fluid">
-          <div class="span8 offset2">
-            <h2> Friends Projects </h2>
-            <% @projectcat = 4 %>
-            <% @projects_friends  %>
-            <%= render 'shared/project_friends_slider' %>
-          </div>
+
+    <div class="row-fluid">
+      <div class="span8 offset2">
+        <h2> Friends Projects </h2>
+        <% @projectcat = 4 %>
+        <% @projects_friends  %>
+        <% if signed_in? %>
+            <% if !current_user.followers.nil? %>
+                <%= render 'shared/project_friends_slider' %>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+    <% if !signed_in? %>
+        <div class="center hero-unit">
+          <%= link_to 'Sign in!',  signin_path, class: 'btn btn-large btn-warning' %>
         </div>
     <% end %>
+
+
   </div>
 </div>
 

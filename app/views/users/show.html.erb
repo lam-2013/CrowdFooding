@@ -107,7 +107,7 @@
 
           <div class="tab-pane active" id="tab1">
 
-
+            <% @projectcat= 1 %>
             <% @projects_progress %>
             <%= render 'shared/user_projectprogress_slider' %>
 
@@ -115,7 +115,7 @@
 
           <div class="tab-pane" id="tab2">
 
-
+            <% @projectcat= 2 %>
             <%  @projects_personalFinanced %>
             <%= render 'shared/user_projectfinanced_slider' %>
 
@@ -123,11 +123,12 @@
 
           <div class="tab-pane" id="tab3">
 
-
+            <% @projectcat= 3 %>
             <% @projects_personalComplete %>
             <%= render 'shared/user_projectcomplete_slider' %>
 
           </div>
+
         </div>
       </div>
     </div>

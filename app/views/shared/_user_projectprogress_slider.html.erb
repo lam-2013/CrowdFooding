@@ -1,7 +1,7 @@
+<% if @projects_progress.any? %>
+    <div id="myCarouseltab<%= @projectcat%>" class="carousel slide" data-interval="4000" data-pause="hover">
+      <div class="carousel-inner" >
 
-<div id="myCarouseltab<%= @projectcat%>" class="carousel slide" data-interval="4000" data-pause="hover">
-  <div class="carousel-inner" >
-    <% if @projects_progress.any? %>
         <%  @projects_progress.each do |project|  %>
             <% if @projects_progress.first == project %>
                 <div class="active item <%= project.id %>">
@@ -16,11 +16,11 @@
 
                   <div class="row-fluid" id="info" >
                     <div class="span6">
-                    <h2><%=link_to project.titolo ,project%> </h2>
+                      <h2><%=link_to project.titolo ,project%> </h2>
                     </div>
                     <div class="span6">
-                    <p> Città:<%= project.luogo %>       </p>
-                     </div>
+                      <p> Città:<%= project.luogo %>       </p>
+                    </div>
                   </div>
 
                   <div class="row-fluid" id="desc">
@@ -29,42 +29,41 @@
                     </div>
                     <div class="span4">
                       <p>Di cosa si tratta?  </p>
-                    <p><%= project.descrizione %>   </p>
+                      <p><%= project.descrizione %>   </p>
                     </div>
                   </div>
 
                   <div class="row-fluid" id="barre" >
                     <div class="span8 offset2">
-                    <p style="text-align: left">budget attuale: <%= project.budget_attuale %><p>
-                    <div class="progress progress-success progress-striped active">
-                      <div class="bar" style="width: 100%;"></div>
+                      <p style="text-align: left">budget attuale: <%= project.budget_attuale %><p>
+                      <div class="progress progress-success progress-striped active">
+                        <div class="bar" style="width: 100%;"></div>
 
-                      <%if (10 * 100 / project.goal > 100) %>
-                          <div class="bar" style="width: 100%;"></div>
-                      <% else %>
-                          <div class="bar" style="width: <%= 10 * 100 / project.goal %>%;"></div>
-                      <% end %>
-                    </div>
-                    <p style="text-align: right">goal <%= project.goal %><p>
+                        <%if (10 * 100 / project.goal > 100) %>
+                            <div class="bar" style="width: 100%;"></div>
+                        <% else %>
+                            <div class="bar" style="width: <%= 10 * 100 / project.goal %>%;"></div>
+                        <% end %>
+                      </div>
+                      <p style="text-align: right">goal <%= project.goal %><p>
                       hai ancora <%=  ((project.data_fine-Time.zone.now)/1.day).to_i %> giorni
-                    <div class="progress progress-danger progress">
-                      <div class="bar" style="width: <%= 100-((project.data_fine- Time.zone.now)/1.day).to_i * 100 / 28 %>%;"></div>
+                      <div class="progress progress-danger progress">
+                        <div class="bar" style="width: <%= 100-((project.data_fine- Time.zone.now)/1.day).to_i * 100 / 28 %>%;"></div>
+                      </div>
                     </div>
-                     </div>
                   </div>
-
                 </div>
 
               </ol>
-            </div>
-            </div>
 
+            </div>
+            </div>
         <% end %>
-    <% end %>
 
-    </div>
-    <a class="carousel-control left" href="#myCarouseltab<%=@projectcat%>" data-slide="prev">&lsaquo;</a>
-    <a class="carousel-control right" href="#myCarouseltab<%=@projectcat%>" data-slide="next">&rsaquo;</a>
-  </div>
+        <a class="carousel-control left" href="#myCarouseltab<%=@projectcat%>" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#myCarouseltab<%=@projectcat%>" data-slide="next">&rsaquo;</a>
 
-</div>
+        </div>
+
+      </div>
+<% end %>

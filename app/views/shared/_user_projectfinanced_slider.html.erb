@@ -1,7 +1,9 @@
+<% if @projects_personalFinanced.any? %>
+    <div id="myCarouseltab<%= @projectcat%>" class="carousel slide" data-interval="4000" data-pause="hover">
 
-<div id="myCarouseltab<%= @projectcat%>" class="carousel slide" data-interval="4000" data-pause="hover">
-  <div class="carousel-inner" >
-    <% if @projects_personalFinanced.any? %>
+      <div class="carousel-inner" >
+
+
         <%  @projects_personalFinanced.each do |project|  %>
             <% if  @projects_personalFinanced.first == project %>
                 <div class="active item <%= project.id %>">
@@ -10,6 +12,7 @@
             <% end %>
 
             <div class="carousel-cation">
+
               <ol class="projects">
 
                 <div class="row-fluid" id="padre" >
@@ -55,16 +58,17 @@
                     </div>
                   </div>
                 </div>
+
               </ol>
-            </div>
-            </div>
 
+            </div>
+            </div>
         <% end %>
-    <% end %>
 
-    </div>
-    <a class="carousel-control left" href="#myCarouseltab<%=@projectcat%>" data-slide="prev">&lsaquo;</a>
-    <a class="carousel-control right" href="#myCarouseltab<%=@projectcat%>" data-slide="next">&rsaquo;</a>
-  </div>
 
-</div>
+        <a class="carousel-control left" href="#myCarouseltab<%=@projectcat%>" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#myCarouseltab<%=@projectcat%>" data-slide="next">&rsaquo;</a>
+        </div>
+
+      </div>
+<% end %>

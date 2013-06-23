@@ -1,7 +1,7 @@
+<% if @projects_personalComplete.any? %>
+    <div id="myCarouseltab<%= @projectcat%>" class="carousel slide" data-interval="4000" data-pause="hover">
+      <div class="carousel-inner" >
 
-<div id="myCarouseltab<%= @projectcat%>" class="carousel slide" data-interval="4000" data-pause="hover">
-  <div class="carousel-inner" >
-    <% if @projects_personalComplete.any? %>
         <%  @projects_personalComplete.each do |project|  %>
             <% if @projects_personalComplete.first == project %>
                 <div class="active item <%= project.id %>">
@@ -54,19 +54,18 @@
                       </div>
                     </div>
                   </div>
-
                 </div>
+
 
               </ol>
             </div>
             </div>
 
         <% end %>
-    <% end %>
 
-    </div>
-    <a class="carousel-control left" href="#myCarouseltab<%=@projectcat%>" data-slide="prev">&lsaquo;</a>
-    <a class="carousel-control right" href="#myCarouseltab<%=@projectcat%>" data-slide="next">&rsaquo;</a>
-  </div>
+        <a class="carousel-control left" href="#myCarouseltab<%=@projectcat%>" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#myCarouseltab<%=@projectcat%>" data-slide="next">&rsaquo;</a>
+        </div>
 
-</div>
+      </div>
+<% end %>

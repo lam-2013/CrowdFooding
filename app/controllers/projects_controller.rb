@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
 
 
   def new
-    @project = Project.new(data_creazione: Time.now, data_fine: Time.now + 2.months)
+    @project = Project.new(data_creazione: Time.now, data_fine: Time.now + 4.weeks)
   end
 
   def show
@@ -28,6 +28,9 @@ class ProjectsController < ApplicationController
   def create
     # build a new project from the information contained in the "new project" form
     @project = current_user.projects.new(params[:project])
+    @project.budget_attuale=0
+    @project.save
+
     if @project.save
       flash[:success] = 'Project created!'
       redirect_to @project

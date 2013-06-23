@@ -140,17 +140,17 @@ class UsersController < ApplicationController
 
   def findProjects_progress
 
-    Project.find_by_sql(["SELECT * FROM projects WHERE data_fine > current_timestamp AND user_id = ? ORDER BY data_fine",current_user.id])
+    Project.find_by_sql(["SELECT * FROM projects WHERE data_fine > current_timestamp AND user_id = ? ORDER BY data_fine",@user.id])
 
   end
 
   def findPersonalProjects_complete
 
-    Project.find_by_sql(["SELECT * FROM projects WHERE data_fine < current_timestamp AND user_id = ? AND budget_attuale > goal ORDER BY budget_attuale DESC",current_user.id])
+    Project.find_by_sql(["SELECT * FROM projects WHERE data_fine < current_timestamp AND user_id = ? AND budget_attuale > goal ORDER BY budget_attuale DESC", @user.id])
   end
 
   def findPersonalProjects_financed
 
-    Project.find_by_sql(["SELECT * FROM projects WHERE id IN(SELECT project_id FROM backers b, contributions c WHERE b.user_id = ? AND b.contribution_id = c.id) ORDER BY data_fine",current_user.id])
+    Project.find_by_sql(["SELECT * FROM projects WHERE id IN(SELECT project_id FROM backers b, contributions c WHERE b.user_id = ? AND b.contribution_id = c.id) ORDER BY data_fine", @user.id])
     end
 end

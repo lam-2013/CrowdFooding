@@ -36,21 +36,40 @@
 
                   <div class="row-fluid" id="barre" >
                     <div class="span8 offset2">
-                    <p style="text-align: left">budget attuale: <%= project.budget_attuale %><p>
-                    <div class="progress progress-success progress-striped active">
-                      <%if (project.budget_attuale * 100 / project.goal > 100) %>
-                         <div class="bar" style="width: 100%;"></div>
+                      <p style="text-align: left">budget attuale: <%= project.budget_attuale %><p>
+                      <div class="progress progress-success progress-striped active">
+                        <%if (project.budget_attuale * 100 / project.goal > 100) %>
+                            <div class="bar" style="width: 100%;"></div>
+                        <% else %>
+                            <div class="bar" style="width: <%= project.budget_attuale * 100 / project.goal %>%;"></div>
+                        <% end %>
+                      </div>
+                      <p style="text-align: right">goal <%= project.goal %><p>
+                      tempo rimanente:
+                      <% giorni_rimanenti = ((project.data_fine- Time.zone.now)/1.day).to_i %>
+                      <% ore_rimanenti = ((project.data_fine- Time.zone.now)/1.hours).to_i %>
+                      <% minuti_rimanenti = ((project.data_fine- Time.zone.now)/1.minutes).to_i %>
+                      <% secondi_rimanenti = ((project.data_fine- Time.zone.now)/1.seconds).to_i %>
+                      <% if giorni_rimanenti <= 1 %>
+                          <% if ore_rimanenti <= 1 %>
+                              <% if minuti_rimanenti <= 1 %>
+                                   <%= secondi_rimanenti %>   s
+                              <%else%>
+                                   <%= minuti_rimanenti /24 %> :
+                                   <%= secondi_rimanenti /60 %>  (m:s)
+                              <%end%>
+                          <% else %>
+                                    <%= ore_rimanenti %> :
+                                    <%= minuti_rimanenti / 24 %> (h:m)
+                          <% end %>
                       <% else %>
-                         <div class="bar" style="width: <%= project.budget_attuale * 100 / project.goal %>%;"></div>
+                         <%=  giorni_rimanenti %> giorni
                       <% end %>
-                    </div>
-                    <p style="text-align: right">goal <%= project.goal %><p>
+                      <div class="progress progress-danger progress-striped active">
+                        <div class="bar" style="width: <%= 100-ore_rimanenti * 100 / 672 %>%;"></div>
+                      </div>
 
-                    hai ancora <%=  ((project.data_fine- Time.zone.now)/1.day).to_i %> giorni
-                  <div class="progress progress-warning progress-striped active">
-                        <div class="bar" style="width: <%= 100-((project.data_fine- Time.zone.now)/1.day).to_i * 100 / 28 %>%;"></div>
-                  </div>
-                   </div>
+                    </div>
                   </div>
                 </div>
               </ol>

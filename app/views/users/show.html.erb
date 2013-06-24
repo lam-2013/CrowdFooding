@@ -16,17 +16,12 @@
       <section>
         <%= render 'shared/user_info' %>
       </section>
-    </div>
-
-    <div class="span3">
-      <section>
+        <div class="span 4 offset6">
         <%= render 'shared/stats' %>
-      </section>
-    </div>
-    <div class="span3 offset1">
-      <section>
-        <%= render 'follow_form' if signed_in? %>
-      </section>
+        </div>
+        <div class=" span 8 offset2">
+      <%= render 'follow_form' if signed_in? %>
+        </div>
     </div>
 
   </div>
@@ -95,7 +90,7 @@
 
   <div class="row-fluid">
 
-    <div class="span8 offset2">
+    <div class="span10 offset1">
       <div class="tabbable">
         <ul class="nav nav-tabs">
           <li class="active"><a href="#tab1" data-toggle="tab">Progetti in corso</a></li>

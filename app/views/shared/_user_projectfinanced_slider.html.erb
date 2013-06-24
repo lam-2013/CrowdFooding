@@ -39,7 +39,7 @@
 
                   <div class="row-fluid" id="barre" >
                     <div class="span8 offset2">
-                      <p style="text-align: left">budget attuale: <%= project.budget_attuale %><p>
+                      <p style="text-align: left">Budget attuale: <%= project.budget_attuale %> € <p>
                       <div class="progress progress-success progress-striped active">
                         <%if (project.budget_attuale * 100 / project.goal > 100) %>
                             <div class="bar" style="width: 100%;"></div>
@@ -47,7 +47,7 @@
                             <div class="bar" style="width: <%= project.budget_attuale * 100 / project.goal %>%;"></div>
                         <% end %>
                       </div>
-                      <p style="text-align: right">goal <%= project.goal %><p>
+                      <p style="text-align: right">Goal <%= project.goal %> €<p>
 
 
                       <%if (project.data_fine < Time.zone.now) %>

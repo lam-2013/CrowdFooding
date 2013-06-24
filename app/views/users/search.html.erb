@@ -2,14 +2,21 @@
 <% provide :title, 'Search results' %>
 
 <h1><%= page_entries_info @users %></h1>
+<div class="row-fluid">
+  <div class="span6 center offset3">
+    <h3>Cerca gli utenti</h3>
+    <p style="text-align: center"> <%= render 'users/search_form' %>    </p>
 
-<%= will_paginate %>
+    <%= will_paginate %>
 
-<ul class="users">
-  <%= render @users %>
-</ul>
+    <ul class="users">
+      <%= render @users %>
+    </ul>
 
-<%= will_paginate %>
+    <%= will_paginate %>
 
 
-<%=  link_to 'Torna indietro', users_path  %>
+    <%=  link_to 'Torna indietro', users_path  %>
+
+  </div>
+</div>

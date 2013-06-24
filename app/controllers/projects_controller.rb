@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-
   # check if the user is logged in (e.g., for editing only his information)
   before_filter :signed_in_user, only: [:edit, :update, :index, :destroy, :show]
   # check if the current user is the correct user (e.g., for editing only his information)
@@ -13,6 +12,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+
 
     @backer_numbers = count_backer(params[:id])
     @project = Project.find(params[:id])

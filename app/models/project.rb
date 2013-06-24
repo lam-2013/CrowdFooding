@@ -50,7 +50,7 @@ class Project < ActiveRecord::Base
 
   def self.search(search)
     if search
-      where('titolo LIKE ? or categoria LIKE ? or luogo LIKE ?', "%#{search}%","%#{search}%","%#{search}%")
+      where('titolo LIKE ? or categoria LIKE ? or luogo LIKE ? or tags LIKE ?', "%#{search}%","%#{search}%","%#{search}%","%#{search}%")
     else
       scoped # return an empty result set
     end

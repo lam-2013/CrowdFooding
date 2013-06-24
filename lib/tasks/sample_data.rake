@@ -57,6 +57,7 @@ def make_projects
   categoria=["ART & ENTERTAINMENT","LIFESTYLE & TECHNOLOGY","SOCIAL INNOVATION","EVENTI","FOOD"]
   budget=[10,20,30,40,50,60,70,80,90,100,200,300,400,500,600,700,1000,1500,2000,2500,3000,3500,4000]
   goal=[100,200,300,400,500,600,700,1000,1500,2000]
+  videos=["http://www.youtube.com/watch?v=-38uPkyH9vI","http://www.youtube.com/watch?v=3lQoe9GlYWU","http://www.youtube.com/watch?v=OI-bTpbkH4Y"]
   r = Random.new
   users = User.all
   10.times do
@@ -69,6 +70,7 @@ def make_projects
       project_categoria = categoria[r.rand(categoria.size)]
       contributions_servizio = Faker::Lorem.sentence(2)
       project_goal = goal[r.rand(goal.size)]
+      video = videos[r.rand(videos.size)]
       project_budget_attuale = budget[r.rand(budget.size)]
       project_tags = '1,2,3,4,5'
       project_data_creazione = time_rand Time.local(2013, 6, 1), Time.now
@@ -79,6 +81,7 @@ def make_projects
                             descrizione: project_descrizione,
                             categoria: project_categoria,
                             img_copertina: 'copertine_projects'.concat('/copertina1.jpg'),
+                            videos: video,
                             tags: project_tags,
                             data_creazione: project_data_creazione,
                             data_fine: project_data_fine,

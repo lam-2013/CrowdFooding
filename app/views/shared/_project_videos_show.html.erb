@@ -1,0 +1,22 @@
+<% if !@project.videos.nil? %>
+    <% video = @project.videos %>
+    <% videos = video.split(',') %>
+    <h3>Video</h3>
+    <% videos.each{ |v|
+      url =v.split('v=').last%>
+
+
+            <div class= "video-wrapper">
+              <div class="video-container">
+                <% if v.include? 'youtube' %>
+                    <iframe type="text/html"  src="http://www.youtube.com/embed/<%=url%>" frameborder="0"></iframe>
+                <% else %>
+                    <iframe src="http://player.vimeo.com/video/6284199?title=0&byline=0&portrait=0" width="10%" height="10%" frameborder="0"></iframe>
+                <% end %>
+              </div>
+              <!– /video –>
+            </div>
+            <!– /video-wrapper –>
+
+    <% } %>
+<% end %>

@@ -3,7 +3,14 @@
   <%= gravatar_for @user, size: 100 %>
 </a>
 
-<% # current user name, link to her profile and her posts number %>
+<div class="progress">
+  <div class="bar bar-success" style="width: 35%;"></div>
+  <div class="bar bar-warning" style="width: 20%;"></div>
+  <div class="bar bar-danger" style="width: 10%;"></div>
+</div>
+
+
+<% # current user name, link to her profile and her projects number %>
 
       <h2><%=@user.name%></h2>
   <% unless @user.cognome.nil? %>

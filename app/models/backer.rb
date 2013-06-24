@@ -3,6 +3,5 @@ class Backer < ActiveRecord::Base
 
   validates :contribution_id, :user_id, presence: true
 
-
   default_scope order: 'user_id.created_at DESC'
 end

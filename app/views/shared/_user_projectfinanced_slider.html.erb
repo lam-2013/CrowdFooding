@@ -55,26 +55,56 @@
                             <div class="bar" style="width: 100%;"></div>
                           </div>
                       <% else %>
-                          tempo rimanente:
-                          <% giorni_rimanenti = ((project.data_fine- Time.zone.now)/1.day).to_i %>
+                          <% dif = distance_of_time_in_words(Time.now, project.data_fine, include_seconds = true) %>
+                          <% dif.to_s
+                             if dif.include? 'day'
+                               dif.sub!('day','giorno')
+                             end
+                             if dif.include? 'giornos'
+                               dif.sub!('giornos','giorni')
+                             end
+                             if dif.include? 'about'
+                               dif.sub!('about','circa')
+                             end
+                             if dif.include? 'hour'
+                               dif.sub!('hour','ora')
+                             end
+                             if dif.include? 'oras'
+                               dif.sub!('oras','ore')
+                             end
+                             if dif.include? 'less than a minute'
+                               dif.sub!('less than a minute','meno di un minuto')
+                             end
+                             if dif.include? 'less than'
+                               dif.sub!('less than','meno di')
+                             end
+                             if dif.include? 'minute'
+                               dif.sub!('minute','minuto')
+                             end
+                             if dif.include? 'minutos'
+                               dif.sub!('minutos','minuti')
+                             end
+                             if dif.include? 'year'
+                               dif.sub!('year','anno')
+                             end
+                             if dif.include? 'annos'
+                               dif.sub!('annos','anni')
+                             end
+                             if dif.include? 'month'
+                               dif.sub!('month','mese')
+                             end
+                             if dif.include? 'meses'
+                               dif.sub!('meses','mesi')
+                             end
+                             if dif.include? 'half a'
+                               dif.sub!('half a','mezzo')
+                             end%>
+
+
+                          tempo rimanente: <%= dif %>
+
                           <% ore_rimanenti = ((project.data_fine- Time.zone.now)/1.hours).to_i %>
-                          <% minuti_rimanenti = ((project.data_fine- Time.zone.now)/1.minutes).to_i %>
-                          <% secondi_rimanenti = ((project.data_fine- Time.zone.now)/1.seconds).to_i %>
-                          <% if giorni_rimanenti <= 1 %>
-                              <% if ore_rimanenti <= 1 %>
-                                  <% if minuti_rimanenti <= 1 %>
-                                      <%= secondi_rimanenti %>   s
-                                  <%else%>
-                                      <%= minuti_rimanenti /24 %> :
-                                      <%= secondi_rimanenti /60 %>  (m:s)
-                                  <%end%>
-                              <% else %>
-                                  <%= ore_rimanenti %> :
-                                  <%= minuti_rimanenti / 24 %> (h:m)
-                              <% end %>
-                          <% else %>
-                              <%=  giorni_rimanenti %> giorni
-                          <% end %>
+
                           <div class="progress progress-danger progress-striped active">
                             <div class="bar" style="width: <%= 100-ore_rimanenti * 100 / 672 %>%;"></div>
                           </div>

@@ -14,17 +14,13 @@ class ProjectsController < ApplicationController
 
   def show
 
-
+    @backer_numbers = count_backer(params[:id])
     @project = Project.find(params[:id])
-
     @contributions = @project.contributions
     @backer = Backer.new
     @username = @project.user.name
-
-        #User.find_by_sql(["SELECT name FROM users WHERE id = ?",@project.user.id])
     @user = @project.user
-        #User.find_by_sql(["SELECT * FROM users WHERE id = ?",@project.user.id])
-    @u
+
   end
 
   def index
@@ -71,6 +67,10 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     redirect_to current_user
+  end
+
+  def count_backer(id)
+    Backer.count_by_sql(["SELECT COUNT(DISTINCT user_id) FROM backers b, contributions c WHERE b.contribution_id = c.id AND c.project_id = ?",id])
   end
 
   private

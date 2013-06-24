@@ -2,7 +2,7 @@
 <% provide :title, 'Scopri i Progetti' %>
 <div class="container-fluid">
   <div class="row-fluid">
-    <% if signed_in? %>
+
 
     <aside class="span3">
       <section>
@@ -14,14 +14,7 @@
       </section>
     </aside>
 
-    <% else %>
-    <aside>
-      <h1>CrowdFooding</h1>
-      <%= link_to 'Sign up now!', signup_path, class: 'btn btn-large btn-warning' %>
-      <%= link_to "Sign up with Twitter", signup_path(provider: 'twitter'), class: "btn btn-large btn-info" %>
-      <%= link_to "Sign up with Facebook", signup_path(provider: 'facebook'), class: "btn btn-large btn-success" %>
-    </aside>
-    <% end %>
+
 
       <section>
       <div class="span8 center">
@@ -72,10 +65,5 @@
     </div>
   </div>
 
-  <% if !signed_in? %>
-      <div class="center hero-unit">
-        <%= link_to 'Sign in!',  signin_path, class: 'btn btn-large btn-warning' %>
-      </div>
-  <% end %>
 
 </div>

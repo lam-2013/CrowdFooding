@@ -16,7 +16,7 @@ SWorD::Application.routes.draw do
   match '/editproject', to:'projects#edit'
   match '/crea' ,to: 'projects#new'
   match '/scopri' ,to: 'projects#index'
-
+  match '/search_projects', to: 'projects#search_projects'
 
   match '/auth/:provider/callback', to: 'users#new'
 
@@ -41,7 +41,11 @@ SWorD::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   # default routes for the Projects controller (only create and destroy - other operations will be done via the Users controlelr)
-  resources :projects
+  resources :projects do
+    collection do
+      get :search
+    end
+  end
 
   # default routes for the Relationship controller (only create and destroy) - needed to build follow/unfollow relations
   resources :relationships, only: [:create, :destroy]
@@ -50,7 +54,6 @@ SWorD::Application.routes.draw do
 
   resources :backers
 
-  resources :search
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

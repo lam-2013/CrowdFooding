@@ -69,6 +69,10 @@ class ProjectsController < ApplicationController
     redirect_to current_user
   end
 
+  def search_projects
+    @projects = Project.search(params[:search]).paginate(page: params[:page])
+  end
+
   def count_backer(id)
     Backer.count_by_sql(["SELECT COUNT(DISTINCT user_id) FROM backers b, contributions c WHERE b.contribution_id = c.id AND c.project_id = ?",id])
   end

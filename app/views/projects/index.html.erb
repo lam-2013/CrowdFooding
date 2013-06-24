@@ -1,7 +1,8 @@
 <% #Provide the page title in a symbol to application.html.erb to avoid duplication %>
 <% provide :title, 'Scopri i Progetti' %>
-
 <h1>Scopri nuovi Progetti</h1>
+
+
 
 
 
@@ -26,28 +27,36 @@
 <% end %>
 <% if signed_in? %>
     <div class="row-fluid">
+      <div class="span6 center offset3">
 
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h2>Most Recently Successfully funded projects    </h2>
-          <% @projectcat = 1 %>
-          <%= render 'shared/project_slider' %>
-        </div>
+        <h3>Cerca i progetti</h3>
+        <h5>in base al luogo alla categoria o al titolo del progetto</h5>
+        <%= render 'projects/search_projects_form' %>
       </div>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h2> Popular projects   </h2>
-          <% @projectcat = 2 %>
-          <%= render 'shared/project_slider' %>
-        </div>
+    </div>
+
+
+    <div class="row-fluid">
+      <div class="span10 offset1">
+        <h2>Most Recently Successfully funded projects    </h2>
+        <% @projectcat = 1 %>
+        <%= render 'shared/project_slider' %>
       </div>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h2> Last started Projects     </h2>
-          <% @projectcat = 3 %>
-          <%= render 'shared/project_slider' %>
-        </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span10 offset1">
+        <h2> Popular projects   </h2>
+        <% @projectcat = 2 %>
+        <%= render 'shared/project_slider' %>
       </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span10 offset1">
+        <h2> Last started Projects     </h2>
+        <% @projectcat = 3 %>
+        <%= render 'shared/project_slider' %>
+      </div>
+    </div>
 <% end %>
 <% if signed_in? %>
     <div class="row-fluid">

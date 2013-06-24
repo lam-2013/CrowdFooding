@@ -48,17 +48,12 @@ class Project < ActiveRecord::Base
     where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", user_id: user.id)
   end
 
-  def self.search(search, args = {})
-    self.build_search_hash search, args
-    self.paginate(:all, @search_hash)
-  end
-
-  private
-  def self.build_search_hash(search, args = {})
-    @search_hash = {:conditions => search.conditions,
-                    :page => args[:page],
-                    :per_page => args[:per_page],
-                    :order => 'projects.created_at'}
+  def self.search(search)
+    if search
+      where('titolo LIKE ? or categoria LIKE ? or luogo LIKE ?', "%#{search}%","%#{search}%","%#{search}%")
+    else
+      scoped # return an empty result set
+    end
   end
 
 end

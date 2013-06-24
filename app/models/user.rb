@@ -78,7 +78,7 @@ class User < ActiveRecord::Base
     relationships.find_by_followed_id(other_user.id).destroy
   end
 
-  # get the post to show in the wall
+  # get the projects to show in the wall
   def feed
     Project.from_users_followed_by(self)
   end

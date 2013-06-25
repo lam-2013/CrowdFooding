@@ -9,17 +9,24 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new(data_creazione: Time.now, data_fine: Time.now + 4.weeks)
+    @user=current_user
+    @numberCAT1= findNumberCAT1
+    @numberCAT2= findNumberCAT2
+    @numberCAT3= findNumberCAT3
+    @numberCAT4= findNumberCAT4
+    @numberCAT5= findNumberCAT5
+    @numTotCats=@numberCAT1+@numberCAT2+@numberCAT3+@numberCAT4+@numberCAT5
+
   end
 
   def show
-
-
     @backer_numbers = count_backer(params[:id])
     @project = Project.find(params[:id])
     @contributions = @project.contributions
     @backer = Backer.new
     @username = @project.user.name
     @user = @project.user
+
 
   end
 
@@ -30,6 +37,13 @@ class ProjectsController < ApplicationController
     @projects_in_corso = findProjects_in_corso
     @user = current_user
     @projects = Project.paginate(page: params[:page], per_page: 10)
+    @numberCAT1= findNumberCAT1
+    @numberCAT2= findNumberCAT2
+    @numberCAT3= findNumberCAT3
+    @numberCAT4= findNumberCAT4
+    @numberCAT5= findNumberCAT5
+    @numTotCats=@numberCAT1+@numberCAT2+@numberCAT3+@numberCAT4+@numberCAT5
+
   end
 
   def create
@@ -113,4 +127,36 @@ class ProjectsController < ApplicationController
     Project.find_by_sql(["SELECT * FROM projects WHERE data_fine > current_timestamp AND user_id IN(SELECT followed_id FROM relationships WHERE follower_id = ?) ORDER BY data_fine",current_user.id])
 
   end
+
+  def findNumberCAT1
+
+    Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='ART & ENTERTAINMENT' ", @user.id])
+
+  end
+
+  def findNumberCAT2
+
+    Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='LIFESTYLE & TECHNOLOGY' ", @user.id])
+
+  end
+
+  def findNumberCAT3
+
+    Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='SOCIAL INNOVATION' ", @user.id])
+
+  end
+
+  def findNumberCAT4
+
+    Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='EVENTI' ", @user.id])
+
+  end
+
+  def findNumberCAT5
+
+    Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='FOOD' ", @user.id])
+
+  end
+
+
 end

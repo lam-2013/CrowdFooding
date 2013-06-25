@@ -16,12 +16,12 @@ class UsersController < ApplicationController
     @projects_personalComplete = findPersonalProjects_complete
     @projects_personalFinanced = findPersonalProjects_financed
     @projects_personalAll = findPersonalProjects_all
-
     @numberCAT1= findNumberCAT1
     @numberCAT2= findNumberCAT2
     @numberCAT3= findNumberCAT3
     @numberCAT4= findNumberCAT4
     @numberCAT5= findNumberCAT5
+    @numTotCats=@numberCAT1+@numberCAT2+@numberCAT3+@numberCAT4+@numberCAT5
 
   end
 
@@ -102,6 +102,13 @@ class UsersController < ApplicationController
     @user =current_user
     # get all the users from the database - with pagination
     @users = User.paginate(page: params[:page], per_page: 10)
+    @numberCAT1= findNumberCAT1
+    @numberCAT2= findNumberCAT2
+    @numberCAT3= findNumberCAT3
+    @numberCAT4= findNumberCAT4
+    @numberCAT5= findNumberCAT5
+    @numTotCats=@numberCAT1+@numberCAT2+@numberCAT3+@numberCAT4+@numberCAT5
+
   end
 
   def destroy
@@ -116,14 +123,28 @@ class UsersController < ApplicationController
     @title = 'Following'
     @user = User.find(params[:id])
     @users = @user.followed_users.paginate(page: params[:page])
+    @numberCAT1= findNumberCAT1
+    @numberCAT2= findNumberCAT2
+    @numberCAT3= findNumberCAT3
+    @numberCAT4= findNumberCAT4
+    @numberCAT5= findNumberCAT5
+    @numTotCats=@numberCAT1+@numberCAT2+@numberCAT3+@numberCAT4+@numberCAT5
     render 'show_follow'
+
   end
 
   def followers
     @title = 'Followers'
     @user = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
+    @numberCAT1= findNumberCAT1
+    @numberCAT2= findNumberCAT2
+    @numberCAT3= findNumberCAT3
+    @numberCAT4= findNumberCAT4
+    @numberCAT5= findNumberCAT5
+    @numTotCats=@numberCAT1+@numberCAT2+@numberCAT3+@numberCAT4+@numberCAT5
     render 'show_follow'
+
   end
 
   # Paginated search for users
@@ -168,7 +189,7 @@ class UsersController < ApplicationController
 
   def findNumberCAT1
 
-       Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='ART & ENTERTAINMENT' ", @user.id])
+    Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='ART & ENTERTAINMENT' ", @user.id])
 
   end
 
@@ -180,7 +201,7 @@ class UsersController < ApplicationController
 
   def findNumberCAT3
 
-    Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='SOCIAL INNOVATION ' ", @user.id])
+    Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='SOCIAL INNOVATION' ", @user.id])
 
   end
 

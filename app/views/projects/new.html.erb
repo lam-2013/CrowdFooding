@@ -1,13 +1,24 @@
 <% #Provide the page title in a symbol to application.html.erb to avoid duplication %>
 <% provide :title, 'Crea un nuovo progetto' %>
 <div class="container-fluid">
-  <div class="row-fluid center">
-   <%= image_tag("icone/bulb.png")%>
-   <h1>Crea il tuo progetto</h1>
-  </div>
   <div class="row-fluid">
-<%= render 'shared/project_form' %>
- </div>
+    <aside class="span3">
+      <section>
+        <%= render 'shared/user_info' %>
+        <%= link_to 'View my profile', current_user %>
+      </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+    </aside>
+    <section>
+      <div class="span8 center">
+         <%= image_tag("icone/bulb.png")%>
+         <h1>Crea il tuo progetto</h1>
+         <p>  <%= render 'shared/project_form' %>     </p>
+       </div>
+
+    </section>
 
 </div>
 

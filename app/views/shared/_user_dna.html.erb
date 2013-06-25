@@ -1,0 +1,16 @@
+
+<div class="row-fluid">
+
+  <% @numberCAT1 %>
+  <% @numberCAT2 %>
+  <% @numberCAT3 %>
+  <% @numberCAT4 %>
+  <% @numberCAT5 %>
+  <div class="progress">
+    <div class="bar bar-success" style="width: <%= @numberCAT1*100/@numTotCats%>%;"></div>
+    <div class="bar bar-warning" style="width:<%= @numberCAT2*100/@numTotCats%>% ;"></div>
+    <div class="bar bar-danger" style="width: <%= @numberCAT3*100/@numTotCats%>%;"></div>
+    <div class="bar bar-info" style="width: <%= @numberCAT4*100/@numTotCats%>%;"></div>
+    <div class="bar bar-inverse" style="width: <%= @numberCAT5*100/@numTotCats%>%;"></div>
+  </div>
+</div>

@@ -16,6 +16,12 @@ class UsersController < ApplicationController
     @projects_personalComplete = findPersonalProjects_complete
     @projects_personalFinanced = findPersonalProjects_financed
     @projects_personalAll = findPersonalProjects_all
+    @somma_progetti_creati_finanziati = somma_progetti_creati_finanziati
+
+    @user_finanziamenti_fatti = user_finanziamenti_fatti
+    @somma_quote_denaro_finanziato = somma_quote_denaro_finanziato
+
+
     @numberCAT1= findNumberCAT1
     @numberCAT2= findNumberCAT2
     @numberCAT3= findNumberCAT3
@@ -214,6 +220,24 @@ class UsersController < ApplicationController
   def findNumberCAT5
 
     Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='FOOD' ", @user.id])
+
+  end
+
+  def user_finanziamenti_fatti
+
+    Backer.count_by_sql(["SELECT COUNT(*) FROM backers WHERE user_id = ?", @user.id])
+
+  end
+
+  def somma_quote_denaro_finanziato
+
+    Contribution.count_by_sql(["SELECT SUM(quota) FROM contributions WHERE id IN(SELECT contribution_id FROM backers WHERE user_id = ?)",@user.id])
+
+  end
+
+  def somma_progetti_creati_finanziati
+
+    Project.count_by_sql(["SELECT * FROM projects WHERE id = ? AND budget_attuale >= goal ",@user.id])
 
   end
 

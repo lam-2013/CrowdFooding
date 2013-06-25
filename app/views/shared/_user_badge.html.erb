@@ -1,0 +1,25 @@
+<h2> BADGE RAGGIUNTI</h2>
+<div class="row-fluid">
+  <div class="span1"></div>
+  <div class="span2">
+    <!--ogni 5 finanziamenti ottieni un punto badge /finanziamenti fatti/-->
+    <h5><%= (@user_finanziamenti_fatti/5) %></h5>
+  </div>
+  <div class="span2">
+    <!--ogni 100 euro di finanziamenti ottieni un punto badge /somma quota finanziamenti/-->
+    <h5><%= @somma_quote_denaro_finanziato/100 %></h5>
+  </div>
+  <div class="span2">
+    <!--ogni 5 followed ottieni un punto badge /somma quota finanziamenti/-->
+    <h5><%= @user.followed_users.count/5 %></h5>
+  </div>
+  <div class="span2">
+    <!--ogni 2 progetti completati ottieni un punto badge /goal finanziamenti/-->
+    <h5><%= @somma_progetti_creati_finanziati/2 %></h5>
+  </div>
+  <div class="span2">
+    <!--ogni 2 settimane dalla registrazione ottieni un punto badge /anzianità/-->
+    <h5><%= (Time.now.day - @user.created_at.day)/1.weeks %></h5>
+  </div>
+  <div class="span1"></div>
+</div>

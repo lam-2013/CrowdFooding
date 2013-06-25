@@ -116,6 +116,7 @@
         <%=link_to @username, @user %>
       </h4>
 
+      <h5>backes <%= @backer_numbers %></h5>
 
       <h2>Descrizione</h2>
       <p>
@@ -123,8 +124,7 @@
       </p>
       <% if !current_user.nil? %>
           <% if current_user.id == @project.user.id %>
-              |<%= link_to "Edit Project", edit_project_path%>
-              |<%= link_to "Edit/Add Contributions", contributions_path(project_id: @project.id)%>
+              <%= link_to "Modifica il tuo Progetto", edit_project_path , class: 'btn btn-medium btn-warning'%>
           <% end %>
       <% end %>
 
@@ -136,6 +136,12 @@
       <h4>Contributi: </h4>
 
       <%= render 'shared/project_contributions_show' %>
+
+      <% if !current_user.nil? %>
+          <% if current_user.id == @project.user.id %>
+              <%= link_to "Modifica/Aggiorna i Contributi", contributions_path(project_id: @project.id), class: 'btn btn-medium, btn-warning'%>
+          <% end %>
+      <% end %>
 
 
     </div>

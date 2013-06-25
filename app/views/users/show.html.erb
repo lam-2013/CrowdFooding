@@ -79,7 +79,10 @@
           </div>
           <div id="collapseTwo" class="accordion-body collapse in">
             <div class="accordion-inner">
-              <h2> BADGE RAGGIUNTI</h2>
+              <% @user_finanziamenti_fatti %>
+              <% @somma_quote_denaro_finanziato %>
+              <% @somma_progetti_creati_finanziati %>
+              <%= render 'shared/user_badge' %>
             </div>
           </div>
         </div>

@@ -21,6 +21,8 @@
                 <%= f.text_field :goal %>
                 <%= f.label :Categoria %>
                 <%= f.select(:categoria, @cat)%>
+                <p>Tags</p>
+                <%= f.text_field :tags, placeholder: 'tag1,tag2,tag3,tag4' %>
               </div>
             </div>
           </div>
@@ -51,8 +53,6 @@
             </div>
             <div id="collapseThree" class="accordion-body collapse">
               <div class="accordion-inner">
-                <p>Tags</p>
-                <%= f.text_field :tags, placeholder: 'tag1,tag2,tag3,tag4' %>
                 <%= f.label :Cerco_altri_collaboratori %>
                 <%= f.text_field :risorse_umane %>
                 <%= f.label :'Incentiva_l\'utente più attivo' %>

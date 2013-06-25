@@ -52,7 +52,7 @@
               </a>
             </div>
             <div id="collapseThree" class="accordion-body collapse">
-              <div class="accordion-inner">
+              <div class="accordion-inner">         
                 <%= f.label :Cerco_altri_collaboratori %>
                 <%= f.text_field :risorse_umane %>
                 <%= f.label :'Incentiva_l\'utente più attivo' %>
@@ -68,8 +68,12 @@
 
       <div class="row-fluid">
         <div class="span12 center">
-          <%= f.submit 'Create Project', class: 'btn btn-primary' %>
-         </div>
+          <% if !@project.titolo.nil?%>
+              <%= f.submit 'Aggiorna il Progetto', class: 'btn btn-primary' %>
+          <% else %>
+              <%= f.submit 'Crea il Progetto', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
       </div>
   <% end %>
 </div>

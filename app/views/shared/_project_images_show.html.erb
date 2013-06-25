@@ -1,0 +1,13 @@
+<% if !@project.images.nil? %>
+    <% string_images = @project.images %>
+    <% images = string_images.split(',') %>
+    <h3>Immagini</h3>
+    <div class="row-fluid center">
+
+      <% images.each{ |i| %>
+          <div class="immagini" id="<%=i%> " style="background-image: url(<%=i%>)" width="300px" height="300px" ></div>
+
+      <%  } %>
+
+    </div>
+<% end %>

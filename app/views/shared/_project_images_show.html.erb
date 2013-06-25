@@ -1,13 +1,245 @@
 <% if !@project.images.nil? %>
     <% string_images = @project.images %>
-    <% images = string_images.split(',') %>
+    <% images = string_images.split(',')%>
+
+
+
     <h3>Immagini</h3>
-    <div class="row-fluid center">
 
-      <% images.each{ |i| %>
-          <div class="immagini" id="<%=i%> " style="background-image: url(<%=i%>)" width="300px" height="300px" ></div>
+    <div id="loading"></div>
+    <canvas id="canvas_port" width="950" height="400"></canvas>
+    <script>
+        var j;
+        j=0;
+        var _nb__img;
+        var _int__img = 150;
+        _nb__img = 0;
 
-      <%  } %>
+        var loaded = 0;
+        var async_img_load = 0;
+        var _mover = 510;
+        var _default_movement = 440;
+        var _mouse_on = 0;
+        var resources =[
+        <% images.each do |img| %>
+           "<%=img.gsub('"','')%>",
+        <% end %>
+        ]
 
+        var img_src = [];
+
+
+        jQuery.each(resources, function(index, value) {
+            img_src[_nb__img] = {
+                img : new Image(),
+                x: Math.random() * 400 -200,
+                destx: 30+ Math.random() * 70+40,
+                y: 100+_int__img*_nb__img+Math.random()*100,
+                yoffset: 100+Math.random()*100,
+                desty: _int__img*_nb__img,
+                rot: 600-Math.random() * 1200,
+                destrot: 600-Math.random() * 1200,
+                scale: 5,
+                name: value
+            }
+
+            img_src[_nb__img].img.src = value;
+            async_img_load++;
+
+            img_src[_nb__img].img.onload = function() {
+                async_img_load--;
+            }
+
+            _nb__img++;
+        });
+
+        function drawDiap(ctx,img, selected) {
+            ctx.translate(-85,-40);
+            var white_border = 2;
+            var shadow_border = 8;
+            var shadow_border_light = 10;
+
+            //console.log('%i / %i',img.width, img.height);
+            if (img.width ==0) {
+                return;
+            }
+
+            var dest_height = 200;
+            var dest_width = dest_height * img.width /  img.height;
+
+            if (dest_width > dest_height) {
+                dest_width = dest_height;
+                dest_height = dest_width *  img.height /  img.width;
+            }
+
+
+            //console.log('%i / %i',img.width, img.height);
+            ctx.fillStyle = 'rgba(30,30,30,0.1)';
+            ctx.fillRect(0-shadow_border_light,0-shadow_border_light,dest_width+shadow_border_light*2,dest_height+shadow_border_light*2);
+
+            if (selected) {
+                ctx.fillStyle = 'rgba(30,200,30,0.5)';
+                var shadow_border = 8;
+                ctx.fillRect(0-shadow_border,0-shadow_border,dest_width+shadow_border*2,dest_height+shadow_border*2);
+            } else {
+                ctx.fillStyle = 'rgba(30,30,30,0.2)';
+                ctx.fillRect(0-shadow_border,0-shadow_border,dest_width+shadow_border*2,dest_height+shadow_border*2);
+            }
+
+
+            ctx.fillStyle = 'rgb(255,255,255)';
+            ctx.fillRect(0-white_border,0-white_border,dest_width+white_border*2,dest_height+white_border*2);
+
+            if (img.width !=0) {
+                ctx.drawImage(img,0,0,dest_width,dest_height);
+            }
+
+
+        }
+
+        function drawBg(ctx) {
+
+            var lineargradient = ctx.createLinearGradient(0, 0, 0, 400)
+            lineargradient.addColorStop(0, 'rgb(240,240,240)');
+            lineargradient.addColorStop(0.5, 'rgb(255,255,255)');
+            lineargradient.addColorStop(0.1, 'rgb(255,255,255)');
+            lineargradient.addColorStop(0.7, 'rgb(255,255,255)');
+            lineargradient.addColorStop(0.99, 'rgb(230,230,230)');
+            lineargradient.addColorStop(1, 'rgb(255,255,255)');
+            ctx.fillStyle = lineargradient;
+            ctx.fillRect(0,0,950,400);
+        }
+
+        function drawCanvas(ctx) {
+            j++;
+            ctx.clearRect(0, 0, 950, 400);
+            //var i = j/2;
+            var i = j%255;
+            //console.log('%i',i);
+            //ctx.restore();
+
+            ctx.save();
+
+            drawBg(ctx);
+
+
+            jQuery.each(img_src, function(index, imag) {
+
+                ctx.save();
+
+                //imag.y = imag.y-1;
+                var off = _mover - 425;
+                imag.y = imag.y - off *48 / 950;
+
+
+
+                if (imag.y < -250) {
+                    imag.y = _nb__img * _int__img-1;
+                    imag.rot = 600-Math.random() * 1200;
+                    imag.destrot = 600-Math.random() * 1200;
+                    imag.x = Math.random() * 400 -200;
+                    imag.yoffset = 600;
+                }
+                if (imag.y > _nb__img * _int__img) {
+                    imag.y = -250;
+                    imag.rot = 600-Math.random() * 1200;
+                    imag.destrot = 600-Math.random() * 1200;
+                    imag.x = Math.random() * 400 -200;
+                    imag.yoffset = -600;
+                }
+
+
+                if (imag.y < 1000) {
+
+                    ctx.translate(imag.y+imag.yoffset,imag.x);
+                    ctx.rotate(imag.rot/10000*Math.PI*2);
+                    ctx.scale(imag.scale, imag.scale);
+                    var selected = 0;
+                    if (imag.y > _mover-60 && imag.y < _mover+60 &&_mouse_on) {
+                        selected =1;
+                        imag.scale = (imag.scale * 10 + 1.2) / 11
+                        _selected = imag.name
+
+                    } else {
+                        imag.scale = (imag.scale * 10 + 1) / 11
+                    }
+
+                    drawDiap(ctx,imag.img,selected);
+
+                    if (imag.y < 900) {
+
+                        imag.x = (imag.x * 25  + imag.destx) /26;
+
+                        imag.rot = (imag.rot * 25  + imag.destrot) /26;
+                        imag.yoffset = imag.yoffset *25 / 26;
+                    }
+
+                }
+                ctx.restore();
+            });
+
+            ctx.restore();
+
+            //smooth return to "normal" slideshow
+            if (!_mouse_on) {
+                _mover = (_mover *10 + _default_movement) / 11
+            }
+
+        }
+
+        function drawEvent() {
+            var canvas = document.getElementById('canvas_port');
+            var load_div = document.getElementById('loading');
+            if (canvas.getContext){
+                var ctx = canvas.getContext('2d');
+                if ((async_img_load==0)) {
+                    drawCanvas(ctx);
+                    load_div.innerHTML = '';
+                } else {
+                    drawBg(ctx);
+                    load_div.innerHTML = 'LOADING !';
+                }
+            }
+        }
+
+
+        $(document).ready(function(){
+            $('#canvas_port').mousemove(function(e) {
+                var offset = $('#canvas_port').offset();
+                //console.log('move %s ', e.clientX- offset.left);
+
+                _mover =  e.clientX- offset.left;
+                _mouse_on = 1;
+            });
+
+            $('#canvas_port').mouseout(function(e) {
+                //_mover = _mover /2;
+                _mouse_on = 0;
+            });
+
+            $('#canvas_port').click(function(e) {
+                $('#filename').html('<p>'+_selected+'</p>');
+                $('#fileimg').html('<p><div style="overflow:none"><img src="'+_selected.replace('_m','')+'"/><br/><a href="'+_selected.replace('_m','_b')+'" target="blank">[View large]</a></div></p>');
+                e.stopPropagation();
+            });
+
+            _mover = _default_movement;
+
+            setInterval('drawEvent()',60);
+
+        });
+
+
+    </script>
+    <div class="row-fluid">
+      <div class="span2"></div>
+      <div class="span8">
+        <div id="fileimg">
+          <p>No image selected
+          </p>
+        </div>
+      </div>
+      <div class="span2"></div>
     </div>
+
 <% end %>

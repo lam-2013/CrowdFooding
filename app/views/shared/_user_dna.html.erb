@@ -7,10 +7,15 @@
   <% @numberCAT4 %>
   <% @numberCAT5 %>
   <div class="progress">
+    <% if @numTotCats.nil? %>
     <div class="bar bar-success" style="width: <%= @numberCAT1*100/@numTotCats%>%;"></div>
     <div class="bar bar-warning" style="width:<%= @numberCAT2*100/@numTotCats%>% ;"></div>
     <div class="bar bar-danger" style="width: <%= @numberCAT3*100/@numTotCats%>%;"></div>
     <div class="bar bar-info" style="width: <%= @numberCAT4*100/@numTotCats%>%;"></div>
     <div class="bar bar-inverse" style="width: <%= @numberCAT5*100/@numTotCats%>%;"></div>
+      <% else %>
+    <div class="bar bar-action" style="width: 0%"></div>
+        <p style="font-size: 10px">crea progetti per colorare il tuo DNA</p>
+       <% end %>
   </div>
 </div>

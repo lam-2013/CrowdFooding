@@ -38,7 +38,7 @@ class Project < ActiveRecord::Base
 
 
   # titolo must be present and not longer than 60 chars
-  validates :titolo, presence: true, length: {maximum: 60}
+  validates :titolo, presence: true, length: {maximum: 100}
 
   validates :descrizione, :categoria, :data_creazione, :data_fine,:tags, :goal, presence: true
 

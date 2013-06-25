@@ -13,6 +13,7 @@ end
 
 def make_users
   city=["Torino","Milano","Bologna","Palermo","Genova","Roma"]
+  numeri=['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20']
   sesso=["M","F"]
   r = Random.new
   User.create!(name: 'Giovanni',
@@ -30,10 +31,10 @@ def make_users
     name  = Faker::Name.first_name
     cognome = Faker::Name.last_name
     user_descrizione = Faker::Lorem.sentence(20)
-    # take users from the Rails Tutorial book since most of them have a "real" profile pic
     email = Faker::Internet.email(name)
     sito_web= Faker::Internet.url
     password  = "password"
+    numero_copertina = numeri[r.rand(numeri.size)]
     user_luogo = city[r.rand(city.size)]
     User.create!(name: name,
                  cognome:cognome,
@@ -42,7 +43,7 @@ def make_users
                  sito_web: sito_web,
                  sesso: sesso[r.rand(sesso.size)],
                  descrizione:user_descrizione,
-                 img_copertina: 'copertine_users'.concat('/copertina1.jpg'),
+                 img_copertina: "copertine_users/copertina"<<numero_copertina<<".jpg",
                  nascita: time_rand(Time.now-80.years,Time.now-18.years),
                  password: password,
                  password_confirmation: password)
@@ -58,13 +59,14 @@ def make_projects
   budget=[10,20,30,40,50,60,70,80,90,100,200,300,400,500,600,700,1000,1500,2000,2500,3000,3500,4000]
   goal=[100,200,300,400,500,600,700,1000,1500,2000]
   videos=["http://www.youtube.com/watch?v=-38uPkyH9vI","http://www.youtube.com/watch?v=3lQoe9GlYWU","http://www.youtube.com/watch?v=OI-bTpbkH4Y"]
+  numeri=['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20']
   r = Random.new
   users = User.all
   10.times do
 
     users.each { |user|
 
-      project_titolo = Faker::Lorem.words(2)
+      project_titolo = Faker::Lorem.sentence(1)
       project_descrizione = Faker::Lorem.sentence(20)
       project_luogo = city[r.rand(city.size)]
       project_categoria = categoria[r.rand(categoria.size)]
@@ -75,12 +77,12 @@ def make_projects
       project_tags = '1,2,3,4,5'
       project_data_creazione = time_rand Time.local(2013, 6, 1), Time.now
       project_data_fine = project_data_creazione + 2.week
-
+      numero_copertina = numeri[r.rand(numeri.size)]
       user.projects.create!(titolo: project_titolo,
                             luogo: project_luogo,
                             descrizione: project_descrizione,
                             categoria: project_categoria,
-                            img_copertina: 'copertine_projects'.concat('/copertina1.jpg'),
+                            img_copertina: "copertine_projects/copertina"<<numero_copertina<<".jpg",
                             videos: video,
                             tags: project_tags,
                             data_creazione: project_data_creazione,
@@ -123,7 +125,7 @@ end
 
 def make_backers
   r = Random.new
-  100.times do
+  1000.times do
     Backer.create!(contribution_id: r.rand(1..2500), user_id: r.rand(1..100))
   end
 end

@@ -3,73 +3,77 @@
   <%= form_for(@project) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <div class="row-fluid">
-         <div class="span8 offset2">
+        <div class="span8 offset2">
 
-        <div class="accordion" id="accordion2">
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">    INFORMAZIONI GENERALI
-              </a>
-            </div>
-            <div id="collapseOne" class="accordion-body collapse in">
-              <div class="accordion-inner">
-                <%= f.label :titolo %>
-                <%= f.text_field :titolo %>
-                <%= f.label :descrizione %>
-                <%= f.text_field :descrizione %>
-                <p>Budget da raggiungere<p>
-                <%= f.text_field :goal %>
-                <%= f.label :Categoria %>
-                <%= f.select(:categoria, @cat)%>
+          <div class="accordion" id="accordion2">
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">    INFORMAZIONI GENERALI
+                </a>
+              </div>
+              <div id="collapseOne" class="accordion-body collapse in">
+                <div class="accordion-inner">
+                  <%= f.label :titolo %>
+                  <%= f.text_field :titolo %>
+                  <%= f.label :descrizione %>
+                  <%= f.text_field :descrizione %>
+                  <p>Budget da raggiungere<p>
+                  <%= f.text_field :goal %>
+                  <%= f.label :Categoria %>
+                  <%= f.select(:categoria, @cat)%>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-               MEDIA
-              </a>
-            </div>
-            <div id="collapseTwo" class="accordion-body collapse">
-              <div class="accordion-inner">
-                <%= f.label :immagine_progetto %>
-                <%= f.text_field :img_copertina %>
-                <%= f.label :immagini %>
-                <%= f.text_field :images %>
-                <%= f.label :video %>
-                <%= f.text_field :videos %>
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                  MEDIA
+                </a>
+              </div>
+              <div id="collapseTwo" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  <%= f.label :immagine_progetto %>
+                  <%= f.text_field :img_copertina %>
+                  <%= f.label :immagini %>
+                  <%= f.text_field :images %>
+                  <%= f.label :video %>
+                  <%= f.text_field :videos %>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-                COLLABORAZIONI
-              </a>
-            </div>
-            <div id="collapseThree" class="accordion-body collapse">
-              <div class="accordion-inner">
-                <p>Tags</p>
-                <%= f.text_field :tags, placeholder: 'tag1,tag2,tag3,tag4' %>
-                <%= f.label :Cerco_altri_collaboratori %>
-                <%= f.text_field :risorse_umane %>
-                <%= f.label :'Incentiva_l\'utente più attivo' %>
-                <%= f.text_field :gift %>
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                  COLLABORAZIONI
+                </a>
+              </div>
+              <div id="collapseThree" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  <p>Tags</p>
+                  <%= f.text_field :tags, placeholder: 'tag1,tag2,tag3,tag4' %>
+                  <%= f.label :Cerco_altri_collaboratori %>
+                  <%= f.text_field :risorse_umane %>
+                  <%= f.label :'Incentiva_l\'utente più attivo' %>
+                  <%= f.text_field :gift %>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-            <%= f.hidden_field :data_creazione %>
-             <%= f.hidden_field :data_fine %>
+        <%= f.hidden_field :data_creazione %>
+        <%= f.hidden_field :data_fine %>
       </div>
 
       <div class="row-fluid">
         <div class="span12 center">
-          <%= f.submit 'Create Project', class: 'btn btn-primary' %>
-         </div>
+          <% if !@project.titolo.nil?%>
+              <%= f.submit 'Aggiorna il Progetto', class: 'btn btn-primary' %>
+          <% else %>
+              <%= f.submit 'Crea il Progetto', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
       </div>
   <% end %>
 </div>

@@ -13,47 +13,72 @@
               <ol class="projects">
 
                 <div class="row-fluid" id="padre" >
+                  <div class="row-fluid center" >
+                  <h1><%=link_to project.titolo ,project%> </h1>
+                  </div>
 
-                  <div class="row-fluid" id="info" >
-                    <div class="span6">
-                    <h1><%=link_to project.titolo ,project%> </h1>
-                      <h4>Creatore:</h4>
-                      <% if signed_in? %>
-                          <h3> <%= link_to project.user.name, project.user %></h3>
-                      <% else %>
-                          <h3> <%= project.user.name %></h3>
-                      <% end %>
+                  <div class="row-fluid"  >
+                    <div class="span6 offset1" id="imgslider">
+                      <%=link_to image_tag(project.img_copertina, :size => "400x300", style: "rounded"), project %>
                     </div>
-                    <div class="span6">
-                    <p> Città:<%= project.luogo %>       </p>
+                    <div class="span5" id="info">
+                      <h4> <% if !project.user.sesso.nil? %>
+                            <% if project.user.sesso == "M" %>
+                                <%= image_tag("icone/man-user.png", :size => "25x25") %>
+                            <% else %>
+                                <%= image_tag("icone/woman-user.png", :size => "25x25") %>
+                            <% end %>
+                        <% else %>
+                            <%= image_tag("icone/user.png", :size => "25X25") %>
+                        <% end %>
+                        <% if signed_in? %>
+                            <%= link_to project.user.name, project.user %>
+                        <% else %>
+                            <%= project.user.name %>
+                        <% end %>
+                        <%= image_tag("icone/pushpin.png", :size => "25x25") %>
+
+                        <%= project.luogo %>       </h4>
+
+                      <div class="row-fluid">
+                      <div class="span12">
+                        <h5>Di cosa si tratta?  </h5>
+                        <p><%= project.descrizione %>   </p>
+                      </div>
                      </div>
+                    </div>
+
+
+
                   </div>
 
-                  <div class="row-fluid">
-                    <div class="span6 offset1">
-                      <%=link_to image_tag(project.img_copertina), project%>
-                    </div>
-                    <div class="span4">
-                      <p>Di cosa si tratta?  </p>
-                    <p><%= project.descrizione %>   </p>
-                    </div>
-                  </div>
 
                   <div class="row-fluid" >
-                    <div class="span8 offset2">
-                    <p style="text-align: left"> Budget attuale: <%= project.budget_attuale %> € <p>
-                    <div class="progress progress-success progress-striped active">
-                      <div class="bar" style="width: 100%;"></div>
+                    <div class="span1"></div>
+                    <div class="span3">
+                      <p style="text-align: right"> Budget attuale: <%= project.budget_attuale %> € <p>
                     </div>
-                    <p style="text-align: right">Goal <%= project.goal %> € <p>
-                    Completed!
-                    <div class="progress progress-danger progress">
-                      <div class="bar" style="width: 100%;"></div>
-                    </div>
+                      <div class="span5">
+                      <div class="progress progress-success progress-striped">
+                        <div class="bar" style="width: 100%;"></div>
+                      </div>
+                      </div>
+                    <div class="span3">
+                      <p style="text-align: left">Goal <%= project.goal %> € <p>
                      </div>
                   </div>
+                  <div class="row-fluid">
+                    <div class="span1 offset1">
+                      <%= image_tag("icone/clock.png", :size => "25x25") %>
+                    </div>
+                    <div class="span7">
+                    <div class="progress progress-danger progress">
+                    <div class="bar" style="width: 100%;"></div>
+                    </div>
+                    </div>
+                    <div class="span2"> <p style="text-align: left"> Completed! </p></div>
+                  </div>
 
-                </div>
 
               </ol>
             </div>

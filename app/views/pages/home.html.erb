@@ -36,7 +36,8 @@
 
     <div class="row-fluid">
       <div class="span10 offset1">
-        <h2>Most Recently Successfully funded projects    </h2>
+        <h2><%= image_tag ("icone/champion-cup.png") %> Most Recently Successfully funded projects   </h2>
+
         <% @projectcat = 1 %>
         <% @projects_complete  %>
         <%= render 'shared/project_complete_slider' %>
@@ -54,7 +55,7 @@
     </div>
     <div class="row-fluid">
       <div class="span10 offset1">
-        <h2> Last started Projects     </h2>
+        <h2> Last started Projects </h2>
         <% @projectcat = 3 %>
         <% @projects_recently  %>
         <%= render 'shared/project_recently_slider' %>

@@ -1,5 +1,5 @@
 <% @cat=["ART & ENTERTAINMENT","LIFESTYLE & TECHNOLOGY","SOCIAL INNOVATION","EVENTI","FOOD"] %>
-<div class="container-fluid">
+
   <%= form_for(@project) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <div class="row-fluid">
@@ -76,4 +76,3 @@
         </div>
       </div>
   <% end %>
-</div>

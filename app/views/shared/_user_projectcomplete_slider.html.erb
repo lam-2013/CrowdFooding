@@ -12,7 +12,7 @@
             <div class="carousel-cation">
               <ol class="projects">
 
-                <div class="row-fluid">
+                <div class="row-fluid" id="padre" >
 
                   <div class="row-fluid">
                     <div class="span6">
@@ -23,7 +23,7 @@
                     </div>
                   </div>
 
-                  <div class="row-fluid" id="desc">
+                  <div class="row-fluid">
                     <div class="span6 offset1">
                       <%=link_to image_tag(project.img_copertina), project%>
                     </div>
@@ -33,7 +33,7 @@
                     </div>
                   </div>
 
-                  <div class="row-fluid" id="barre" >
+                  <div class="row-fluid"  >
                     <div class="span8 offset2">
                       <p style="text-align: left">Budget attuale: <%= project.budget_attuale %> € <p>
                       <div class="progress progress-success progress-striped active">

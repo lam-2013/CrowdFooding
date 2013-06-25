@@ -5,4 +5,11 @@
       <% # since browsers cannot send DELETE request, Rails fakes them with javascript... %>
       | <%= link_to 'delete', user, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
+
+  <div class="progress">
+    <div class="bar bar-success" style="width: 35%;"></div>
+    <div class="bar bar-warning" style="width: 20%;"></div>
+    <div class="bar bar-danger" style="width: 10%;"></div>
+  </div>
+
 </li>

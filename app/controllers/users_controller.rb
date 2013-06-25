@@ -17,6 +17,12 @@ class UsersController < ApplicationController
     @projects_personalFinanced = findPersonalProjects_financed
     @projects_personalAll = findPersonalProjects_all
 
+    @numberCAT1= findNumberCAT1
+    @numberCAT2= findNumberCAT2
+    @numberCAT3= findNumberCAT3
+    @numberCAT4= findNumberCAT4
+    @numberCAT5= findNumberCAT5
+
   end
 
   def new
@@ -158,6 +164,36 @@ class UsersController < ApplicationController
   def findPersonalProjects_all
 
       Project.find_by_sql(["SELECT * FROM projects WHERE user_id = ? ORDER BY data_creazione DESC", @user.id])
+  end
+
+  def findNumberCAT1
+
+       Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='ART & ENTERTAINMENT' ", @user.id])
+
+  end
+
+  def findNumberCAT2
+
+    Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='LIFESTYLE & TECHNOLOGY' ", @user.id])
+
+  end
+
+  def findNumberCAT3
+
+    Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='SOCIAL INNOVATION ' ", @user.id])
+
+  end
+
+  def findNumberCAT4
+
+    Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='EVENTI' ", @user.id])
+
+  end
+
+  def findNumberCAT5
+
+    Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='FOOD' ", @user.id])
+
   end
 
 end

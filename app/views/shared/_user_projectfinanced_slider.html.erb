@@ -17,101 +17,169 @@
 
                 <div class="row-fluid" id="padre">
 
-                  <div class="row-fluid">
-                    <div class="span6">
-                      <h2><%=link_to project.titolo ,project%> </h2>
-                      <h3><%= link_to project.user.name, project.user %></h3>
-                    </div>
-                    <div class="span6">
-                      <p> Città:<%= project.luogo %>       </p>
-                    </div>
+                  <div class="row-fluid center" >
+                    <h1><%=link_to project.titolo ,project%> </h1>
                   </div>
 
                   <div class="row-fluid">
-                    <div class="span6 offset1">
-                      <%=link_to image_tag(project.img_copertina), project%>
+                    <div class="span1"></div>
+                    <div class="span6 center">
+                      <% if project.img_copertina.nil?%>
+                          <%=link_to image_tag("copertine_projects/ape_copertina.jpg", :size => "400x300" , :class => "img-rounded"), project %>
+                      <% else %>
+                          <%=link_to image_tag(project.img_copertina, :size => "400x300", :class => "img-rounded"), project %>
+                      <%end%>
                     </div>
-                    <div class="span4">
-                      <p>Di cosa si tratta?  </p>
-                      <p><%= project.descrizione %>   </p>
+
+                    <div class="span5" id="info">
+                      <h4>
+                        <% if (project.categoria=="ARTE & TEMPO LIBERO") %>
+                            <span class="label label-success">ARTE & TEMPO LIBERO</span>
+                        <% elsif (project.categoria=="STILE DI VITA & TECNOLOGIA") %>
+                            <span class="label label-warning">STILE DI VITA & TECNOLOGIA</span>
+                        <% elsif (project.categoria=="SOCIAL INNOVATION") %>
+                            <span class="label label-danger">SOCIAL INNOVATION</span>
+                        <% elsif (project.categoria=="EVENTI") %>
+                            <span class="label label-info">EVENTI</span>
+                        <% elsif (project.categoria=="CIBO") %>
+                            <span class="label label-action">CIBO</span>
+                        <% end %>
+                      </h4>
+
+
+                      <div class="row-fluid">
+                        <h4>
+                          <% if !project.user.sesso.nil? %>
+                              <% if project.user.sesso == "M" %>
+                                  <%= image_tag("icone/man-user.png", :size => "25x25") %>
+                              <% else %>
+                                  <%= image_tag("icone/woman-user.png", :size => "25x25") %>
+                              <% end %>
+                          <% else %>
+                              <%= image_tag("icone/user.png", :size => "25X25") %>
+                          <% end %>
+                          <% if signed_in? %>
+                              <%= link_to project.user.name, project.user %>
+                          <% else %>
+                              <%= project.user.name %>
+                          <% end %>
+                        </h4>
+                        <h4>
+                          <%= image_tag("icone/pushpin.png", :size => "25x25") %>
+
+                          <%= project.luogo %>
+                        </h4>
+                      </div>
+
+                      <div class="row-fluid">
+                        <div class="span12">
+                          <h5>Di cosa si tratta?  </h5>
+                          <p><%= project.descrizione %>   </p>
+                        </div>
+                      </div>
                     </div>
+
+
+
                   </div>
 
+
                   <div class="row-fluid">
-                    <div class="span8 offset2">
-                      <p style="text-align: left">Budget attuale: <%= project.budget_attuale %> € <p>
-                      <div class="progress progress-success progress-striped active">
+
+                    <div class="span1"></div>
+                    <div class="span7">
+                      <%if (project.data_fine < Time.zone.now) %>
+                          <div class="progress progress-success progress">
+                      <% else %>
+                          <div class="progress progress-success progress-striped active">
+                      <% end %>
                         <%if (project.budget_attuale * 100 / project.goal > 100) %>
                             <div class="bar" style="width: 100%;"></div>
                         <% else %>
                             <div class="bar" style="width: <%= project.budget_attuale * 100 / project.goal %>%;"></div>
                         <% end %>
                       </div>
-                      <p style="text-align: right">Goal <%= project.goal %> €<p>
+                    </div>
+                    <div class="span4">
+                      <p> Budget attuale: <%= project.budget_attuale %> €</p>
+                      <h5> <%= image_tag("icone/champion-cup.png", :size => "25x25") %> Goal <%= project.goal %> € </h5>
+                    </div>
 
 
-                      <%if (project.data_fine < Time.zone.now) %>
-                          Completed!
-                          <div class="progress progress-danger progress">
-                            <div class="bar" style="width: 100%;"></div>
+                    <div class="row-fluid">
+                      <div class="span1"></div>
+
+
+
+
+                        <%if (project.data_fine < Time.zone.now) %>
+                          <div class="span7">
+                            <div class="progress progress-danger progress">
+                              <div class="bar" style="width: 100%;"></div>
+                            </div>
                           </div>
-                      <% else %>
-                          <% dif = distance_of_time_in_words(Time.now, project.data_fine, include_seconds = true) %>
-                          <% dif.to_s
-                             if dif.include? 'day'
-                               dif.sub!('day','giorno')
-                             end
-                             if dif.include? 'giornos'
-                               dif.sub!('giornos','giorni')
-                             end
-                             if dif.include? 'about'
-                               dif.sub!('about','circa')
-                             end
-                             if dif.include? 'hour'
-                               dif.sub!('hour','ora')
-                             end
-                             if dif.include? 'oras'
-                               dif.sub!('oras','ore')
-                             end
-                             if dif.include? 'less than a minute'
-                               dif.sub!('less than a minute','meno di un minuto')
-                             end
-                             if dif.include? 'less than'
-                               dif.sub!('less than','meno di')
-                             end
-                             if dif.include? 'minute'
-                               dif.sub!('minute','minuto')
-                             end
-                             if dif.include? 'minutos'
-                               dif.sub!('minutos','minuti')
-                             end
-                             if dif.include? 'year'
-                               dif.sub!('year','anno')
-                             end
-                             if dif.include? 'annos'
-                               dif.sub!('annos','anni')
-                             end
-                             if dif.include? 'month'
-                               dif.sub!('month','mese')
-                             end
-                             if dif.include? 'meses'
-                               dif.sub!('meses','mesi')
-                             end
-                             if dif.include? 'half a'
-                               dif.sub!('half a','mezzo')
-                             end%>
+                            <div class="span4">
+                              <h5>  <%= image_tag("icone/clock.png", :size => "25x25") %>
+                                Completato! </h5>
+                            </div>
+                        <% else %>
+                          <div class="span7">
+                            <% dif = distance_of_time_in_words(Time.now, project.data_fine, include_seconds = true) %>
+                            <% dif.to_s
+                           if dif.include? 'day'
+                             dif.sub!('day','giorno')
+                           end
+                           if dif.include? 'giornos'
+                             dif.sub!('giornos','giorni')
+                           end
+                           if dif.include? 'about'
+                             dif.sub!('about','circa')
+                           end
+                           if dif.include? 'hour'
+                             dif.sub!('hour','ora')
+                           end
+                           if dif.include? 'oras'
+                             dif.sub!('oras','ore')
+                           end
+                           if dif.include? 'less than a minute'
+                             dif.sub!('less than a minute','meno di un minuto')
+                           end
+                           if dif.include? 'less than'
+                             dif.sub!('less than','meno di')
+                           end
+                           if dif.include? 'minute'
+                             dif.sub!('minute','minuto')
+                           end
+                           if dif.include? 'minutos'
+                             dif.sub!('minutos','minuti')
+                           end
+                           if dif.include? 'year'
+                             dif.sub!('year','anno')
+                           end
+                           if dif.include? 'annos'
+                             dif.sub!('annos','anni')
+                           end
+                           if dif.include? 'month'
+                             dif.sub!('month','mese')
+                           end
+                           if dif.include? 'meses'
+                             dif.sub!('meses','mesi')
+                           end
+                           if dif.include? 'half a'
+                             dif.sub!('half a','mezzo')
+                           end%>
 
+                             <% ore_rimanenti = ((project.data_fine- Time.zone.now)/1.hours).to_i %>
+                                 <div class="progress progress-danger progress-striped active">
+                                 <div class="bar" style="width: <%= 100-ore_rimanenti * 100 / 672 %>%;"></div>
+                                    </div>
+                           </div>
 
-                          Hai ancora: <%= dif %>
-
-                          <% ore_rimanenti = ((project.data_fine- Time.zone.now)/1.hours).to_i %>
-
-                          <div class="progress progress-danger progress-striped active">
-                            <div class="bar" style="width: <%= 100-ore_rimanenti * 100 / 672 %>%;"></div>
-                          </div>
-
-                      <% end %>
-
+                         <div class="span4">
+                          <h5>  <%= image_tag("icone/clock.png", :size => "25x25") %>
+                           Hai ancora: <%= dif %> </h5>
+                        </div>
+                         <% end %>
                     </div>
                   </div>
                 </div>
@@ -121,11 +189,11 @@
             </div>
             </div>
         <% end %>
-
+        </div>
 
         <a class="carousel-control left" href="#myCarouseltab<%=@projectcat%>" data-slide="prev">&lsaquo;</a>
         <a class="carousel-control right" href="#myCarouseltab<%=@projectcat%>" data-slide="next">&rsaquo;</a>
-        </div>
+
       </div>
 <% else %>
     <div class="row-fluid center">

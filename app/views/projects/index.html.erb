@@ -5,18 +5,14 @@
 
 
     <aside class="span3">
-      <section>
-        <%= render 'shared/user_info'%>
-        <%= link_to 'Il mio profilo', @user , class: 'btn btn-large btn-info'%>
-      </section>
-      <section>
-        <%= render 'shared/stats' %>
-      </section>
+      <%= render 'shared/user_info' %>
+      <%= link_to 'Il mio profilo', current_user, class: 'btn btn-medium btn-info'%>
+      <%= render 'shared/stats' %>
     </aside>
 
 
 
-      <section>
+
       <div class="span8 center">
         <%= image_tag ("icone/binoculars.png") %>
         <h1>Scopri nuovi Progetti</h1>
@@ -24,7 +20,7 @@
         <h5>in base al luogo alla categoria o al titolo del progetto</h5>
         <%= render 'projects/search_projects_form' %>
       </div>
-      </section>
+
 </div>
 
     <div class="row-fluid">

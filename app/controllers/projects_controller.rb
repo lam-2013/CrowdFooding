@@ -53,10 +53,11 @@ class ProjectsController < ApplicationController
     @project.save
 
     if @project.save
-      flash[:success] = 'Progetto creato!'
+      flash[:success] = 'Progetto Creato!'
       redirect_to @project
     else
-      render 'new'
+      flash[:error] = 'Progetto non Creato!'
+      redirect_to '/crea'
     end
   end
 
@@ -72,7 +73,7 @@ class ProjectsController < ApplicationController
 
     if @project.update_attributes(params[:project])
       # handle a successful update
-      flash[:success] = 'Progetto aggiornato'
+      flash[:success] = 'Project aggiornato'
 
       # go to the project
       redirect_to @project

@@ -8,7 +8,9 @@ class UsersController < ApplicationController
 
   def show
     # get the user with id :id
+
     @user = User.find(params[:id])
+
 
     # get and paginate the posts associated to the specified user
     @projects = @user.projects.paginate(page: params[:page], per_page: 10)
@@ -160,17 +162,17 @@ class UsersController < ApplicationController
 
   private
 
-    # Take the current user information (id) and redirect her to the home page if she is not the 'right' user
-    def correct_user
-      # init the user object to be used in the edit and update actions
-      @user = User.find(params[:id])
-      redirect_to root_path unless current_user?(@user) # the current_user?(user) method is defined in the SessionsHelper
-    end
+  # Take the current user information (id) and redirect her to the home page if she is not the 'right' user
+  def correct_user
+    # init the user object to be used in the edit and update actions
+    @user = User.find(params[:id])
+    redirect_to root_path unless current_user?(@user) # the current_user?(user) method is defined in the SessionsHelper
+  end
 
-    # Redirect the user to the home page is she is not an admin (e.g., if the user cannot perform an admin-only operation)
-    def admin_user
-      redirect_to root_path unless current_user.admin?
-    end
+  # Redirect the user to the home page is she is not an admin (e.g., if the user cannot perform an admin-only operation)
+  def admin_user
+    redirect_to root_path unless current_user.admin?
+  end
 
   def findProjects_progress
 
@@ -185,12 +187,12 @@ class UsersController < ApplicationController
 
   def findPersonalProjects_financed
 
-    Project.find_by_sql(["SELECT * FROM projects WHERE id IN(SELECT project_id FROM backers b, contributions c WHERE b.user_id = ? AND b.contribution_id = c.id) ORDER BY data_fine", @user.id])
+    Project.find_by_sql(["SELECT * FROM projects WHERE id IN(SELECT project_id FROM backers b, contributions c WHERE b.user_id = ? AND b.contribution_id = c.id) ORDER BY data_fine DESC", @user.id])
   end
 
   def findPersonalProjects_all
 
-      Project.find_by_sql(["SELECT * FROM projects WHERE user_id = ? ORDER BY data_creazione DESC", @user.id])
+    Project.find_by_sql(["SELECT * FROM projects WHERE user_id = ? ORDER BY data_creazione DESC", @user.id])
   end
 
   def findNumberCAT1

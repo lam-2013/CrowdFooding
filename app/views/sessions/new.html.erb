@@ -3,8 +3,8 @@
 
 <h1>Sign In</h1>
 
-<div class="row">
-  <div class="span5 offset4">
+<div class="row-fluid">
+  <div class="span6 offset3">
     <%= form_for(:session, url: sessions_path) do |f| %>
 
         <%= f.label :email %>
@@ -12,9 +12,14 @@
 
         <%= f.label :password %>
         <%= f.password_field :password %>
-
-        <%= f.submit 'Sign in', class: 'btn btn-large btn-primary' %>
+        <div class="row-fluid">
+          <div class="span5 offset1">
+            <%= f.submit 'Sign in', class: 'btn btn-large btn-primary' %>
+          </div>
     <% end %>
-    <p>Sei un nuovo utente? <%= link_to 'Sign up now!', signup_path,  class: 'btn btn-large btn-warning'%></p>
+    <div class="span6 ">
+      Sei un nuovo utente? <%= link_to 'Sign up now!', signup_path,  class: 'btn btn-large btn-warning'%>
+    </div>
+    </div>
   </div>
 </div>

@@ -3,23 +3,21 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <aside class="span3">
-      <section>
-        <%= render 'shared/user_info' %>
-        <%= link_to 'Il mio profilo',  current_user , class: 'btn btn-large btn-info'%>
-      </section>
-      <section>
-        <%= render 'shared/stats' %>
-      </section>
+      <%= render 'shared/user_info' %>
+      <%= link_to 'Il mio profilo', current_user, class: 'btn btn-medium btn-info'%>
+      <%= render 'shared/stats' %>
     </aside>
-    <section>
+
       <div class="span8 center">
-         <%= image_tag("icone/bulb.png")%>
-         <h1>Crea il tuo progetto</h1>
-         <p>  <%= render 'shared/project_form' %>     </p>
-       </div>
+        <%= image_tag("icone/bulb.png")%>
+        <h1>Crea il tuo progetto</h1>
+        <p>  <%= render 'shared/project_form' %>     </p>
+      </div>
 
-    </section>
 
+
+  </div>
 </div>
+
 
 

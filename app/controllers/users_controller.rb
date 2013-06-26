@@ -242,5 +242,4 @@ class UsersController < ApplicationController
     Project.count_by_sql(["SELECT COUNT(*) FROM projects WHERE user_id = ? AND budget_attuale >= goal ",@user.id])
 
   end
-
 end

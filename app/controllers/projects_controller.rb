@@ -53,7 +53,7 @@ class ProjectsController < ApplicationController
     @project.save
 
     if @project.save
-      flash[:success] = 'Project created!'
+      flash[:success] = 'Progetto creato!'
       redirect_to @project
     else
       render 'new'
@@ -72,7 +72,7 @@ class ProjectsController < ApplicationController
 
     if @project.update_attributes(params[:project])
       # handle a successful update
-      flash[:success] = 'Project aggiornato'
+      flash[:success] = 'Progetto aggiornato'
 
       # go to the project
       redirect_to @project
@@ -106,7 +106,7 @@ class ProjectsController < ApplicationController
 
   def findProjects_complete
 
-    Project.find_by_sql("SELECT * FROM projects WHERE data_fine < current_timestamp AND budget_attuale > goal ORDER BY budget_attuale DESC")
+    Project.find_by_sql("SELECT * FROM projects WHERE data_fine < current_timestamp AND budget_attuale > goal ORDER BY data_fine DESC")
 
   end
 

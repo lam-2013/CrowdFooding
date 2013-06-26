@@ -27,15 +27,15 @@
                     <div class="span5" id="info">
                       <h4>
                         <% if (project.categoria=="ARTE & TEMPO LIBERO") %>
-                            <span class="label label-success">ARTE & TEMPO LIBERO</span>
+                            <span class="badge badge-success">ARTE & TEMPO LIBERO</span>
                         <% elsif (project.categoria=="STILE DI VITA & TECNOLOGIA") %>
-                            <span class="label label-warning">STILE DI VITA & TECNOLOGIA</span>
+                            <span class="badge badge-warning">STILE DI VITA & TECNOLOGIA</span>
                         <% elsif (project.categoria=="SOCIAL INNOVATION") %>
-                            <span class="label label-danger">SOCIAL INNOVATION</span>
+                            <span class="badge badge-important">SOCIAL INNOVATION</span>
                         <% elsif (project.categoria=="EVENTI") %>
-                            <span class="label label-info">EVENTI</span>
+                            <span class="badge badge-info">EVENTI</span>
                         <% elsif (project.categoria=="CIBO") %>
-                            <span class="label label-action">CIBO</span>
+                            <span class="badge badge" style="background-color:#136ba5">CIBO</span>
                         <% end %>
                       </h4>
 
@@ -85,7 +85,7 @@
                       </div>
                     </div>
                     <div class="span4">
-                      <p> Budget attuale: <%= project.budget_attuale %> €</p>
+                      <h5> Budget attuale: <%= project.budget_attuale %> € <%= image_tag("icone/finanziatori.png", :size => "32x32") %></h5>
                       <h5> <%= image_tag("icone/champion-cup.png", :size => "25x25") %> Goal <%= project.goal %> € </h5>
                     </div>
                   </div>

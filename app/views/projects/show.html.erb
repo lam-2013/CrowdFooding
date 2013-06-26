@@ -10,7 +10,7 @@
     <% unless @project.img_copertina.blank? %>
         <%= image_tag(@project.img_copertina , :height => '100%', :width => '100%', :class => "img-rounded", :id => "copertina")%>
     <%else%>
-        <img src="http://www.lettera43.it/upload/images/12_2012/l43-piantagione-121227075428_big.jpg" class="img-rounded" id="copertina">
+        <%= image_tag("copertine_projects/ape_copertina.jpg" , class:"img-rounded", id:"copertina") %>
     <% end %>
 
   </div>

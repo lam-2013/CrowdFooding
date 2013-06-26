@@ -55,7 +55,7 @@ def make_projects
 
   # generate 10 fake projects for the all users
   city=["Torino","Milano","Bologna","Palermo","Genova","Roma"]
-  categoria=["ART & ENTERTAINMENT","LIFESTYLE & TECHNOLOGY","SOCIAL INNOVATION","EVENTI","FOOD"]
+  categoria=["ARTE & TEMPO LIBERO","STILE DI VITA & TECNOLOGIA","SOCIAL INNOVATION","EVENTI","CIBO"]
   budget=[10,20,30,40,50,60,70,80,90,100,200,300,400,500,600,700,1000,1500,2000,2500,3000,3500,4000]
   goal=[100,200,300,400,500,600,700,1000,1500,2000]
   videos=["http://www.youtube.com/watch?v=-38uPkyH9vI","http://www.youtube.com/watch?v=3lQoe9GlYWU","http://www.youtube.com/watch?v=OI-bTpbkH4Y"]

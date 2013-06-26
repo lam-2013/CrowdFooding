@@ -40,7 +40,7 @@ class Project < ActiveRecord::Base
   # titolo must be present and not longer than 100 chars
   validates :titolo, presence: true, length: {maximum: 100}
 
-  validates :descrizione, :categoria, :data_creazione, :data_fine,:tags, :goal, presence: true
+  validates :descrizione, :categoria, :data_creazione, :data_fine,:tags, :goal,:luogo, presence: true
 
   # get user's projects plus all the projects written by her followed users
   def self.from_users_followed_by(user)

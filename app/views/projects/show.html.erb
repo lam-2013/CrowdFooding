@@ -37,14 +37,14 @@
 
     <% if Time.zone.now > @project.data_fine %>
         <div class="span2">
-          <h3> Completed! </h3>
+          <h3> Completato! </h3>
         </div>
         <div class="span8">
           <div class="progress progress-danger progress">
             <div class="bar" style="width: 100%;"></div>
           </div>
     <% else %>
-        <% dif = distance_of_time_in_words(Time.now, @project.data_fine, include_seconds = true) %>
+        <% dif = distance_of_time_in_words(Time.zone.now, @project.data_fine, include_seconds = true) %>
         <% dif.to_s
            if dif.include? 'day'
              dif.sub!('day','giorno')

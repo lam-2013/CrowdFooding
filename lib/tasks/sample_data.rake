@@ -125,7 +125,11 @@ end
 
 def make_backers
   r = Random.new
-  1000.times do
-    Backer.create!(contribution_id: r.rand(1..2500), user_id: r.rand(1..100))
+  users = User.all
+  users.each { |user|
+
+  r.rand(2..15).times do
+    Backer.create!(contribution_id: r.rand(1..2500), user_id: user.id)
   end
+  }
 end

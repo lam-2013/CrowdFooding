@@ -36,7 +36,6 @@ class Project < ActiveRecord::Base
 
   validates :user_id, presence: true
 
-
   # titolo must be present and not longer than 100 chars
   validates :titolo, presence: true, length: {maximum: 100}
 

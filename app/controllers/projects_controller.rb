@@ -106,7 +106,7 @@ class ProjectsController < ApplicationController
 
   def findProjects_complete
 
-    Project.find_by_sql("SELECT * FROM projects WHERE data_fine < current_timestamp AND budget_attuale > goal ORDER BY budget_attuale DESC")
+    Project.find_by_sql("SELECT * FROM projects WHERE data_fine < current_timestamp AND budget_attuale > goal ORDER BY data_fine DESC")
 
   end
 

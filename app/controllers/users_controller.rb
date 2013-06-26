@@ -237,7 +237,7 @@ class UsersController < ApplicationController
 
   def somma_progetti_creati_finanziati
 
-    Project.count_by_sql(["SELECT * FROM projects WHERE id = ? AND budget_attuale >= goal ",@user.id])
+    Project.count_by_sql(["SELECT COUNT(*) FROM projects WHERE user_id = ? AND budget_attuale >= goal ",@user.id])
 
   end
 

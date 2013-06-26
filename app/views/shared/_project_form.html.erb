@@ -1,4 +1,4 @@
-<% @cat=["ART & ENTERTAINMENT","LIFESTYLE & TECHNOLOGY","SOCIAL INNOVATION","EVENTI","FOOD"] %>
+<% @cat=["ARTE & TEMPO LIBERO","STILE DI VITA & TECNOLOGIA","SOCIAL INNOVATION","EVENTI","CIBO"] %>
 
   <%= form_for(@project) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
@@ -14,15 +14,17 @@
             <div id="collapseOne" class="accordion-body collapse in">
               <div class="accordion-inner">
                 <%= f.label :titolo %>
-                <%= f.text_field :titolo, placeholder:'massimo 100 caratteri' %>
+                <%= f.text_field :titolo, placeholder:'Inserisci un titolo di massimo 100 caratteri' %>
                 <%= f.label :descrizione %>
-                <%= f.text_field :descrizione %>
-                <p>Budget da raggiungere<p>
-                <%= f.text_field :goal %>
-                <%= f.label :Categoria %>
+                <%= f.text_field :descrizione, placeholder:'Descrivi il tuo progetto' %>
+                <%= f.label :Budget_da_raggiungere %>
+                <%= f.text_field :goal,  placeholder: 'Stabilisci il budget da raggiungere' %>
+                <%= f.label :categoria %>
                 <%= f.select(:categoria, @cat)%>
-                <p>Tags</p>
-                <%= f.text_field :tags, placeholder: 'tag1,tag2,tag3,tag4' %>
+                <%= f.label :luogo %>
+                <%= f.text_field :luogo, placeholder: 'Inserisci la città' %>
+                <%= f.label :tags %>
+                <%= f.text_field :tags, placeholder: 'Tag1,Tag2,Tag3' %>
               </div>
             </div>
           </div>
@@ -36,11 +38,11 @@
             <div id="collapseTwo" class="accordion-body collapse">
               <div class="accordion-inner">
                 <%= f.label :immagine_progetto %>
-                <%= f.text_field :img_copertina %>
+                <%= f.text_field :img_copertina, placeholder:'Inserisci l\'url dell\'immagine' %>
                 <%= f.label :immagini %>
-                <%= f.text_field :images %>
+                <%= f.text_field :images, placeholder:'Inserisci le url delle immagini spaziate da una virgola' %>
                 <%= f.label :video %>
-                <%= f.text_field :videos %>
+                <%= f.text_field :videos, placeholder:'Inserisci l\'url del video' %>
               </div>
             </div>
           </div>

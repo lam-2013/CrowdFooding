@@ -49,13 +49,13 @@ class PagesController < ApplicationController
 
   def findNumberCAT1
 
-    Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='ART & ENTERTAINMENT' ", @user.id])
+    Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='ARTE & TEMPO LIBERO' ", @user.id])
 
   end
 
   def findNumberCAT2
 
-    Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='LIFESTYLE & TECHNOLOGY' ", @user.id])
+    Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='STILE DI VITA & TECNOLOGIA' ", @user.id])
 
   end
 
@@ -73,7 +73,7 @@ class PagesController < ApplicationController
 
   def findNumberCAT5
 
-    Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='FOOD' ", @user.id])
+    Project.count_by_sql(["SELECT COUNT (id) FROM projects WHERE user_id = ? AND categoria='CIBO' ", @user.id])
 
   end
 

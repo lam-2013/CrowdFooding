@@ -1,19 +1,63 @@
 <li>
-  <span class="content"><%= project.titolo %></span>
+  <span class="content"><h2><%= project.titolo %></h2></span>
   <span class="content"><%= project.luogo %></span>
   <% unless project.img_copertina.blank? %>
-      <%= image_tag(project.img_copertina , :height => '100px', :width => '200px')%>
+      <%= image_tag(project.img_copertina , :height => '200px', :width => '300px')%>
   <%else%>
       <img src="http://www.lettera43.it/upload/images/12_2012/l43-piantagione-121227075428_big.jpg" class="img-rounded" id="copertina">
   <% end %>
   <span class="content"><%= project.descrizione %></span>
   <span class="timestamp">
-    Created <%= time_ago_in_words(project.created_at) %> ago
+   <% dif = time_ago_in_words(project.created_at, include_seconds = true) %>
+    <% dif.to_s
+       if dif.include? 'day'
+         dif.sub!('day','giorno')
+       end
+       if dif.include? 'giornos'
+         dif.sub!('giornos','giorni')
+       end
+       if dif.include? 'about'
+         dif.sub!('about','circa')
+       end
+       if dif.include? 'hour'
+         dif.sub!('hour','ora')
+       end
+       if dif.include? 'oras'
+         dif.sub!('oras','ore')
+       end
+       if dif.include? 'less than a minute'
+         dif.sub!('less than a minute','meno di un minuto')
+       end
+       if dif.include? 'less than'
+         dif.sub!('less than','meno di')
+       end
+       if dif.include? 'minute'
+         dif.sub!('minute','minuto')
+       end
+       if dif.include? 'minutos'
+         dif.sub!('minutos','minuti')
+       end
+       if dif.include? 'year'
+         dif.sub!('year','anno')
+       end
+       if dif.include? 'annos'
+         dif.sub!('annos','anni')
+       end
+       if dif.include? 'month'
+         dif.sub!('month','mese')
+       end
+       if dif.include? 'meses'
+         dif.sub!('meses','mesi')
+       end
+       if dif.include? 'half a'
+         dif.sub!('half a','mezzo')
+       end%>
+    Creato <%= dif %> fa
   </span>
 
-  | <%= link_to 'Visualizza', project%>
+  <%= link_to 'Visualizza', project, class: 'btn btn-large btn-info'%>
   <% if current_user?(project.user) %>
-      | <%= link_to 'Elimina', project, method: :delete, data: { confirm: 'Are you sure?' }, title: project.titolo %>
+      <%= link_to 'Elimina', project, method: :delete, data: { confirm: 'Are you sure?' }, title: project.titolo, class: 'btn btn-large btn-danger'%>
   <% end %>
 </li>
 

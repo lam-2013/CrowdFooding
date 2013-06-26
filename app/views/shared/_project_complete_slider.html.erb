@@ -38,7 +38,24 @@
                         <% end %>
                         <%= image_tag("icone/pushpin.png", :size => "25x25") %>
 
-                        <%= project.luogo %>       </h4>
+                        <%= project.luogo %>
+                      </h4>
+
+                      <div class="row-fluid">
+                        <h4>
+                          <% if (project.categoria=="ARTE & TEMPO LIBERO") %>
+                              <span class="label label-success">ARTE & TEMPO LIBERO</span>
+                              <% elsif (project.categoria=="STILE DI VITA & TECNOLOGIA") %>
+                                  <span class="label label-warning">STILE DI VITA & TECNOLOGIA</span>
+                                  <% elsif (project.categoria=="SOCIAL INNOVATION") %>
+                                      <span class="label label-danger">SOCIAL INNOVATION</span>
+                                      <% elsif (project.categoria=="EVENTI") %>
+                                          <span class="label label-info">EVENTI</span>
+                                          <% elsif (project.categoria=="CIBO") %>
+                                              <span class="label label-action">CIBO</span>
+                          <% end %>
+                        </h4>
+                      </div>
 
                       <div class="row-fluid">
                       <div class="span12">

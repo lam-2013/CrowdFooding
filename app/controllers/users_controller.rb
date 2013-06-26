@@ -93,7 +93,7 @@ class UsersController < ApplicationController
     # check if the update was successfully
     if @user.update_attributes(params[:user])
       # handle a successful update
-      flash[:success] = 'Profilo aggiornato'
+      flash[:success] = 'Profilo aggiornato!'
       # re-login the user
       sign_in @user
       # go to the user profile

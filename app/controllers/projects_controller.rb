@@ -8,7 +8,6 @@ class ProjectsController < ApplicationController
 
 
   def new
-
     @project = Project.new(data_creazione: Time.now, data_fine: Time.now + 4.weeks)
     @user=current_user
     @numberCAT1= findNumberCAT1
@@ -51,6 +50,7 @@ class ProjectsController < ApplicationController
     # build a new project from the information contained in the "new project" form
     @project = current_user.projects.new(params[:project])
     @project.budget_attuale=0
+    @project.save
 
     if @project.save
       flash[:success] = 'Progetto Creato!'
@@ -107,7 +107,7 @@ class ProjectsController < ApplicationController
 
   def findProjects_complete
 
-    Project.find_by_sql("SELECT * FROM projects WHERE data_fine < current_timestamp AND budget_attuale > goal ORDER BY budget_attuale DESC")
+    Project.find_by_sql("SELECT * FROM projects WHERE data_fine < current_timestamp AND budget_attuale > goal ORDER BY data_fine DESC")
 
   end
 

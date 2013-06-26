@@ -1,15 +1,25 @@
 <% # current user gravatar %>
-<a href="<%= user_path(@user) %>">
-  <%= gravatar_for @user, size: 100 %>
-</a>
-    <%= render 'shared/user_dna' %>
-<% # current user name, link to her profile and her projects number %>
 
-      <h2><%=@user.name%></h2>
-  <% unless @user.cognome.nil? %>
-      <h2><%=@user.cognome%></h2>
-  <% end %>
+  <div class="row-fluid">
+    <div class="span5">
+      <a href="<%= user_path(@user) %>">
+      <%= gravatar_for @user, size: 100 %>
+      </a>
+    </div>
+    <div class="span7">
+        <%= render 'shared/user_dna' %>
 
-<h4><%= pluralize(@user.projects.count, 'progetto', 'progetti') %></h4>
+        <% # current user name, link to her profile and her projects number %>
 
+        <div class="span9">
+        <h4><%=@user.name%>
+            <% unless @user.cognome.nil? %>
+              <%=@user.cognome%>
+            <% end %>
+        </h4>
+        </div>
+
+    </div>
+  </div>
+  <h4><%= pluralize(@user.projects.count, 'progetto', 'progetti') %></h4>
 

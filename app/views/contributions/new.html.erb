@@ -1,5 +1,7 @@
-<h1>New contribution</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', contributions_path(project_id: @project.id) %>
+<h1>Nuovo contributo</h1>
+<div class="row-fluid">
+  <div class="span8 offset2">
+    <%= render 'form' %>
+    <%= link_to 'Torna indietro', contributions_path(project_id: @project.id) %>
+  </div>
+</div>

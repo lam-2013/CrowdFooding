@@ -1,8 +1,13 @@
-<table border="1">
+<table class="table table-condensed table-bordered table-hover">
   <tr>
     <th> Quota </th>
     <th> Servizio </th>
     <th> Numero </th>
+    <% if !current_user.nil? %>
+        <%  if @project.data_fine > Time.now %>
+            <th>  </th>
+        <% end %>
+    <% end %>
   </tr>
 
 

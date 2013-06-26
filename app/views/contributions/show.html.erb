@@ -1,20 +1,23 @@
+
 <p id="notice"><%= notice %></p>
+<div class="span8 offset2">
+  <p>
+    <b>Quota:</b>
+    <%= @contribution.quota %>
+  </p>
 
-<p>
-  <b>Quota:</b>
-  <%= @contribution.quota %>
-</p>
+  <p>
+    <b>Servizio:</b>
+    <%= @contribution.servizio %>
+  </p>
 
-<p>
-  <b>Servizio:</b>
-  <%= @contribution.servizio %>
-</p>
-
-<p>
-  <b>Numero:</b>
-  <%= @contribution.numero %>
-</p>
+  <p>
+    <b>Numero:</b>
+    <%= @contribution.numero %>
+  </p>
 
 
-<%= link_to 'Modifica', edit_contribution_path(@contribution.project_id) %> |
-<%= link_to 'Indietro', contributions_path %>
+  <%= link_to 'Modifica', edit_contribution_path(@contribution.project_id) %> |
+  <%= link_to 'Indietro', contributions_path %>
+
+</div>

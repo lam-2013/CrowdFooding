@@ -1,31 +1,23 @@
 <%= form_for(@contribution) do |f| %>
-  <% if @contribution.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
+    <%= render 'shared/error_messages', object: f.object %>
 
-      <ul>
-      <% @contribution.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <div class="field">
+      <%= f.label :quota, placeholder:'in euro' %><br />
+      <%= f.text_field :quota%>
+
+
+      <%= f.label :servizio %><br />
+      <%= f.text_field :servizio %>
+
+
+      <%= f.label :numero %><br />
+      <%= f.number_field :numero, :in => 1..200 %>
+
+
+      <%= f.hidden_field :project_id, value: @project.id %>
+      <div class="actions">
+        <%= f.submit 'Crea contributo', class:'btn btn-large btn-success' %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :quota %><br />
-    <%= f.text_field :quota %>
-  </div>
-  <div class="field">
-    <%= f.label :servizio %><br />
-    <%= f.text_field :servizio %>
-  </div>
-  <div class="field">
-    <%= f.label :numero %><br />
-    <%= f.number_field :numero %>
-  </div>
-
-    <%= f.hidden_field :project_id, value: @project.id %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

@@ -7,9 +7,8 @@ class Contribution < ActiveRecord::Base
   default_scope order: 'contributions.quota, contributions.project_id  DESC'
 
   validates :project_id, presence: true
-
   validates :numero, :quota, presence: true
-  validates :servizio, presence: true, length: {minimum: 20}
+  validates :servizio, presence: true, length: {minimum: 5}
 
 
 end

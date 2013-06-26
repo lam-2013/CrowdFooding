@@ -185,7 +185,7 @@ class UsersController < ApplicationController
 
   def findPersonalProjects_financed
 
-    Project.find_by_sql(["SELECT * FROM projects WHERE id IN(SELECT project_id FROM backers b, contributions c WHERE b.user_id = ? AND b.contribution_id = c.id) ORDER BY data_fine", @user.id])
+    Project.find_by_sql(["SELECT * FROM projects WHERE id IN(SELECT project_id FROM backers b, contributions c WHERE b.user_id = ? AND b.contribution_id = c.id) ORDER BY data_fine DESC", @user.id])
   end
 
   def findPersonalProjects_all

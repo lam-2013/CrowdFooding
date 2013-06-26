@@ -4,20 +4,14 @@
   <% if signed_in? %>
       <div class="row-fluid">
         <aside class="span3">
-          <section>
             <%= render 'shared/user_info' %>
             <%= link_to 'Il mio profilo', current_user, class: 'btn btn-medium btn-info'%>
-          </section>
-          <section>
             <%= render 'shared/stats' %>
-          </section>
         </aside>
-        <section>
         <div class="span8">
             <h1> CrowdFooding</h1>
           <h2> Crowdfunding per rivalutare e promuovere la bontà e la genuinità della nostra terra </h2>
         </div>
-        </section>
       </div>
   <% else %>
       <div class="center hero-unit" style="height: 250px" id="title">

@@ -14,7 +14,7 @@
             <div id="collapseOne" class="accordion-body collapse in">
               <div class="accordion-inner">
                 <%= f.label :titolo %>
-                <%= f.text_field :titolo %>
+                <%= f.text_field :titolo, placeholder:'massimo 100 caratteri' %>
                 <%= f.label :descrizione %>
                 <%= f.text_field :descrizione %>
                 <p>Budget da raggiungere<p>
@@ -54,9 +54,9 @@
             <div id="collapseThree" class="accordion-body collapse">
               <div class="accordion-inner">         
                 <%= f.label :Cerco_altri_collaboratori %>
-                <%= f.text_field :risorse_umane %>
+                <%= f.text_field :risorse_umane, placeholder:'Fotografo, contadino, ...' %>
                 <%= f.label :'Incentiva_l\'utente più attivo' %>
-                <%= f.text_field :gift %>
+                <%= f.text_field :gift, placeholder: 'Scegli un regalo per premiare l\'utente più attivo' %>
               </div>
             </div>
           </div>

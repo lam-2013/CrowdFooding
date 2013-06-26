@@ -3,15 +3,17 @@
 
 <div class="container-fluid">
   <div class="row-fluid center">
-    <h1>
-      <%= @project.titolo %>
-    </h1>
 
     <% unless @project.img_copertina.blank? %>
         <%= image_tag(@project.img_copertina , :height => '100%', :width => '100%', :class => "img-rounded", :id => "copertina")%>
     <%else%>
-        <%= image_tag("copertine_projects/ape_copertina.jpg" , class:"img-rounded", id:"copertina") %>
+        <%= image_tag('copertine_projects/ape_copertina.jpg' , :height => '100%', :width => '100%', :class => "img-rounded", :id => "copertina")%>
+
     <% end %>
+
+    <h1>
+      <%= @project.titolo %>
+    </h1>
 
   </div>
 
@@ -108,15 +110,44 @@
 <div class="row-fluid">
   <div class="span8 offset2">
 
-    <div class="span5 offset1">
+    <div class="span6">
+      <% p_url = "http://www.facebook.com/sharer.php?u=".concat request.url %>
+      <%=link_to image_tag("icone/share.png", :size => "30x30"),p_url %>
+
       <h4>
+        <%= image_tag("icone/tag.png", :size => "25x25") %>
+        <% if (@project.categoria=="ARTE & TEMPO LIBERO") %>
+            <span class="label label-success">ARTE & TEMPO LIBERO</span>
+        <% elsif (@project.categoria=="STILE DI VITA & TECNOLOGIA") %>
+            <span class="label label-warning">STILE DI VITA & TECNOLOGIA</span>
+        <% elsif (@project.categoria=="SOCIAL INNOVATION") %>
+            <span class="label label-important">SOCIAL INNOVATION</span>
+        <% elsif (@project.categoria=="EVENTI") %>
+            <span class="label label-info">EVENTI</span>
+        <% elsif (@project.categoria=="CIBO") %>
+            <span class="label label-action">CIBO</span>
+        <% end %>
+      </h4>
+
+      <h4>
+        <%= image_tag("icone/pushpin.png", :size => "25x25") %>
         <%= @project.luogo %>
       </h4>
+
       <h4>
+        <% if !@project.user.sesso.nil? %>
+            <% if @project.user.sesso == "M" %>
+                <%= image_tag("icone/man-user.png", :size => "25x25") %>
+            <% else %>
+                <%= image_tag("icone/woman-user.png", :size => "25x25") %>
+            <% end %>
+        <% else %>
+            <%= image_tag("icone/user.png", :size => "25X25") %>
+        <% end %>
         <%=link_to @username, @user %>
       </h4>
 
-      <h5>backes <%= @backer_numbers %></h5>
+      <h4>backes <%= @backer_numbers %></h4>
 
       <h2>Descrizione</h2>
       <p>
@@ -131,7 +162,7 @@
 
 
     </div>
-    <div class="span5 offset1">
+    <div class="span6 ">
 
       <h4>Contributi: </h4>
 
@@ -151,8 +182,7 @@
   <div class="row-fluid">
     <div class="span12 center">
       <section>
-        <% p_url = "http://www.facebook.com/sharer.php?u=".concat request.url %>
-        <%=link_to image_tag('loghi/FB_icon_share.png', :height => '50px', :width => '50px'),p_url %>
+
       </section>
     </div>
   </div>

@@ -24,7 +24,7 @@ class ContributionsController < ApplicationController
   def update
     if @contribution.update_attributes(params[:contribution])
       # handle a successful update
-      flash[:success] = 'contributon aggiornato'
+      flash[:success] = 'Contributo aggiornato!'
 
       # go to the project
       redirect_to contributions_path(project_id:@project.id)
@@ -45,7 +45,7 @@ class ContributionsController < ApplicationController
     @project = Project.find(params[:contribution][:project_id])
     @contribution = @project.contributions.build(params[:contribution])
     if @contribution.save
-      flash[:success] = 'Contribution created!'
+      flash[:success] = 'Contributo creato!'
       redirect_to contributions_path(project_id:@project.id)
 
     else

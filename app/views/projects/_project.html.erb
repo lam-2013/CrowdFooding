@@ -11,9 +11,9 @@
     Created <%= time_ago_in_words(project.created_at) %> ago
   </span>
 
-  | <%= link_to 'show', project%>
+  | <%= link_to 'Visualizza', project%>
   <% if current_user?(project.user) %>
-      | <%= link_to 'delete', project, method: :delete, data: { confirm: 'Are you sure?' }, title: project.titolo %>
+      | <%= link_to 'Elimina', project, method: :delete, data: { confirm: 'Are you sure?' }, title: project.titolo %>
   <% end %>
 </li>
 

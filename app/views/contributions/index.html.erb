@@ -1,4 +1,4 @@
-<h1>Listing contributions</h1>
+<h1>Elenco dei contributi</h1>
 
 <table>
   <tr>
@@ -16,12 +16,12 @@
     <td><%= contribution.servizio %></td>
     <td><%= contribution.numero %></td>
 
-    <td><%= link_to 'Edit', edit_contribution_path(contribution.id) %></td>
-    <td><%= link_to 'Destroy', contribution, method: :delete, id:contribution.id, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Modifica', edit_contribution_path(contribution.id) %></td>
+    <td><%= link_to 'Elimina', contribution, method: :delete, id:contribution.id, data: { confirm: 'Sei sicuro?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Contribution', new_contribution_path(project_id:@project.id) %>
+<%= link_to 'Nuovo Contributo', new_contribution_path(project_id:@project.id) %>

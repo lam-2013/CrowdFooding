@@ -164,11 +164,16 @@
       <p>
         <%= @project.descrizione %>
       </p>
+      <h4>Tags</h4>
+      <p>
+        <%= @project.tags %>
+      </p>
       <% if !current_user.nil? %>
           <% if current_user.id == @project.user.id %>
               <%= link_to "Modifica il tuo Progetto", edit_project_path , class: 'btn btn-medium btn-warning'%>
           <% end %>
       <% end %>
+
 
 
 

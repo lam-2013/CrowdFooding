@@ -75,9 +75,12 @@ def make_projects
       project_goal = goal[r.rand(goal.size)]
       video = videos[r.rand(videos.size)]
       project_budget_attuale = budget[r.rand(budget.size)]
-      project_tags = '1,2,3,4,5'
-      project_data_creazione = time_rand Time.local(2013, 6, 1), Time.now
-      project_data_fine = project_data_creazione + 2.week
+      project_tags = ["festa","cibo","coltivazione","costruzione","cultura","terra","piante","agricoltura","mare","sagra","cucina"]
+
+      tag = project_tags[r.rand(project_tags.size)]
+
+      project_data_creazione = time_rand Time.local(2013, 5, 20), Time.now
+      project_data_fine = project_data_creazione + 4.week
       numero_copertina = numeri[r.rand(numeri.size)]
       user.projects.create!(titolo: project_titolo,
                             luogo: project_luogo,
@@ -85,8 +88,8 @@ def make_projects
                             categoria: project_categoria,
                             img_copertina: "copertine_projects/copertina"<<numero_copertina<<".jpg",
                             videos: video,
+                            tags: tag,
                             images: images,
-                            tags: project_tags,
                             data_creazione: project_data_creazione,
                             data_fine: project_data_fine,
                             budget_attuale: project_budget_attuale,

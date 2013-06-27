@@ -23,8 +23,14 @@
       <% end %>
     </table>
 
-    <br />
-
+    <br>
+    <div class="span2 offset4">
     <%= link_to 'Nuovo Contributo', new_contribution_path(project_id:@project.id),class:'btn btn-large btn-success' %>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <%= link_to 'Torna al progetto', @project, class:'btn btn-medium btn-info' %>
   </div>
 </div>

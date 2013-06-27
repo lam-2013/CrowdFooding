@@ -20,10 +20,8 @@
 
   <div class="row-fluid">
 
-
-
-    <div class="span1"></div>
-    <div class="span7">
+    <div class="span2"></div>
+    <div class="span6">
       <%if (@project.data_fine < Time.zone.now) %>
           <div class="progress progress-success progress">
       <% else %>
@@ -36,30 +34,27 @@
       <% end %>
       </div>
       </div>
-      <div class="span4">
+      <div class="span3">
         <h5> Budget attuale: <%= @project.budget_attuale %> € <%= image_tag("icone/finanziatori.png", :size => "32x32") %></h5>
         <h5> <%= image_tag("icone/champion-cup.png", :size => "25x25") %> Goal <%= @project.goal %> € </h5>
       </div>
+  </div>
 
+  <div class="row-fluid">
+     <div class="span2"></div>
 
-      <div class="row-fluid">
-        <div class="span1"></div>
-
-
-
-
-        <%if (@project.data_fine < Time.zone.now) %>
-            <div class="span7">
+       <%if (@project.data_fine < Time.zone.now) %>
+            <div class="span6">
               <div class="progress progress-danger progress">
                 <div class="bar" style="width: 100%;"></div>
               </div>
             </div>
-            <div class="span4">
+            <div class="span3">
               <h5>  <%= image_tag("icone/clock.png", :size => "25x25") %>
                 Completato! </h5>
             </div>
         <% else %>
-            <div class="span7">
+            <div class="span6">
               <% dif = distance_of_time_in_words(Time.now, @project.data_fine, include_seconds = true) %>
               <% dif.to_s
                  if dif.include? 'day'
@@ -111,16 +106,14 @@
               </div>
             </div>
 
-            <div class="span4">
+            <div class="span3">
               <h5>  <%= image_tag("icone/clock.png", :size => "25x25") %>
                 Hai ancora: <%= dif %> </h5>
             </div>
         <% end %>
-      </div>
+  </div>
 
 
-</div>
-</div>
 
 
 <div class="row-fluid">
@@ -133,15 +126,15 @@
       <h4>
         <%= image_tag("icone/tag.png", :size => "25x25") %>
         <% if (@project.categoria=="ARTE & TEMPO LIBERO") %>
-            <span class="label label-success">ARTE & TEMPO LIBERO</span>
+            <span class="badge badge-success">ARTE & TEMPO LIBERO</span>
         <% elsif (@project.categoria=="STILE DI VITA & TECNOLOGIA") %>
-            <span class="label label-warning">STILE DI VITA & TECNOLOGIA</span>
+            <span class="badge badge-warning">STILE DI VITA & TECNOLOGIA</span>
         <% elsif (@project.categoria=="SOCIAL INNOVATION") %>
-            <span class="label label-important">SOCIAL INNOVATION</span>
+            <span class="badge badge-important">SOCIAL INNOVATION</span>
         <% elsif (@project.categoria=="EVENTI") %>
-            <span class="label label-info">EVENTI</span>
+            <span class="badge badge-info">EVENTI</span>
         <% elsif (@project.categoria=="CIBO") %>
-            <span class="label label-action">CIBO</span>
+            <span class="badge badge" style="background-color:#136ba5">CIBO</span>
         <% end %>
       </h4>
 

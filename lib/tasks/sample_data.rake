@@ -59,6 +59,7 @@ def make_projects
   budget=[10,20,30,40,50,60,70,80,90,100,200,300,400,500,600,700,1000,1500,2000,2500,3000,3500,4000]
   goal=[100,200,300,400,500,600,700,1000,1500,2000]
   videos=["http://www.youtube.com/watch?v=-38uPkyH9vI","http://www.youtube.com/watch?v=3lQoe9GlYWU","http://www.youtube.com/watch?v=OI-bTpbkH4Y"]
+  images= 'http://www.nexusedizioni.it/ambiente-e-salute/files/2013/06/frutta.jpg,http://3.bp.blogspot.com/_yst0qSwAzA0/S8mEDyKs28I/AAAAAAAAA24/XTn2b6ohixU/s1600/3471645952_b34ecf3583.jpg,http://www.teknemedia.net/magazine/esposizioni/2008/TKmag4933badb0647f.jpg,http://www.luxury24.ilsole24ore.com/IMMAGINI/EcoCharity/2009/04/Vicissitudes-352x288.jpg?uuid=42180d62-25db-11de-9461-d9514a44e445,http://www.greenews.info/wp-content/uploads/2009/12/Courtesy-of-Farm4static-Flickr.jpg,http://www.mentelocale.it/images/articoli/full/49132-1.jpg,http://sibari.mareblog.com/files/2010/01/slow_food.jpg,http://m2.paperblog.com/i/62/621399/fairtrade-ed-equosolidale-per-bambini-L-BUrYy3.jpeg'
   numeri=['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20']
   r = Random.new
   users = User.all
@@ -84,6 +85,7 @@ def make_projects
                             categoria: project_categoria,
                             img_copertina: "copertine_projects/copertina"<<numero_copertina<<".jpg",
                             videos: video,
+                            images: images,
                             tags: project_tags,
                             data_creazione: project_data_creazione,
                             data_fine: project_data_fine,

@@ -2,5 +2,5 @@
     # a search form always uses a GET method %>
 <%= form_tag search_users_path, method: 'get', class: 'navbar' do %>
     <% # text_field_tag: the first parameter is the id/name of the input tag; the second is the value of the tag %>
-    <%= text_field_tag :search, params[:search], class: 'search-query', placeholder: 'Search' %>
+    <%= text_field_tag :search, params[:search], class: 'search-query', placeholder: 'Cerca' %>
 <% end %>

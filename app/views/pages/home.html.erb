@@ -24,8 +24,6 @@
   <% end %>
 
 
-
-
   <div class="row-fluid center">
 
     <div class="row-fluid">
@@ -59,7 +57,7 @@
 
     <div class="row-fluid">
       <div class="span10 offset1">
-        <h2>  Progetti degli amici </h2>
+        <h2> <%= image_tag("icone/amici.jpg", :size => "60x60")%> Progetti degli amici </h2>
         <% @projectcat = 4 %>
         <% @projects_friends  %>
         <% if signed_in? %>

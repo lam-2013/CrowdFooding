@@ -21,7 +21,7 @@
                   <div class="row-fluid">
                     <div class="span1"></div>
                     <div class="span6 center">
-                      <% if project.img_copertina.nil?%>
+                      <% if project.img_copertina.blank?%>
                           <%=link_to image_tag("copertine_projects/ape_copertina.jpg", :size => "400x300" , :class => "img-rounded"), project %>
                       <% else %>
                           <%=link_to image_tag(project.img_copertina, :size => "400x300", :class => "img-rounded"), project %>

@@ -7,12 +7,18 @@
         <span class="icon-bar"></span>
       </button>
       <!--<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"></a>-->
-      <%= link_to "CrowdFooding", root_path, id: "logo" %>
+      <ul class="nav">
+        <li><%= image_tag("loghi/ape_logo.png", :size => "45x45") %></li>
+        <li><%= link_to "CrowdFooding", root_path, id: "logo" %></li>
+      </ul>
       <div class="nav-collapse collapse">
         <nav>
           <ul class="nav pull-center">
+            <li><%= image_tag("icone/binoculars2.png", :size => "30x30") %></li>
             <li><%= link_to "Scopri", scopri_path %></li>
             <% if signed_in? %>
+                <li><%= image_tag("icone/bulb2.png", :size => "25x25", :options =>
+                        {:style=>"padding-top: 10px;"}) %></li>
                 <li><%= link_to "Crea", crea_path %></li>
             <% end %>
           </ul>

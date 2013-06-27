@@ -10,7 +10,7 @@
       <% unless @user.img_copertina.blank? %>
           <%= image_tag(@user.img_copertina , :height => '100%', :width => '100%', :class => "img-rounded", :id => "copertina")%>
       <%else%>
-          <img src="http://www.lettera43.it/upload/images/12_2012/l43-piantagione-121227075428_big.jpg" class="img-rounded" id="copertina">
+          <%= image_tag('copertine_projects/ape_copertina.jpg' , :height => '100%', :width => '100%', :class => "img-rounded", :id => "copertina")%>
       <% end %>
     </div>
 
@@ -20,14 +20,18 @@
   <div class="row-fluid ">
 
     <div class="span5 offset1">
-      <section>
-        <%= render 'shared/user_info' %>
-      </section>
-      <div class="span 4 offset6">
-        <%= render 'shared/stats' %>
-      </div>
-      <div class=" span 8 offset2">
-        <%= render 'follow_form' if signed_in? %>
+
+      <%= render 'shared/user_info' %>
+      <div class="row-fluid ">
+        <div class="span4">
+          <%= render 'shared/stats' %>
+
+          <div class="row-fluid ">
+            <div class=" span5">
+              <%= render 'follow_form' if signed_in? %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -40,7 +44,7 @@
 
           <div class="accordion-group">
             <div class="accordion-heading">
-              <a class="accordion-toggle" style="background-color: lightgreen" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"><h4>Informazioni personali </h4></a>
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"><h4>Informazioni personali </h4></a>
             </div>
             <div id="collapseOne" class="accordion-body collapse">
               <div class="accordion-inner">
@@ -77,7 +81,7 @@
         <div class="accordion" id="accordion3">
           <div class="accordion-group">
             <div class="accordion-heading">
-              <a class="accordion-toggle" style="background-color: gold" data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo"><h4>BADGE RAGGIUNTI</h4></a>
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo"><h4>Badge</h4></a>
             </div>
             <div id="collapseTwo" class="accordion-body collapse in">
               <div class="accordion-inner">

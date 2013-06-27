@@ -1,17 +1,17 @@
 <% # current user gravatar %>
 
   <div class="row-fluid">
-    <div class="span5">
+    <div class="span3">
       <a href="<%= user_path(@user) %>">
       <%= gravatar_for @user, size: 100 %>
       </a>
     </div>
-    <div class="span7">
+    <div class="span8">
         <%= render 'shared/user_dna' %>
 
         <% # current user name, link to her profile and her projects number %>
 
-        <div class="span9">
+        <div class="span10">
         <h4><%=@user.name%>
             <% unless @user.cognome.nil? %>
               <%=@user.cognome%>

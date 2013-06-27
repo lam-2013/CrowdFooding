@@ -3,15 +3,11 @@
 <div class="container-fluid">
   <div class="row-fluid">
 
-
     <aside class="span3">
       <%= render 'shared/user_info' %>
       <%= link_to 'Il mio profilo', current_user, class: 'btn btn-medium btn-info'%>
       <%= render 'shared/stats' %>
     </aside>
-
-
-
 
       <div class="span6 center">
         <%= image_tag ("icone/binoculars.png") %>
@@ -25,7 +21,7 @@
 
     <div class="row-fluid">
       <div class="span10 offset1">
-        <h2><%= image_tag ("icone/champion-cup.png") %> Progetti terminati con successo   </h2>
+        <h2><%= image_tag("icone/champion-cup.png")%> Progetti terminati con successo   </h2>
         
         <% @projectcat = 1 %>
         <% @projects_complete  %>
@@ -34,7 +30,7 @@
     </div>
     <div class="row-fluid">
       <div class="span10 offset1">
-        <h2> Progetti più popolari </h2>
+        <h2><%= image_tag("icone/star.png", :size => "50x50")%> Progetti più popolari  </h2>
         <% @projectcat = 2 %>
         <% @projects_in_corso  %>
         <%= render 'shared/project_in_corso_slider' %>
@@ -42,7 +38,7 @@
     </div>
     <div class="row-fluid">
       <div class="span10 offset1">
-        <h2> Ultimi progetti creati  </h2>
+        <h2> <%= image_tag("icone/cronometer.png")%> Ultimi progetti creati </h2>
         <% @projectcat = 3 %>
         <% @projects_recently  %>
         <%= render 'shared/project_recently_slider' %>
@@ -52,7 +48,7 @@
 
   <div class="row-fluid">
     <div class="span10 offset1">
-      <h2> Progetti degli amici </h2>
+      <h2> <%= image_tag("icone/amici.jpg", :size => "60x60")%> Progetti degli amici </h2>
       <% @projectcat = 4 %>
       <% @projects_friends  %>
       <% if signed_in? %>

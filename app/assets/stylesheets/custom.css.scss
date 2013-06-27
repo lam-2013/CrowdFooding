@@ -15,6 +15,7 @@
     margin-left: 0px;
     margin-right: 0px;
   }
+
 }
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
@@ -23,6 +24,9 @@
     margin-left: 0px;
     margin-right: 0px;
   }
+  body{
+    font-size:0.8em;
+  }
 }
 /* Landscape phones and down */
 @media (max-width: 480px) {
@@ -30,6 +34,12 @@
     position: fixed;
     margin-left: 0px;
     margin-right: 0px;
+  }
+  body{
+     font-size:0.6em;
+   }
+  .badge{
+      font-size: 0.4em;
   }
 }
 

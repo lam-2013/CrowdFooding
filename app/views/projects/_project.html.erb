@@ -1,12 +1,19 @@
 <li>
-  <span class="content"><h2><%= project.titolo %></h2></span>
-  <span class="content"><%= project.luogo %></span>
+  <div class="row-fluid"><h2><%= project.titolo %></h2></div>
+  <div class="row-fluid"><h4><%= project.luogo %></h4></div>
+   <div class="row-fluid">
+     <div class="span6">
   <% unless project.img_copertina.blank? %>
       <%= image_tag(project.img_copertina , :height => '200px', :width => '300px')%>
   <%else%>
       <%= image_tag("copertine_projects/ape_copertina.jpg" , :height => '200px', :width => '300px')%>
   <% end %>
-  <span class="content"><%= project.descrizione %></span>
+     </div>
+     <div class="span6">
+      <h5> <%= project.descrizione %>   </h5>
+     </div>
+   </div>
+
   <span class="timestamp">
    <% dif = time_ago_in_words(project.created_at, include_seconds = true) %>
     <% dif.to_s
@@ -54,10 +61,11 @@
        end%>
     Creato <%= dif %> fa
   </span>
-
+  <div class="row-fluid">
   <%= link_to 'Visualizza', project, class: 'btn btn-large btn-info'%>
   <% if current_user?(project.user) %>
       <%= link_to 'Elimina', project, method: :delete, data: { confirm: 'Are you sure?' }, title: project.titolo, class: 'btn btn-large btn-danger'%>
   <% end %>
+  </div>
 </li>
 

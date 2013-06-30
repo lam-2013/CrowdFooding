@@ -23,7 +23,7 @@ def make_users
                sito_web: 'http://www.overc.it',
                sesso: 'M',
                descrizione: 'Amo la natura il vivere sano in tutti i sensi',
-               img_copertina: 'copertine_users'.concat('/copertina1.jpg'),
+               img_copertina: 'copertine_users'.concat('/copertina4.jpg'),
                nascita: Time.local(1986,4,4),
                password: 'giogio',
                password_confirmation: 'giogio')

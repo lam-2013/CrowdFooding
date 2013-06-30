@@ -2,9 +2,8 @@ class UsersController < ApplicationController
   # check if the user is logged in (e.g., for editing only his information)
   before_filter :signed_in_user, only: [:edit, :update, :index, :destroy]
   # check if the current user is the correct user (e.g., for editing only his information)
-  before_filter :correct_user, only: [:edit, :update]
-  # check if the current user is also an admin
-  before_filter :admin_user, only: :destroy
+  before_filter :correct_user, only: [:edit, :update, :destroy]
+
 
   def show
     # get the user with id :id
